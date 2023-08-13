@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "oveHBfppD5wbIrIffLQ/tw1r2cN3tUNIF57pzRtn0fI=",
+  "Hash": "DKrOGNlMdKUxfNbrCvdBh+lwrajtPOo8mUbVJYFhTpA=",
   "Source": "KodieLingo",
   "BasePath": "_content/KodieLingo",
   "Mode": "Default",
@@ -83,6 +83,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\bootstrap\\bootstrap.min.css.map"
+    },
+    {
+      "Identity": "C:\\Users\\nedfp\\OneDrive\\Desktop\\Ned\\Programming\\Applied Computing\\KodieLingo\\KodieLingo\\wwwroot\\css\\open-iconic\\FONT-LICENSE",
+      "SourceId": "KodieLingo",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\nedfp\\OneDrive\\Desktop\\Ned\\Programming\\Applied Computing\\KodieLingo\\KodieLingo\\wwwroot\\",
+      "BasePath": "_content/KodieLingo",
+      "RelativePath": "css/open-iconic/FONT-LICENSE",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\open-iconic\\FONT-LICENSE"
     },
     {
       "Identity": "C:\\Users\\nedfp\\OneDrive\\Desktop\\Ned\\Programming\\Applied Computing\\KodieLingo\\KodieLingo\\wwwroot\\css\\open-iconic\\font\\css\\open-iconic-bootstrap.min.css",
@@ -185,23 +202,6 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.woff"
-    },
-    {
-      "Identity": "C:\\Users\\nedfp\\OneDrive\\Desktop\\Ned\\Programming\\Applied Computing\\KodieLingo\\KodieLingo\\wwwroot\\css\\open-iconic\\FONT-LICENSE",
-      "SourceId": "KodieLingo",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\nedfp\\OneDrive\\Desktop\\Ned\\Programming\\Applied Computing\\KodieLingo\\KodieLingo\\wwwroot\\",
-      "BasePath": "_content/KodieLingo",
-      "RelativePath": "css/open-iconic/FONT-LICENSE",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\css\\open-iconic\\FONT-LICENSE"
     },
     {
       "Identity": "C:\\Users\\nedfp\\OneDrive\\Desktop\\Ned\\Programming\\Applied Computing\\KodieLingo\\KodieLingo\\wwwroot\\css\\open-iconic\\ICON-LICENSE",
