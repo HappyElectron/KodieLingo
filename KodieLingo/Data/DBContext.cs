@@ -10,9 +10,15 @@ namespace KodieLingo.Data
     {
         protected readonly IConfiguration Configuration;
         public DbSet<User> Users { get; set; }
+
+        // Courses require modification before adding to the db structure.
         //public DbSet<Course> Courses { get; set; }
 
-        // Automatically generated jargon
+        // A set of questions: to be referenced and accessed by topics/lessons
+        public DbSet<Question> Questions { get; set; }
+        public DbSet<Answer> Answers { get; set; }
+
+        // An interface required to connect to the database
         public DatabaseContext(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -38,6 +44,23 @@ namespace KodieLingo.Data
                     Email = "FrenchMommy@dosomeworkaiden.punk", 
                     Password = "Who cares if it's public and unsanitized"} );
 
+            modelBuilder.Entity<Answer>().ToTable("Answer");
+            modelBuilder.Entity<Answer>().
+                HasData(new Answer() { 
+                    Id = 1, 
+                    AnswerString = "some folk", 
+                    IsValid = false});
+
+            modelBuilder.Entity<Question>().ToTable("Question");
+
+            modelBuilder.Entity<Question>().
+                HasData(new Question()
+                {
+                    Id = 1,
+                    QuestionString = "Who Cares?",
+                    Answers = { new Answer() { Id = 2, AnswerString = "No one", IsValid = true},
+                                new Answer() { Id = 3, AnswerString = "Everyone", IsValid = false}}
+                });
             /*
             // Courses table initialisation
             modelBuilder.Entity<Course>()

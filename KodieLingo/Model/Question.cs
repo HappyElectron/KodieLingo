@@ -3,12 +3,12 @@
     public class Question
     {
         // A question in a lesson.
-        // To be stored within a topic, and accessed by an active lesson page - not the lesson DB object
+        // The questions will be stored as a set, and topics will track a set of
+        // question IDs, which will be used to generate a given lesson.
         public int Id { get; set; }
         public string QuestionString { get; set; }
 
-        // Identifying integer : string question
-        public List<int>? ValidAnswers { get; set; }
-        public Dictionary<int,string>? Answers { get; set; }
+        // Trying to reference a dynamic list of objects from a DB item.
+        public List<Answer> Answers { get; set; } = new();
     }
 }
