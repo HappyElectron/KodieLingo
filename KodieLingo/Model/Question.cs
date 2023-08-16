@@ -3,12 +3,13 @@
     public class Question
     {
         // A question in a lesson.
-        // The questions will be stored as a set, and topics will track a set of
-        // question IDs, which will be used to generate a given lesson.
+        // Questions/Answers will be modelled by a one-to-many relationship (link below).
+        // https://learn.microsoft.com/en-us/ef/core/modeling/relationships/one-to-many
+        // Questions will be accessable from other objects by a many-to-many relationship.
+        // https://learn.microsoft.com/en-us/ef/core/modeling/relationships/many-to-many
         public int Id { get; set; }
         public string QuestionString { get; set; }
 
-        // Trying to reference a dynamic list of objects from a DB item.
-        public List<Answer> Answers { get; set; } = new();
+        public ICollection<Answer> Answers { get; set; } = new List<Answer>();
     }
 }

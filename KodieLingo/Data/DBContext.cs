@@ -1,5 +1,7 @@
 ﻿using KodieLingo.Model;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Hosting;
+using System.Reflection.Metadata;
 
 /* The model Entity Framework uses to construct a database
  * Contains a 'Set' of users; this holds all user data across several sqlite tables.
@@ -44,25 +46,25 @@ namespace KodieLingo.Data
                     Email = "FrenchMommy@dosomeworkaiden.punk", 
                     Password = "Who cares if it's public and unsanitized"} );
 
-            modelBuilder.Entity<Answer>().ToTable("Answer");
-            modelBuilder.Entity<Answer>().
-                HasData(new Answer() { 
-                    Id = 1, 
-                    AnswerString = "some folk", 
-                    IsValid = false});
+            // Trying the one-to-many question/answer relationship
+            modelBuilder.Entity<Question>()
+                .HasMany(e => e.Answers)
+                .WithOne(e => e.Question)
+                .HasForeignKey(e => e.QuestionId)
+                .IsRequired();
+            modelBuilder.Entity<Answer>()
+                .HasOne(e => e.Question)
+                .WithMany(e => e.Answers)
+                .HasForeignKey(e => e.QuestionId)
+                .IsRequired();
 
             modelBuilder.Entity<Question>().ToTable("Question");
 
-            modelBuilder.Entity<Question>().
-                HasData(new Question()
-                {
-                    Id = 1,
-                    QuestionString = "Who Cares?",
-                    Answers = { new Answer() { Id = 2, AnswerString = "No one", IsValid = true},
-                                new Answer() { Id = 3, AnswerString = "Everyone", IsValid = false}}
-                });
-            /*
-            // Courses table initialisation
+            modelBuilder.Seed();
+
+            /* FAILED Courses table initialisation
+             * Included in case i want to check back later and salvage
+             * Ignore
             modelBuilder.Entity<Course>()
             .ToTable("Course");
 

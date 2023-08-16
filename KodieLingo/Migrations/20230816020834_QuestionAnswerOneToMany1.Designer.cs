@@ -2,6 +2,7 @@
 using KodieLingo.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -9,9 +10,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace KodieLingo.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    partial class DatabaseContextModelSnapshot : ModelSnapshot
+    [Migration("20230816020834_QuestionAnswerOneToMany1")]
+    partial class QuestionAnswerOneToMany1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "7.0.10");
@@ -37,22 +40,6 @@ namespace KodieLingo.Migrations
                     b.HasIndex("QuestionId");
 
                     b.ToTable("Answers");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            AnswerString = "Ned's fault",
-                            IsValid = false,
-                            QuestionId = 1
-                        },
-                        new
-                        {
-                            Id = 2,
-                            AnswerString = "Aiden's fault",
-                            IsValid = true,
-                            QuestionId = 1
-                        });
                 });
 
             modelBuilder.Entity("KodieLingo.Model.Question", b =>
@@ -68,13 +55,6 @@ namespace KodieLingo.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Question", (string)null);
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            QuestionString = "Why"
-                        });
                 });
 
             modelBuilder.Entity("KodieLingo.Model.User", b =>
