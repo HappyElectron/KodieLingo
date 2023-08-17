@@ -1,3 +1,20 @@
+/* _content/KodieLingo/Pages/loginprompt.cshtml.rz.scp.css */
+body[b-ykvca5k8sb] {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f0f0f0;
+}
+.centered-text[b-ykvca5k8sb] {
+    text-align: center;
+}
+h1[b-ykvca5k8sb] {
+    color: green;
+    font-size: 3rem;
+}
 /* _content/KodieLingo/Shared/MainLayout.razor.rz.scp.css */
 .page[b-l2lnk6q7ka] {
     position: relative;
