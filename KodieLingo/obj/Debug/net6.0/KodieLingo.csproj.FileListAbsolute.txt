@@ -237,3 +237,4 @@ C:\Users\Aiden\Desktop\Projects\GitHub\KodieLingo\KodieLingo\obj\Debug\net6.0\re
 C:\Users\Aiden\Desktop\Projects\GitHub\KodieLingo\KodieLingo\obj\Debug\net6.0\KodieLingo.pdb
 C:\Users\Aiden\Desktop\Projects\GitHub\KodieLingo\KodieLingo\obj\Debug\net6.0\KodieLingo.genruntimeconfig.cache
 C:\Users\Aiden\Desktop\Projects\GitHub\KodieLingo\KodieLingo\obj\Debug\net6.0\scopedcss\Pages\loginprompt.cshtml.rz.scp.css
+C:\Users\nedfp\OneDrive\Desktop\Ned\Programming\Applied Computing\KodieLingo\KodieLingo\obj\Debug\net6.0\scopedcss\Pages\loginprompt.cshtml.rz.scp.css

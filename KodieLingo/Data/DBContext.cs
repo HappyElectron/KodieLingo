@@ -20,6 +20,7 @@ namespace KodieLingo.Data
         public DbSet<Question> Questions { get; set; }
         public DbSet<Answer> Answers { get; set; }
 
+        public DbSet<Topic> Topic { get; set; }
         // An interface required to connect to the database
         public DatabaseContext(IConfiguration configuration)
         {
@@ -46,64 +47,82 @@ namespace KodieLingo.Data
                     Email = "FrenchMommy@dosomeworkaiden.punk", 
                     Password = "Who cares if it's public and unsanitized"} );
 
-            // Trying the one-to-many question/answer relationship
+            // Question/Answer mapping: one question, many answers
             modelBuilder.Entity<Question>()
                 .HasMany(e => e.Answers)
                 .WithOne(e => e.Question)
                 .HasForeignKey(e => e.QuestionId)
                 .IsRequired();
+
             modelBuilder.Entity<Answer>()
                 .HasOne(e => e.Question)
                 .WithMany(e => e.Answers)
                 .HasForeignKey(e => e.QuestionId)
                 .IsRequired();
 
+
+            // Topics/Questions relational mapping: one topic references many questions
+            modelBuilder.Entity<Topic>()
+                .HasMany(e => e.Question)
+                .WithOne(e => e.Topic)
+                .HasForeignKey(e => e.TopicId)
+                .IsRequired();
+
+            modelBuilder.Entity<Question>()
+                .HasOne(e => e.Topic)
+                .WithMany(e => e.Question)
+                .HasForeignKey(e => e.TopicId)
+                .IsRequired();
+
+            // Topic/Lesson mapping. One topic references many lessons. 
+            modelBuilder.Entity<Topic>().
+                HasMany(e => e.Lesson)
+                .WithOne(e => e.Topic).
+                HasForeignKey(e => e.TopicId).
+                IsRequired();
+
+            modelBuilder.Entity<Lesson>()
+                .HasOne(e => e.Topic)
+                .WithMany(e => e.Lesson)
+                .HasForeignKey(e => e.TopicId)
+                .IsRequired();
+
+
+            // Sections/Topics Mapping: one section references many topics
+            // Sections are simply containers. They have no value in themselves.
+
+            modelBuilder.Entity<Section>()
+                .HasMany(e => e.Topic)
+                .WithOne(e => e.Section)
+                .HasForeignKey(e => e.SectionId)
+                .IsRequired();
+            modelBuilder.Entity<Topic>()
+                .HasOne(e => e.Section)
+                .WithMany(e => e.Topic)
+                .HasForeignKey(e => e.SectionId)
+                .IsRequired();
+
+
+            // Course/Section mapping, one course references many topics.
+            modelBuilder.Entity<Course>()
+                .HasMany(e => e.Section)
+                .WithOne(e => e.Course)
+                .HasForeignKey(e => e.CourseId)
+                .IsRequired();
+            modelBuilder.Entity<Section>()
+                .HasOne(e => e.Course)
+                .WithMany(e => e.Section)
+                .HasForeignKey(e => e.CourseId)
+                .IsRequired();
+
+
             modelBuilder.Entity<Question>().ToTable("Question");
+            modelBuilder.Entity<Lesson>().ToTable("Lesson");
+            modelBuilder.Entity<Topic>().ToTable("Topic");
+            modelBuilder.Entity<Section>().ToTable("Section");
+            modelBuilder.Entity<Course>().ToTable("Course");
 
             modelBuilder.Seed();
-
-            /* FAILED Courses table initialisation
-             * Included in case i want to check back later and salvage
-             * Ignore
-            modelBuilder.Entity<Course>()
-            .ToTable("Course");
-
-
-            // This is some BS. No chance we have do deal with this nonsense for every course.
-            // Will be a nightmare. I'll redesign it later ig.
-            modelBuilder.Entity<Course>().HasData(new Course()
-            {
-                Id = 0,
-                Name = "C#",
-                Description = "C# is an object-oriented, memory-safe  language, built on the .NET framework " +
-                "and maintained by Microsoft. It covers a wide range of applications, from websites, to desktop " +
-                "applications, to other stuff, probably.",
-                Sections = { new Section() { Id = 0,
-                    Name = "Procedural programming",
-                    Description = "The beninging",
-                    Topics = { new Topic()
-                    {
-                        Id = 0,
-                        Name = "How computers read code",
-                        Guidebook = "They read code sequentially. Don't be a dummy, etc",
-                        Questions = {
-                            new Question() { Id = 0,
-                                QuestionString = "Why is my group not doing anything?",
-                                Answers = { { 0, "I’m controlling and hard to work with" },
-                                    { 1, "I have not communicated my needs effectively" },
-                                    { 2, "I have overestimated my own output" },
-                                    { 3, "IDK their fault" } },
-                                ValidAnswers = { 3 }
-                            } },
-                        Lessons = { new Lesson()
-                        {
-                            Id = 0,
-                            Difficulty = 1,
-                        } }
-                    } }
-                }
-                }
-            });*/
         }
     }
 }

@@ -9,5 +9,9 @@
 
         public int Difficulty { get; set; }
         public bool IsTest { get; set; } = false;
+
+        // Foreign Keys
+        public Topic Topic { get; set; } = null!;
+        public int TopicId { get; set; }
     }
 }

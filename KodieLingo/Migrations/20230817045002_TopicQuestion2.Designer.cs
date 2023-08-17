@@ -2,6 +2,7 @@
 using KodieLingo.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -9,9 +10,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace KodieLingo.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    partial class DatabaseContextModelSnapshot : ModelSnapshot
+    [Migration("20230817045002_TopicQuestion2")]
+    partial class TopicQuestion2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "7.0.10");
@@ -52,33 +55,6 @@ namespace KodieLingo.Migrations
                             AnswerString = "Aiden's fault",
                             IsValid = true,
                             QuestionId = 1
-                        });
-                });
-
-            modelBuilder.Entity("KodieLingo.Model.Course", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Course", (string)null);
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Description = "A super fun language to code in with your best buds ever",
-                            Name = "C#"
                         });
                 });
 
@@ -141,39 +117,6 @@ namespace KodieLingo.Migrations
                         });
                 });
 
-            modelBuilder.Entity("KodieLingo.Model.Section", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("CourseId")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CourseId");
-
-                    b.ToTable("Section", (string)null);
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            CourseId = 1,
-                            Description = "Learning how computers interpret commands",
-                            Name = "Procedural Programming"
-                        });
-                });
-
             modelBuilder.Entity("KodieLingo.Model.Topic", b =>
                 {
                     b.Property<int>("Id")
@@ -188,12 +131,7 @@ namespace KodieLingo.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<int>("SectionId")
-                        .HasColumnType("INTEGER");
-
                     b.HasKey("Id");
-
-                    b.HasIndex("SectionId");
 
                     b.ToTable("Topic", (string)null);
 
@@ -202,8 +140,7 @@ namespace KodieLingo.Migrations
                         {
                             Id = 1,
                             Guidebook = "Don't be an idiot, type the words.",
-                            Name = "If Statements",
-                            SectionId = 1
+                            Name = "If Statements"
                         });
                 });
 
@@ -288,41 +225,9 @@ namespace KodieLingo.Migrations
                     b.Navigation("Topic");
                 });
 
-            modelBuilder.Entity("KodieLingo.Model.Section", b =>
-                {
-                    b.HasOne("KodieLingo.Model.Course", "Course")
-                        .WithMany("Section")
-                        .HasForeignKey("CourseId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Course");
-                });
-
-            modelBuilder.Entity("KodieLingo.Model.Topic", b =>
-                {
-                    b.HasOne("KodieLingo.Model.Section", "Section")
-                        .WithMany("Topic")
-                        .HasForeignKey("SectionId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Section");
-                });
-
-            modelBuilder.Entity("KodieLingo.Model.Course", b =>
-                {
-                    b.Navigation("Section");
-                });
-
             modelBuilder.Entity("KodieLingo.Model.Question", b =>
                 {
                     b.Navigation("Answers");
-                });
-
-            modelBuilder.Entity("KodieLingo.Model.Section", b =>
-                {
-                    b.Navigation("Topic");
                 });
 
             modelBuilder.Entity("KodieLingo.Model.Topic", b =>

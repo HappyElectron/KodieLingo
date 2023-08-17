@@ -11,5 +11,9 @@
         public string QuestionString { get; set; }
 
         public ICollection<Answer> Answers { get; set; } = new List<Answer>();
+
+        // Foreign Keys
+        public Topic Topic { get; set; } = null!;
+        public int TopicId { get; set; }
     }
 }

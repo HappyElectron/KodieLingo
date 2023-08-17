@@ -6,6 +6,7 @@
         public string AnswerString { get; set; }
         public bool IsValid { get; set; }
 
+        // Foreign Keys
         public int QuestionId { get; set; }
         public Question Question { get; set; } = null!;
     }
