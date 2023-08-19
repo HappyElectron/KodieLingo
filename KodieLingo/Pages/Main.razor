@@ -1,0 +1,53 @@
+﻿@page "/loginpage"
+
+<PageTitle>Login</PageTitle>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KodieLingo</title>
+    <link rel="stylesheet" href="loginprompt.cshtml.css"> 
+
+    <style>
+        
+        .centered-text {
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            /*background-color: #f0f0f0;*/
+            
+        }
+
+        
+        h1 {
+            color: #47DC0F;
+            font-size: 6rem;
+            font-family: 'Nova Flat';
+        }
+        button {
+            color: #47DC0F;
+            padding: 0.5rem 1rem; 
+            font-size: 1rem;
+
+        }
+    </style>
+</head>
+<body>
+    <div class = "centered-text">
+        <h1>KodieLingo</h1>
+        <button @onclick="Login">Login</button>
+    </div>
+</body>
+</html>
+
+@code {
+    @inject NavigationManager nav
+    private void Login()
+    {
+        nav.NavigateTo("/login");
+    }
+}

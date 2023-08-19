@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "DKrOGNlMdKUxfNbrCvdBh+lwrajtPOo8mUbVJYFhTpA=",
+  "Hash": "spt4rj5M4WupgQSwcckxBwJd3GilBujLhkHGVwOqYxI=",
   "Source": "KodieLingo",
   "BasePath": "_content/KodieLingo",
   "Mode": "Default",
@@ -10,17 +10,17 @@
     {
       "Name": "KodieLingo\\wwwroot",
       "Source": "KodieLingo",
-      "ContentRoot": "C:\\Users\\nedfp\\OneDrive\\Desktop\\Ned\\Programming\\Applied Computing\\KodieLingo\\KodieLingo\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Aiden\\Desktop\\Projects\\GitHub\\KodieLingo\\KodieLingo\\wwwroot\\",
       "BasePath": "_content/KodieLingo",
       "Pattern": "**"
     }
   ],
   "Assets": [
     {
-      "Identity": "C:\\Users\\nedfp\\OneDrive\\Desktop\\Ned\\Programming\\Applied Computing\\KodieLingo\\KodieLingo\\obj\\Debug\\net6.0\\scopedcss\\bundle\\KodieLingo.styles.css",
+      "Identity": "C:\\Users\\Aiden\\Desktop\\Projects\\GitHub\\KodieLingo\\KodieLingo\\obj\\Debug\\net6.0\\scopedcss\\bundle\\KodieLingo.styles.css",
       "SourceId": "KodieLingo",
       "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\nedfp\\OneDrive\\Desktop\\Ned\\Programming\\Applied Computing\\KodieLingo\\KodieLingo\\obj\\Debug\\net6.0\\scopedcss\\bundle\\",
+      "ContentRoot": "C:\\Users\\Aiden\\Desktop\\Projects\\GitHub\\KodieLingo\\KodieLingo\\obj\\Debug\\net6.0\\scopedcss\\bundle\\",
       "BasePath": "_content/KodieLingo",
       "RelativePath": "KodieLingo.styles.css",
       "AssetKind": "All",
@@ -31,13 +31,13 @@
       "AssetTraitValue": "ApplicationBundle",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\nedfp\\OneDrive\\Desktop\\Ned\\Programming\\Applied Computing\\KodieLingo\\KodieLingo\\obj\\Debug\\net6.0\\scopedcss\\bundle\\KodieLingo.styles.css"
+      "OriginalItemSpec": "C:\\Users\\Aiden\\Desktop\\Projects\\GitHub\\KodieLingo\\KodieLingo\\obj\\Debug\\net6.0\\scopedcss\\bundle\\KodieLingo.styles.css"
     },
     {
-      "Identity": "C:\\Users\\nedfp\\OneDrive\\Desktop\\Ned\\Programming\\Applied Computing\\KodieLingo\\KodieLingo\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\KodieLingo.bundle.scp.css",
+      "Identity": "C:\\Users\\Aiden\\Desktop\\Projects\\GitHub\\KodieLingo\\KodieLingo\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\KodieLingo.bundle.scp.css",
       "SourceId": "KodieLingo",
       "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\nedfp\\OneDrive\\Desktop\\Ned\\Programming\\Applied Computing\\KodieLingo\\KodieLingo\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\",
+      "ContentRoot": "C:\\Users\\Aiden\\Desktop\\Projects\\GitHub\\KodieLingo\\KodieLingo\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\",
       "BasePath": "_content/KodieLingo",
       "RelativePath": "KodieLingo.bundle.scp.css",
       "AssetKind": "All",
@@ -48,13 +48,13 @@
       "AssetTraitValue": "ProjectBundle",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\nedfp\\OneDrive\\Desktop\\Ned\\Programming\\Applied Computing\\KodieLingo\\KodieLingo\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\KodieLingo.bundle.scp.css"
+      "OriginalItemSpec": "C:\\Users\\Aiden\\Desktop\\Projects\\GitHub\\KodieLingo\\KodieLingo\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\KodieLingo.bundle.scp.css"
     },
     {
-      "Identity": "C:\\Users\\nedfp\\OneDrive\\Desktop\\Ned\\Programming\\Applied Computing\\KodieLingo\\KodieLingo\\wwwroot\\css\\bootstrap\\bootstrap.min.css",
+      "Identity": "C:\\Users\\Aiden\\Desktop\\Projects\\GitHub\\KodieLingo\\KodieLingo\\wwwroot\\css\\bootstrap\\bootstrap.min.css",
       "SourceId": "KodieLingo",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\nedfp\\OneDrive\\Desktop\\Ned\\Programming\\Applied Computing\\KodieLingo\\KodieLingo\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Aiden\\Desktop\\Projects\\GitHub\\KodieLingo\\KodieLingo\\wwwroot\\",
       "BasePath": "_content/KodieLingo",
       "RelativePath": "css/bootstrap/bootstrap.min.css",
       "AssetKind": "All",
@@ -68,10 +68,10 @@
       "OriginalItemSpec": "wwwroot\\css\\bootstrap\\bootstrap.min.css"
     },
     {
-      "Identity": "C:\\Users\\nedfp\\OneDrive\\Desktop\\Ned\\Programming\\Applied Computing\\KodieLingo\\KodieLingo\\wwwroot\\css\\bootstrap\\bootstrap.min.css.map",
+      "Identity": "C:\\Users\\Aiden\\Desktop\\Projects\\GitHub\\KodieLingo\\KodieLingo\\wwwroot\\css\\bootstrap\\bootstrap.min.css.map",
       "SourceId": "KodieLingo",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\nedfp\\OneDrive\\Desktop\\Ned\\Programming\\Applied Computing\\KodieLingo\\KodieLingo\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Aiden\\Desktop\\Projects\\GitHub\\KodieLingo\\KodieLingo\\wwwroot\\",
       "BasePath": "_content/KodieLingo",
       "RelativePath": "css/bootstrap/bootstrap.min.css.map",
       "AssetKind": "All",
@@ -85,27 +85,10 @@
       "OriginalItemSpec": "wwwroot\\css\\bootstrap\\bootstrap.min.css.map"
     },
     {
-      "Identity": "C:\\Users\\nedfp\\OneDrive\\Desktop\\Ned\\Programming\\Applied Computing\\KodieLingo\\KodieLingo\\wwwroot\\css\\open-iconic\\FONT-LICENSE",
+      "Identity": "C:\\Users\\Aiden\\Desktop\\Projects\\GitHub\\KodieLingo\\KodieLingo\\wwwroot\\css\\open-iconic\\font\\css\\open-iconic-bootstrap.min.css",
       "SourceId": "KodieLingo",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\nedfp\\OneDrive\\Desktop\\Ned\\Programming\\Applied Computing\\KodieLingo\\KodieLingo\\wwwroot\\",
-      "BasePath": "_content/KodieLingo",
-      "RelativePath": "css/open-iconic/FONT-LICENSE",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\css\\open-iconic\\FONT-LICENSE"
-    },
-    {
-      "Identity": "C:\\Users\\nedfp\\OneDrive\\Desktop\\Ned\\Programming\\Applied Computing\\KodieLingo\\KodieLingo\\wwwroot\\css\\open-iconic\\font\\css\\open-iconic-bootstrap.min.css",
-      "SourceId": "KodieLingo",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\nedfp\\OneDrive\\Desktop\\Ned\\Programming\\Applied Computing\\KodieLingo\\KodieLingo\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Aiden\\Desktop\\Projects\\GitHub\\KodieLingo\\KodieLingo\\wwwroot\\",
       "BasePath": "_content/KodieLingo",
       "RelativePath": "css/open-iconic/font/css/open-iconic-bootstrap.min.css",
       "AssetKind": "All",
@@ -119,10 +102,10 @@
       "OriginalItemSpec": "wwwroot\\css\\open-iconic\\font\\css\\open-iconic-bootstrap.min.css"
     },
     {
-      "Identity": "C:\\Users\\nedfp\\OneDrive\\Desktop\\Ned\\Programming\\Applied Computing\\KodieLingo\\KodieLingo\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.eot",
+      "Identity": "C:\\Users\\Aiden\\Desktop\\Projects\\GitHub\\KodieLingo\\KodieLingo\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.eot",
       "SourceId": "KodieLingo",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\nedfp\\OneDrive\\Desktop\\Ned\\Programming\\Applied Computing\\KodieLingo\\KodieLingo\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Aiden\\Desktop\\Projects\\GitHub\\KodieLingo\\KodieLingo\\wwwroot\\",
       "BasePath": "_content/KodieLingo",
       "RelativePath": "css/open-iconic/font/fonts/open-iconic.eot",
       "AssetKind": "All",
@@ -136,10 +119,10 @@
       "OriginalItemSpec": "wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.eot"
     },
     {
-      "Identity": "C:\\Users\\nedfp\\OneDrive\\Desktop\\Ned\\Programming\\Applied Computing\\KodieLingo\\KodieLingo\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.otf",
+      "Identity": "C:\\Users\\Aiden\\Desktop\\Projects\\GitHub\\KodieLingo\\KodieLingo\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.otf",
       "SourceId": "KodieLingo",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\nedfp\\OneDrive\\Desktop\\Ned\\Programming\\Applied Computing\\KodieLingo\\KodieLingo\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Aiden\\Desktop\\Projects\\GitHub\\KodieLingo\\KodieLingo\\wwwroot\\",
       "BasePath": "_content/KodieLingo",
       "RelativePath": "css/open-iconic/font/fonts/open-iconic.otf",
       "AssetKind": "All",
@@ -153,10 +136,10 @@
       "OriginalItemSpec": "wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.otf"
     },
     {
-      "Identity": "C:\\Users\\nedfp\\OneDrive\\Desktop\\Ned\\Programming\\Applied Computing\\KodieLingo\\KodieLingo\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.svg",
+      "Identity": "C:\\Users\\Aiden\\Desktop\\Projects\\GitHub\\KodieLingo\\KodieLingo\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.svg",
       "SourceId": "KodieLingo",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\nedfp\\OneDrive\\Desktop\\Ned\\Programming\\Applied Computing\\KodieLingo\\KodieLingo\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Aiden\\Desktop\\Projects\\GitHub\\KodieLingo\\KodieLingo\\wwwroot\\",
       "BasePath": "_content/KodieLingo",
       "RelativePath": "css/open-iconic/font/fonts/open-iconic.svg",
       "AssetKind": "All",
@@ -170,10 +153,10 @@
       "OriginalItemSpec": "wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.svg"
     },
     {
-      "Identity": "C:\\Users\\nedfp\\OneDrive\\Desktop\\Ned\\Programming\\Applied Computing\\KodieLingo\\KodieLingo\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.ttf",
+      "Identity": "C:\\Users\\Aiden\\Desktop\\Projects\\GitHub\\KodieLingo\\KodieLingo\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.ttf",
       "SourceId": "KodieLingo",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\nedfp\\OneDrive\\Desktop\\Ned\\Programming\\Applied Computing\\KodieLingo\\KodieLingo\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Aiden\\Desktop\\Projects\\GitHub\\KodieLingo\\KodieLingo\\wwwroot\\",
       "BasePath": "_content/KodieLingo",
       "RelativePath": "css/open-iconic/font/fonts/open-iconic.ttf",
       "AssetKind": "All",
@@ -187,10 +170,10 @@
       "OriginalItemSpec": "wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.ttf"
     },
     {
-      "Identity": "C:\\Users\\nedfp\\OneDrive\\Desktop\\Ned\\Programming\\Applied Computing\\KodieLingo\\KodieLingo\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.woff",
+      "Identity": "C:\\Users\\Aiden\\Desktop\\Projects\\GitHub\\KodieLingo\\KodieLingo\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.woff",
       "SourceId": "KodieLingo",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\nedfp\\OneDrive\\Desktop\\Ned\\Programming\\Applied Computing\\KodieLingo\\KodieLingo\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Aiden\\Desktop\\Projects\\GitHub\\KodieLingo\\KodieLingo\\wwwroot\\",
       "BasePath": "_content/KodieLingo",
       "RelativePath": "css/open-iconic/font/fonts/open-iconic.woff",
       "AssetKind": "All",
@@ -204,10 +187,27 @@
       "OriginalItemSpec": "wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.woff"
     },
     {
-      "Identity": "C:\\Users\\nedfp\\OneDrive\\Desktop\\Ned\\Programming\\Applied Computing\\KodieLingo\\KodieLingo\\wwwroot\\css\\open-iconic\\ICON-LICENSE",
+      "Identity": "C:\\Users\\Aiden\\Desktop\\Projects\\GitHub\\KodieLingo\\KodieLingo\\wwwroot\\css\\open-iconic\\FONT-LICENSE",
       "SourceId": "KodieLingo",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\nedfp\\OneDrive\\Desktop\\Ned\\Programming\\Applied Computing\\KodieLingo\\KodieLingo\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Aiden\\Desktop\\Projects\\GitHub\\KodieLingo\\KodieLingo\\wwwroot\\",
+      "BasePath": "_content/KodieLingo",
+      "RelativePath": "css/open-iconic/FONT-LICENSE",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\open-iconic\\FONT-LICENSE"
+    },
+    {
+      "Identity": "C:\\Users\\Aiden\\Desktop\\Projects\\GitHub\\KodieLingo\\KodieLingo\\wwwroot\\css\\open-iconic\\ICON-LICENSE",
+      "SourceId": "KodieLingo",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Aiden\\Desktop\\Projects\\GitHub\\KodieLingo\\KodieLingo\\wwwroot\\",
       "BasePath": "_content/KodieLingo",
       "RelativePath": "css/open-iconic/ICON-LICENSE",
       "AssetKind": "All",
@@ -221,10 +221,10 @@
       "OriginalItemSpec": "wwwroot\\css\\open-iconic\\ICON-LICENSE"
     },
     {
-      "Identity": "C:\\Users\\nedfp\\OneDrive\\Desktop\\Ned\\Programming\\Applied Computing\\KodieLingo\\KodieLingo\\wwwroot\\css\\open-iconic\\README.md",
+      "Identity": "C:\\Users\\Aiden\\Desktop\\Projects\\GitHub\\KodieLingo\\KodieLingo\\wwwroot\\css\\open-iconic\\README.md",
       "SourceId": "KodieLingo",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\nedfp\\OneDrive\\Desktop\\Ned\\Programming\\Applied Computing\\KodieLingo\\KodieLingo\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Aiden\\Desktop\\Projects\\GitHub\\KodieLingo\\KodieLingo\\wwwroot\\",
       "BasePath": "_content/KodieLingo",
       "RelativePath": "css/open-iconic/README.md",
       "AssetKind": "All",
@@ -238,10 +238,10 @@
       "OriginalItemSpec": "wwwroot\\css\\open-iconic\\README.md"
     },
     {
-      "Identity": "C:\\Users\\nedfp\\OneDrive\\Desktop\\Ned\\Programming\\Applied Computing\\KodieLingo\\KodieLingo\\wwwroot\\css\\site.css",
+      "Identity": "C:\\Users\\Aiden\\Desktop\\Projects\\GitHub\\KodieLingo\\KodieLingo\\wwwroot\\css\\site.css",
       "SourceId": "KodieLingo",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\nedfp\\OneDrive\\Desktop\\Ned\\Programming\\Applied Computing\\KodieLingo\\KodieLingo\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Aiden\\Desktop\\Projects\\GitHub\\KodieLingo\\KodieLingo\\wwwroot\\",
       "BasePath": "_content/KodieLingo",
       "RelativePath": "css/site.css",
       "AssetKind": "All",
@@ -255,10 +255,10 @@
       "OriginalItemSpec": "wwwroot\\css\\site.css"
     },
     {
-      "Identity": "C:\\Users\\nedfp\\OneDrive\\Desktop\\Ned\\Programming\\Applied Computing\\KodieLingo\\KodieLingo\\wwwroot\\favicon.ico",
+      "Identity": "C:\\Users\\Aiden\\Desktop\\Projects\\GitHub\\KodieLingo\\KodieLingo\\wwwroot\\favicon.ico",
       "SourceId": "KodieLingo",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\nedfp\\OneDrive\\Desktop\\Ned\\Programming\\Applied Computing\\KodieLingo\\KodieLingo\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Aiden\\Desktop\\Projects\\GitHub\\KodieLingo\\KodieLingo\\wwwroot\\",
       "BasePath": "_content/KodieLingo",
       "RelativePath": "favicon.ico",
       "AssetKind": "All",

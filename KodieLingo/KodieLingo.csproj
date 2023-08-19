@@ -7,27 +7,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Remove="Pages\Component.razor" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.10">
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="7.0.10" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <UpToDateCheckInput Remove="Pages\Component.razor" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <_ContentIncludedByDefault Remove="Pages\Component.razor" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Include="Pages\Component.razor" />
   </ItemGroup>
 
 </Project>
