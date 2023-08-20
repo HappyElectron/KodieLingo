@@ -1,24 +1,7 @@
-/* _content/KodieLingo/Pages/loginprompt.cshtml.rz.scp.css */
-body[b-ykvca5k8sb] {
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    background-color: #f0f0f0;
+/* _content/KodieLingo/Pages/LoginSignup/LoginSignup.razor.rz.scp.css */
+body[b-yr3p6iy1k1] {
 }
-.centered-text[b-ykvca5k8sb] {
-    text-align: center;
-}
-h1[b-ykvca5k8sb] {
-    color: green;
-    font-size: 3rem;
-}
-/* _content/KodieLingo/Pages/Main.razor.rz.scp.css */
-body[b-gfreova4uk] {
-}
-.centered-text[b-gfreova4uk] {
+.centered-text[b-yr3p6iy1k1] {
     text-align: center;
     display: flex;
     justify-content: center;
@@ -28,13 +11,13 @@ body[b-gfreova4uk] {
 }
 
 
-h1[b-gfreova4uk] {
+h1[b-yr3p6iy1k1] {
     color: #47DC0F;
     font-size: 6rem;
     font-family: 'Nova Flat';
 }
 
-button[b-gfreova4uk] {
+button[b-yr3p6iy1k1] {
     color: #47DC0F;
     padding: 0.5rem 1rem;
     font-size: 1rem;

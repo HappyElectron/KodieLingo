@@ -4,6 +4,7 @@ using KodieLingo.Data;
 using KodieLingo.Model;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+using KodieLingo.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 var connectionString = builder.Configuration.GetConnectionString("DB");
@@ -11,6 +12,8 @@ var connectionString = builder.Configuration.GetConnectionString("DB");
 // Add services to the container.
 builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
+
+builder.Services.AddScoped<ClientStateService>();
 
 // Add DB service
 builder.Services.AddDbContextFactory<DatabaseContext>(options => options.UseSqlite(connectionString));

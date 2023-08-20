@@ -1,18 +1,35 @@
-﻿@inherits LayoutComponentBase
+﻿@using Services
+@inject ClientStateService ClientState
+@inject NavigationManager navManager
 
-<PageTitle>KodieLingo</PageTitle>
+@inherits LayoutComponentBase
+
+@code {
+    private bool hasCheckedUser = false;
+
+    protected override void OnAfterRender(bool firstRender)
+    {
+        base.OnAfterRender(firstRender);
+
+        if (!hasCheckedUser)
+        {
+            CheckUserStatus();
+            hasCheckedUser = true;
+        }
+    }
+
+    private void CheckUserStatus()
+    {
+        if (ClientState.User is null)
+        {
+            navManager.NavigateTo("/loginsignup");
+        }
+    }
+}
 
 <div class="page">
     <div class="sidebar">
         <NavMenu />
-        <!--
-            <KodieNavBar/>
-
-            ^FIGMA automation-style NAV bar.
-
-            Turns out it does NOT work that easily, due in part to my shitty design skills. 
-            It would appear we will have to learn some basic css/html, so buckle down kiddos.
-        -->
     </div>
 
     <main>

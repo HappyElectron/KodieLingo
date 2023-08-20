@@ -20,12 +20,20 @@ build_property._RazorSourceGeneratorDebug =
 build_metadata.AdditionalFiles.TargetPath = QXBwLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/nedfp/OneDrive/Desktop/Ned/Programming/Applied Computing/KodieLingo/KodieLingo/Pages/Component.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ29tcG9uZW50LnJhem9y
-build_metadata.AdditionalFiles.CssScope = 
-
 [C:/Users/nedfp/OneDrive/Desktop/Ned/Programming/Applied Computing/KodieLingo/KodieLingo/Pages/Index.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5kZXgucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/nedfp/OneDrive/Desktop/Ned/Programming/Applied Computing/KodieLingo/KodieLingo/Pages/LoginSignup/Login.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTG9naW5TaWdudXBcTG9naW4ucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/nedfp/OneDrive/Desktop/Ned/Programming/Applied Computing/KodieLingo/KodieLingo/Pages/LoginSignup/Signup.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTG9naW5TaWdudXBcU2lnbnVwLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/nedfp/OneDrive/Desktop/Ned/Programming/Applied Computing/KodieLingo/KodieLingo/Shared/EmptyLayout.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXEVtcHR5TGF5b3V0LnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/nedfp/OneDrive/Desktop/Ned/Programming/Applied Computing/KodieLingo/KodieLingo/Shared/SurveyPrompt.razor]
@@ -36,9 +44,9 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = X0ltcG9ydHMucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/nedfp/OneDrive/Desktop/Ned/Programming/Applied Computing/KodieLingo/KodieLingo/Pages/Main.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTWFpbi5yYXpvcg==
-build_metadata.AdditionalFiles.CssScope = b-gfreova4uk
+[C:/Users/nedfp/OneDrive/Desktop/Ned/Programming/Applied Computing/KodieLingo/KodieLingo/Pages/LoginSignup/LoginSignup.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTG9naW5TaWdudXBcTG9naW5TaWdudXAucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-yr3p6iy1k1
 
 [C:/Users/nedfp/OneDrive/Desktop/Ned/Programming/Applied Computing/KodieLingo/KodieLingo/Shared/MainLayout.razor]
 build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXE1haW5MYXlvdXQucmF6b3I=
@@ -59,7 +67,3 @@ build_metadata.AdditionalFiles.CssScope =
 [C:/Users/nedfp/OneDrive/Desktop/Ned/Programming/Applied Computing/KodieLingo/KodieLingo/Pages/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX0xheW91dC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/nedfp/OneDrive/Desktop/Ned/Programming/Applied Computing/KodieLingo/KodieLingo/Pages/loginprompt.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcbG9naW5wcm9tcHQuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = b-ykvca5k8sb

@@ -1,5 +1,5 @@
-﻿@page "/loginpage"
-
+﻿@page "/loginsignup"
+@layout EmptyLayout;
 <PageTitle>Login</PageTitle>
 
 <!DOCTYPE html>
@@ -18,10 +18,25 @@
 </body>
 </html>
 
+@if(LoginIsActive)
+{
+    <Login/>
+}
+@if(SignupIsActive)
+{
+    <Signup/>
+}
+
 @code {
-    @inject NavigationManager nav
+    bool LoginIsActive = false, SignupIsActive = false;
     private void Login()
     {
-        nav.NavigateTo("/login");
+        LoginIsActive = true;
+        SignupIsActive = false;
+    }
+    private void Signup()
+    {
+        LoginIsActive = false;
+        SignupIsActive = true;
     }
 }
