@@ -6,6 +6,10 @@
         public string Name { get; set; }
         public string Description { get; set; }
 
-        // Relational mapping
+        // Relational mapping:
+        // Many-to-many ef models require a 'join' class to track foreign keys,
+        // which both entities reference. EF is doing such automatically here.
+        public ICollection<Course> Course { get; set; } = new List<Course>();
     }
 }
+    

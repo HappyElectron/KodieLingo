@@ -1,6 +1,7 @@
 ﻿using KodieLingo.Model;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Hosting;
+using System.Reflection.Emit;
 using System.Reflection.Metadata;
 
 /* The model Entity Framework uses to construct a database
@@ -14,13 +15,13 @@ namespace KodieLingo.Data
         public DbSet<User> Users { get; set; }
 
         // Courses require modification before adding to the db structure.
-        //public DbSet<Course> Courses { get; set; }
-
-        // A set of questions: to be referenced and accessed by topics/lessons
+        public DbSet<Course> Courses { get; set; }
+        public DbSet<Section> Sections { get; set; }
+        public DbSet<Topic> Topics { get; set; }
+        public DbSet<Lesson> Lessons { get; set; }
         public DbSet<Question> Questions { get; set; }
         public DbSet<Answer> Answers { get; set; }
 
-        public DbSet<Topic> Topic { get; set; }
         // An interface required to connect to the database
         public DatabaseContext(IConfiguration configuration)
         {
@@ -37,92 +38,120 @@ namespace KodieLingo.Data
         // When creating Entity Framework db, seed with a base user.
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            // User table initialisation
-            modelBuilder.Entity<User>()
-                .ToTable("User");
 
-            modelBuilder.Entity<User>()
-                .HasData(new User() {Id = 1, 
-                    Username = "Aiden's Mom", 
-                    Email = "FrenchMommy@dosomeworkaiden.punk", 
-                    Password = "Who cares if it's public and unsanitized"} );
+			MapRelations(modelBuilder);
 
-            // Question/Answer mapping: one question, many answers
-            modelBuilder.Entity<Question>()
-                .HasMany(e => e.Answers)
-                .WithOne(e => e.Question)
-                .HasForeignKey(e => e.QuestionId)
-                .IsRequired();
-
-            modelBuilder.Entity<Answer>()
-                .HasOne(e => e.Question)
-                .WithMany(e => e.Answers)
-                .HasForeignKey(e => e.QuestionId)
-                .IsRequired();
-
-
-            // Topics/Questions relational mapping: one topic references many questions
-            modelBuilder.Entity<Topic>()
-                .HasMany(e => e.Question)
-                .WithOne(e => e.Topic)
-                .HasForeignKey(e => e.TopicId)
-                .IsRequired();
-
-            modelBuilder.Entity<Question>()
-                .HasOne(e => e.Topic)
-                .WithMany(e => e.Question)
-                .HasForeignKey(e => e.TopicId)
-                .IsRequired();
-
-            // Topic/Lesson mapping. One topic references many lessons. 
-            modelBuilder.Entity<Topic>().
-                HasMany(e => e.Lesson)
-                .WithOne(e => e.Topic).
-                HasForeignKey(e => e.TopicId).
-                IsRequired();
-
-            modelBuilder.Entity<Lesson>()
-                .HasOne(e => e.Topic)
-                .WithMany(e => e.Lesson)
-                .HasForeignKey(e => e.TopicId)
-                .IsRequired();
-
-
-            // Sections/Topics Mapping: one section references many topics
-            // Sections are simply containers. They have no value in themselves.
-
-            modelBuilder.Entity<Section>()
-                .HasMany(e => e.Topic)
-                .WithOne(e => e.Section)
-                .HasForeignKey(e => e.SectionId)
-                .IsRequired();
-            modelBuilder.Entity<Topic>()
-                .HasOne(e => e.Section)
-                .WithMany(e => e.Topic)
-                .HasForeignKey(e => e.SectionId)
-                .IsRequired();
-
-
-            // Course/Section mapping, one course references many topics.
-            modelBuilder.Entity<Course>()
-                .HasMany(e => e.Section)
-                .WithOne(e => e.Course)
-                .HasForeignKey(e => e.CourseId)
-                .IsRequired();
-            modelBuilder.Entity<Section>()
-                .HasOne(e => e.Course)
-                .WithMany(e => e.Section)
-                .HasForeignKey(e => e.CourseId)
-                .IsRequired();
-
-
-            modelBuilder.Entity<Question>().ToTable("Question");
+			// Table initialisations
+			modelBuilder.Entity<User>().ToTable("User");
+			modelBuilder.Entity<Question>().ToTable("Question");
             modelBuilder.Entity<Lesson>().ToTable("Lesson");
             modelBuilder.Entity<Topic>().ToTable("Topic");
             modelBuilder.Entity<Section>().ToTable("Section");
             modelBuilder.Entity<Course>().ToTable("Course");
+            modelBuilder.Entity<Tag>().ToTable("Tag");
 
             modelBuilder.Seed();
         }
+
+        // Method to clean up OnModelCreating: Map relations between tables
+        private static void MapRelations(ModelBuilder modelBuilder)
+        {
+
+			// Question/Answer mapping: one question, many answers
+			modelBuilder.Entity<Question>()
+				.HasMany(e => e.Answers)
+				.WithOne(e => e.Question)
+				.HasForeignKey(e => e.QuestionId)
+			.IsRequired();
+
+			modelBuilder.Entity<Answer>()
+				.HasOne(e => e.Question)
+				.WithMany(e => e.Answers)
+				.HasForeignKey(e => e.QuestionId)
+				.IsRequired();
+
+			// Topics/Questions relational mapping: one topic references many questions
+			modelBuilder.Entity<Topic>()
+				.HasMany(e => e.Question)
+				.WithOne(e => e.Topic)
+				.HasForeignKey(e => e.TopicId)
+			.IsRequired();
+
+			modelBuilder.Entity<Question>()
+				.HasOne(e => e.Topic)
+				.WithMany(e => e.Question)
+				.HasForeignKey(e => e.TopicId)
+				.IsRequired();
+
+			// Topic/Lesson mapping. One topic references many lessons. 
+			modelBuilder.Entity<Topic>().
+				HasMany(e => e.Lesson)
+				.WithOne(e => e.Topic).
+				HasForeignKey(e => e.TopicId).
+			IsRequired();
+
+			modelBuilder.Entity<Lesson>()
+				.HasOne(e => e.Topic)
+				.WithMany(e => e.Lesson)
+				.HasForeignKey(e => e.TopicId)
+				.IsRequired();
+
+
+			// Sections/Topics Mapping: one section references many topics
+			// Sections are simply containers. They have no value in themselves.
+
+			modelBuilder.Entity<Section>()
+				.HasMany(e => e.Topic)
+				.WithOne(e => e.Section)
+				.HasForeignKey(e => e.SectionId)
+				.IsRequired();
+			modelBuilder.Entity<Topic>()
+				.HasOne(e => e.Section)
+				.WithMany(e => e.Topic)
+				.HasForeignKey(e => e.SectionId)
+				.IsRequired();
+
+
+			// Course/Section mapping, one course references many topics.
+			modelBuilder.Entity<Course>()
+				.HasMany(e => e.Section)
+				.WithOne(e => e.Course)
+				.HasForeignKey(e => e.CourseId)
+			.IsRequired();
+
+			modelBuilder.Entity<Section>()
+				.HasOne(e => e.Course)
+				.WithMany(e => e.Section)
+				.HasForeignKey(e => e.CourseId)
+				.IsRequired();
+
+			// Course/Tag mapping, many courses reference many tags
+			modelBuilder.Entity<Course>()
+				.HasMany(e => e.Tag)
+				.WithMany(e => e.Course);
+			modelBuilder.Entity<Tag>()
+				.HasMany(e => e.Course)
+				.WithMany(e => e.Tag);
+
+			// User/Course mapping, many users reference many courses
+			modelBuilder.Entity<Course>()
+				.HasMany(e => e.User)
+				.WithMany(e => e.Course);
+			modelBuilder.Entity<User>()
+				.HasMany(e => e.Course)
+				.WithMany(e => e.User);
+
+			// Friend/User mapping: circular. Maybe just vibe with this tbh.
+			modelBuilder.Entity<User>()
+				.HasMany(e => e.Friend)
+				.WithMany(e => e.FriendParents);
+
+			// Friend request mapping. Again, circular, but this time, we can atleast use both ends.
+			// EF has saved the join table as UserUser1. Although that's shit,
+			// I cannot be bothered changing it rn, so maybe, like, l8rs sk8rs.
+			modelBuilder.Entity<User>()
+				.HasMany(e => e.FriendReqIncoming)
+				.WithMany(e => e.FriendReqOutgoing);
+		}
     }
 }

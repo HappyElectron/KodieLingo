@@ -1,20 +1,38 @@
 ﻿using KodieLingo.Model;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Hosting;
 
 namespace KodieLingo.Data
 {
-    // This class is a level of separation from the modelbuilder; it exists for readability/cleanliness.
+    // This class is separate but connected to the modelbuilder;
+    // it exists for readability/cleanliness, in the separation of logic from data.
     public static class ModelBuilderExtensions
     {
         // Seeding the DB via the HasData method will only populate rows if they are empty
         public static void Seed(this ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Course>()
+			modelBuilder.Entity<User>()
+	            .HasData(new User()
+	            {
+		            Id = 1,
+		            Username = "Aiden's Mom",
+		            Email = "FrenchMommy@dosomeworkaiden.punk",
+		            Password = "Who cares if it's public and unsanitized (Aiden's mom does not care)"
+	            });
+			modelBuilder.Entity<Course>()
                 .HasData(new Course()
                 {
                     Id = 1,
                     Name = "C#",
                     Description = "A super fun language to code in with your best buds ever"
+                });
+
+            modelBuilder.Entity<Tag>()
+                .HasData(new Tag()
+                {
+                    Id = 1,
+                    Name = "Programming language",
+                    Description = "A course focusing on the syntax, structure and best practises of a programming language"
                 });
 
             modelBuilder.Entity<Section>()

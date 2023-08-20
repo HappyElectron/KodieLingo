@@ -17,37 +17,19 @@
         public string Email { get; set; }
         public string Password { get; set; }
 
-
-
         public bool AllowFriendRequests = true;
-
-
-
-        // Each array stores the id of other DB entries, because storing entire classes/courses/friends is not a good option/
-        // The biggest problem I can think of with this approach will center around when we update courses:
-        // If the objects are assigned different ids/modified within the DB, we'll need to update users.
-
-        /* EF usesq lists in a weird way - we'd need to define a primary key for each list.
-         * I think this entire approach with abstract data types may be a failure. 
-         * Commenting this to get the initial commit working, may delete later.
-        public List<int>? Friends { get; set; }
-        public List<int>? IncomingFriendRequests { get; set; }
-        public List<int>? OutgoingFriendRequests { get; set; }
-        */
-
-
-        // Courses list is structured as:
-        // id : (question : {right, total})
-        // Pretty stupid, can rework later.
         
-        // Ok, turns out ef does not permit dictionaries.
-        // Time to rethink stuff.
-        //public Dictionary<int, KeyValuePair<int, KeyValuePair<int,int>>>? Courses { get; set; }
+        // Many users reference many courses
+        public ICollection<Course> Course { get; set; } = new List<Course>();
 
-        // "id : count" structure, will pass the information to an enum that gets updates from the store table
-        /*
-        public List<int>? PowerUpIds { get; set; }
-        public List<int>? PowerUpCounts { get; set; }
-        */
-    }
+        // Many users reference many friends (except for aiden as he does not have any friends)
+        // This structure is awful, i will fix it later.
+        public ICollection<User> Friend { get; set;} = new List<User>();
+		public ICollection<User> FriendParents { get; set; } = new List<User>();
+
+		// Friend requests: many requests to many users. 
+        // I like this. Will keep.
+		public ICollection<User> FriendReqIncoming { get; set; } = new List<User>();
+		public ICollection<User> FriendReqOutgoing { get; set; } = new List<User>();
+	}
 }

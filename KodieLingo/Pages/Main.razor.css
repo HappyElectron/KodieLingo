@@ -1,0 +1,23 @@
+﻿body {
+}
+.centered-text {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    /*background-color: #f0f0f0;*/
+}
+
+
+h1 {
+    color: #47DC0F;
+    font-size: 6rem;
+    font-family: 'Nova Flat';
+}
+
+button {
+    color: #47DC0F;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+}

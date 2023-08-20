@@ -2,6 +2,7 @@
 using KodieLingo.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -9,9 +10,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace KodieLingo.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    partial class DatabaseContextModelSnapshot : ModelSnapshot
+    [Migration("20230820103948_FriendList3")]
+    partial class FriendList3
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "7.0.10");
@@ -327,21 +330,6 @@ namespace KodieLingo.Migrations
                     b.ToTable("UserUser");
                 });
 
-            modelBuilder.Entity("UserUser1", b =>
-                {
-                    b.Property<int>("FriendReqIncomingId")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("FriendReqOutgoingId")
-                        .HasColumnType("INTEGER");
-
-                    b.HasKey("FriendReqIncomingId", "FriendReqOutgoingId");
-
-                    b.HasIndex("FriendReqOutgoingId");
-
-                    b.ToTable("UserUser1");
-                });
-
             modelBuilder.Entity("CourseTag", b =>
                 {
                     b.HasOne("KodieLingo.Model.Course", null)
@@ -438,21 +426,6 @@ namespace KodieLingo.Migrations
                     b.HasOne("KodieLingo.Model.User", null)
                         .WithMany()
                         .HasForeignKey("FriendParentsId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("UserUser1", b =>
-                {
-                    b.HasOne("KodieLingo.Model.User", null)
-                        .WithMany()
-                        .HasForeignKey("FriendReqIncomingId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("KodieLingo.Model.User", null)
-                        .WithMany()
-                        .HasForeignKey("FriendReqOutgoingId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

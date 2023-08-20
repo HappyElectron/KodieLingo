@@ -15,5 +15,12 @@
 
         // Relational mapping to sections: this contains all course content.
         public ICollection<Section> Section { get; set; } = new List<Section>();
+
+        // Many-to-many ef models require a 'join' class to track foreign keys,
+        // which both entities reference. EF is doing such automatically here.
+        public ICollection<Tag> Tag { get; set; } = new List<Tag>();
+
+        // Many users have many courses
+        public ICollection<User> User { get; set; } = new List<User>();
     }
 }
