@@ -141,8 +141,9 @@ namespace KodieLingo.Data
 				.HasMany(e => e.Course)
 				.WithMany(e => e.User);
 
-			// Friend/User mapping: circular. Maybe just vibe with this tbh.
-			modelBuilder.Entity<User>()
+
+            // Friend/User mapping: circular. Maybe just vibe with this tbh.
+            modelBuilder.Entity<User>()
 				.HasMany(e => e.Friend)
 				.WithMany(e => e.FriendParents);
 
@@ -152,6 +153,12 @@ namespace KodieLingo.Data
 			modelBuilder.Entity<User>()
 				.HasMany(e => e.FriendReqIncoming)
 				.WithMany(e => e.FriendReqOutgoing);
-		}
+
+            // Course prereuisite mapping, many courses may reference many courses
+            // This structure is one big pile of horseshit.
+            modelBuilder.Entity<Course>()
+                .HasMany(e => e.Prerequisite)
+                .WithMany(e => e.PrerequisiteParent);
+        }
     }
 }

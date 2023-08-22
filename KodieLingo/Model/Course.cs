@@ -22,5 +22,9 @@
 
         // Many users have many courses
         public ICollection<User> User { get; set; } = new List<User>();
+
+        // Prerequisites: Many courses have many prerequisites. Similar to friends, this is shit.
+        public ICollection<Course> Prerequisite { get; set; } = new List<Course>();
+        public ICollection<Course> PrerequisiteParent { get; set; } = new List<Course>();
     }
 }

@@ -1,0 +1,35 @@
+﻿@using Model;
+@using Data;
+@using Services;
+@using Microsoft.EntityFrameworkCore;
+
+@inject IDbContextFactory<DatabaseContext> ContextFactory;
+@inject ClientStateService ClientState;
+@inject NavigationManager navManager;
+
+
+@page "/Friends"
+
+
+<h3>FriendsPage</h3>
+
+@foreach(User s in ClientState.User.Friend)
+{
+	<h1>Username: @s.Username</h1>
+    <b>KodieBukz: @s.LifetimeKB</b>
+}
+
+@code {
+    private DatabaseContext? db { get; set; }
+
+    // Re-pull the User friend list, because we need to include the mapped friends list.
+    // Will need to do some reading and check that this approach is valid. 
+    protected async override Task OnInitializedAsync()
+    {
+        db ??= await ContextFactory.CreateDbContextAsync();
+        ClientState.User = db.Users.
+        Where(x => x.Email == ClientState.User.Email)
+        .Include(b => b.Friend)
+        .FirstOrDefault();
+    }
+}
