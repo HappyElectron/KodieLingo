@@ -239,3 +239,5 @@ C:\Users\Aiden\Desktop\Projects\GitHub\KodieLingo\KodieLingo\obj\Debug\net6.0\Ko
 C:\Users\Aiden\Desktop\Projects\GitHub\KodieLingo\KodieLingo\obj\Debug\net6.0\scopedcss\Pages\loginprompt.cshtml.rz.scp.css
 C:\Users\nedfp\OneDrive\Desktop\Ned\Programming\Applied Computing\KodieLingo\KodieLingo\obj\Debug\net6.0\scopedcss\Pages\LoginSignup\LoginSignup.razor.rz.scp.css
 C:\Users\nedfp\OneDrive\Desktop\Ned\Programming\Applied Computing\KodieLingo\KodieLingo\obj\Debug\net6.0\scopedcss\Pages\LoginSignup\Signup.razor.rz.scp.css
+C:\Users\henry\OneDrive\Documents\GitHub\KodieLingo\KodieLingo\obj\Debug\net6.0\scopedcss\Pages\LoginSignup\LoginSignup.razor.rz.scp.css
+C:\Users\henry\OneDrive\Documents\GitHub\KodieLingo\KodieLingo\obj\Debug\net6.0\scopedcss\Pages\LoginSignup\Signup.razor.rz.scp.css
