@@ -1,5 +1,72 @@
-﻿<h3>Login</h3>
+﻿@using Model;
+@using Data;
+@using Services;
+@using Microsoft.EntityFrameworkCore;
+
+@inject IDbContextFactory<DatabaseContext> ContextFactory;
+@inject ClientStateService ClientState;
+@inject NavigationManager navManager;
+
+
+@if (!IsValidUser) // If username already exists
+{
+    <h2>Username is already taken</h2>
+    <button @onclick="InvalidUserButton">&gt;uwu&lt; i'll be more original</button> <!--Escape characters form string >uwu<-->
+}
+else
+{
+    <h1>Enter login details:</h1>
+    <div class="row">
+        <label for="Email" class="col-4 col-form-label">Email:</label>
+        <div class="col-8">
+            <input id="Email" name="Email" type="text" class="form-control" @bind="@Email">
+        </div>
+    </div>
+    <div class="row">
+        <label for="Password" class="col-4 col-form-label">Password:</label>
+        <div class="col-8">
+            <input id="Password" name="Password" type="text" class="form-control" @bind="@Password">
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="offset-4 col-8">
+            <button name="submit" type="submit" class="btn btn-primary" @onclick="LoginUser">Submit</button>
+        </div>
+    </div>
+}
 
 @code {
+    string Email;
+    string Password;
+    private bool IsValidUser { get; set; } = true;
 
+    private DatabaseContext? db { get; set; }
+
+    protected async override Task OnInitializedAsync()
+    {
+        db ??= await ContextFactory.CreateDbContextAsync();
+    }
+
+    // INCOMPLETE
+    // Check the user details against the DB; if valid, return the user object.
+    public async Task LoginUser()
+    {
+        if (db.Users.Select(x => x.Email).Contains(Email) && db.Users.Select(x => x.Password).Contains(Password))
+        {
+            ClientState.User = db.Users.Where(x => x.Email == Email).FirstOrDefault();
+            navManager.NavigateTo("");
+        }
+        else
+        {
+            IsValidUser = false;
+            StateHasChanged();
+        }
+    }
+
+    // Button that appears when user is invalid; just a state toggle.
+    public void InvalidUserButton()
+    {
+        IsValidUser = true;
+        StateHasChanged();
+    }
 }

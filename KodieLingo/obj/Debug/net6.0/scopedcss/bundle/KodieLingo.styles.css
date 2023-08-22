@@ -5,9 +5,6 @@ body[b-yr3p6iy1k1] {
     text-align: center;
     display: flex;
     justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    /*background-color: #f0f0f0;*/
 }
 
 
@@ -21,6 +18,12 @@ button[b-yr3p6iy1k1] {
     color: #47DC0F;
     padding: 0.5rem 1rem;
     font-size: 1rem;
+}
+/* _content/KodieLingo/Pages/LoginSignup/Signup.razor.rz.scp.css */
+.centered-text[b-j39121hdyz] {
+    text-align: center;
+    display: flex;
+    justify-content: center;
 }
 /* _content/KodieLingo/Shared/MainLayout.razor.rz.scp.css */
 .page[b-l2lnk6q7ka] {

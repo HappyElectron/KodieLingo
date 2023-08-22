@@ -28,10 +28,6 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTG9naW5TaWdudXBcTG9naW4ucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/nedfp/OneDrive/Desktop/Ned/Programming/Applied Computing/KodieLingo/KodieLingo/Pages/LoginSignup/Signup.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTG9naW5TaWdudXBcU2lnbnVwLnJhem9y
-build_metadata.AdditionalFiles.CssScope = 
-
 [C:/Users/nedfp/OneDrive/Desktop/Ned/Programming/Applied Computing/KodieLingo/KodieLingo/Shared/EmptyLayout.razor]
 build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXEVtcHR5TGF5b3V0LnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
@@ -47,6 +43,10 @@ build_metadata.AdditionalFiles.CssScope =
 [C:/Users/nedfp/OneDrive/Desktop/Ned/Programming/Applied Computing/KodieLingo/KodieLingo/Pages/LoginSignup/LoginSignup.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTG9naW5TaWdudXBcTG9naW5TaWdudXAucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = b-yr3p6iy1k1
+
+[C:/Users/nedfp/OneDrive/Desktop/Ned/Programming/Applied Computing/KodieLingo/KodieLingo/Pages/LoginSignup/Signup.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTG9naW5TaWdudXBcU2lnbnVwLnJhem9y
+build_metadata.AdditionalFiles.CssScope = b-j39121hdyz
 
 [C:/Users/nedfp/OneDrive/Desktop/Ned/Programming/Applied Computing/KodieLingo/KodieLingo/Shared/MainLayout.razor]
 build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXE1haW5MYXlvdXQucmF6b3I=

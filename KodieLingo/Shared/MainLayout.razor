@@ -5,28 +5,18 @@
 @inherits LayoutComponentBase
 
 @code {
-    private bool hasCheckedUser = false;
-
-    protected override void OnAfterRender(bool firstRender)
+    private void Redirect()
     {
-        base.OnAfterRender(firstRender);
-
-        if (!hasCheckedUser)
-        {
-            CheckUserStatus();
-            hasCheckedUser = true;
-        }
-    }
-
-    private void CheckUserStatus()
-    {
-        if (ClientState.User is null)
-        {
-            navManager.NavigateTo("/loginsignup");
-        }
+        navManager.NavigateTo("/loginsignup");
     }
 }
 
+@if(ClientState.User == null)
+{
+    <h2>You're not logged in. Hit the button to redirect.</h2>
+    <button @onclick="Redirect">Ok ig ill do that</button>
+}
+else{
 <div class="page">
     <div class="sidebar">
         <NavMenu />
@@ -42,3 +32,4 @@
         </article>
     </main>
 </div>
+}

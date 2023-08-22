@@ -1,5 +1,104 @@
-﻿<h3>Signup</h3>
+﻿@using Model;
+@using Data;
+@using Services;
+@using Microsoft.EntityFrameworkCore;
+
+@inject IDbContextFactory<DatabaseContext> ContextFactory;
+@inject ClientStateService ClientState;
+@inject NavigationManager navManager;
+
+
+@if (EmailInUse || UsernameInUse) // If user cannot be found
+{
+    <div class="centered-text">
+        @if(EmailInUse)
+        {
+            <p>Email in use</p>
+        }
+        @if(UsernameInUse)
+        {
+            <p>Username in use</p>
+        }
+        <button @onclick="InvalidUserButton">sowwy</button> <!--Escape characters form string >uwu<-->
+    </div>
+}
+else
+{
+    <h1>Create a new accout:</h1>
+    <div class="row">
+        <label for="Email" class="col-4 col-form-label">Email:</label>
+        <div class="col-8">
+            <input id="Email" name="Email" type="text" class="form-control" @bind="@email">
+        </div>
+    </div>
+    <div class="row">
+        <label for="Username" class="col-4 col-form-label">Username:</label>
+        <div class="col-8">
+            <input id="Username" name="Username" type="text" class="form-control" @bind="@username">
+        </div>
+    </div>
+    <div class="row">
+        <label for="Password" class="col-4 col-form-label">Password:</label>
+        <div class="col-8">
+            <input id="Password" name="Password" type="text" class="form-control" @bind="@password">
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="offset-4 col-8">
+            <button name="submit" type="submit" class="btn btn-primary" @onclick="SignupUser">Submit</button>
+        </div>
+    </div>
+}
 
 @code {
+    string email;
+    string username;
+    string password;
+    private bool EmailInUse { get; set; } = false;
+    private bool UsernameInUse { get; set; } = false;
 
+    private DatabaseContext? db { get; set; }
+
+    protected async override Task OnInitializedAsync()
+    {
+        db ??= await ContextFactory.CreateDbContextAsync();
+    }
+
+    // INCOMPLETE
+    // Check the user details against the DB; if valid, return the user object.
+    public async Task SignupUser()
+    {
+        // If username and email do not already exist in the DB, tell them to do better
+        if (db.Users.Select(x => x.Username).Contains(username))
+        {
+            UsernameInUse = false;
+            return;
+        }
+        if (db.Users.Select(x => x.Email).Contains(email))
+        {
+            EmailInUse = false;
+            return;
+        }
+
+        // Add the new user to the db, and set the client state
+        // ID will auto increment, everything else is either dynamic or allocated a default.
+        User newUser = new User()
+            {
+                Username = username,
+                Email = email,
+                Password = password
+            };
+        await db.Users.AddAsync(newUser);
+        await db.SaveChangesAsync();
+        ClientState.User = newUser;
+        navManager.NavigateTo("");
+    }
+
+    // Button that appears when user is invalid; just a state toggle.
+    public void InvalidUserButton()
+    {
+        EmailInUse = false;
+        UsernameInUse = false;
+        StateHasChanged();
+    }
 }
