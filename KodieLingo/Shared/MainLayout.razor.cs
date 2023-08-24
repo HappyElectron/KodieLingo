@@ -10,5 +10,14 @@
         {
             navManager.NavigateTo("/friends/" + url);
         }
+
+        protected override void OnAfterRender(bool firstRender)
+        {
+            base.OnAfterRender(firstRender);
+            if(firstRender)
+            {
+                navManager.NavigateTo("/loginsignup");
+            }
+        }
     }
 }

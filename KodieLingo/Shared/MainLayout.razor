@@ -8,14 +8,6 @@
 
 @inherits LayoutComponentBase
 
-@if(ClientState.User == null)
-{
-    <h2>You're not logged in. Hit the button to redirect.</h2>
-    <button @onclick="Redirect">Ok ig ill do that</button>
-}
-
-// Default page layout
-else{
 <div class="page">
     <div class="sidebar">
         <NavMenu />
@@ -41,4 +33,3 @@ else{
         </article>
     </main>
 </div>
-}
