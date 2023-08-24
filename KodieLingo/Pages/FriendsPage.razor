@@ -8,28 +8,42 @@
 @inject NavigationManager navManager;
 
 
-@page "/Friends"
+@page "/friends/{FriendUsername?}"
 
 
 <h3>FriendsPage</h3>
 
-@foreach(User s in ClientState.User.Friend)
+@if (ClientState.User.Friend.Select(x => x.Username).Contains(FriendUsername))
 {
-	<h1>Username: @s.Username</h1>
-    <b>KodieBukz: @s.LifetimeKB</b>
+    <h1> @Friend.Username; </h1>
+    <h2>KodieBukz: @Friend.LifetimeKB</h2>
+    <h2>Grass touched: 0</h2>
+}
+else
+{
+    @if(ClientState.User.Friend.Count() == 0)
+    {
+        <h1>Haha no friends</h1>
+        <h3>Maybe change that by adding some?</h3>
+    }
+    else
+    {
+        <h1> Select one of your friends to view their stats! </h1>
+        <h3> (We cannot gurantee they will be checking your stats) </h3>
+    }
 }
 
+
 @code {
+    [Parameter]
+    public string? FriendUsername { get; set; }
+
     private DatabaseContext? db { get; set; }
 
-    // Re-pull the User friend list, because we need to include the mapped friends list.
-    // Will need to do some reading and check that this approach is valid. 
+    private User? Friend => ClientState.User.Friend.Where(x => x.Username == FriendUsername).FirstOrDefault();
+
     protected async override Task OnInitializedAsync()
     {
         db ??= await ContextFactory.CreateDbContextAsync();
-        ClientState.User = db.Users.
-        Where(x => x.Email == ClientState.User.Email)
-        .Include(b => b.Friend)
-        .FirstOrDefault();
     }
 }

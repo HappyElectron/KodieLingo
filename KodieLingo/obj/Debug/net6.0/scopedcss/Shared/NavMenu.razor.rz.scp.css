@@ -52,11 +52,15 @@
 
 @media (min-width: 641px) {
     .navbar-toggler[b-zroob06rwl] {
-        display: none;
+        display: block;
     }
 
     .collapse[b-zroob06rwl] {
-        /* Never collapse the sidebar for wide screens */
         display: block;
+    }
+
+    .empty[b-zroob06rwl]
+    {
+        display: none;
     }
 }

@@ -32,10 +32,20 @@ button[b-yr3p6iy1k1] {
     flex-direction: column;
 }
 
+menuToggle[b-l2lnk6q7ka] {
+    font-size: 30px;
+    border-radius: 4px;
+    padding: 10px;
+}
+
 main[b-l2lnk6q7ka] {
     flex: 1;
 }
 
+/*
+    Yo henry here's where you change the background
+    Next time, use the inspect tool in your web browser to fin this quickly.
+*/
 .sidebar[b-l2lnk6q7ka] {
     background-image: linear-gradient(180deg, rgb(5, 39, 103) 0%, #3a0647 70%);
 }
@@ -151,11 +161,15 @@ main[b-l2lnk6q7ka] {
 
 @media (min-width: 641px) {
     .navbar-toggler[b-zroob06rwl] {
-        display: none;
+        display: block;
     }
 
     .collapse[b-zroob06rwl] {
-        /* Never collapse the sidebar for wide screens */
         display: block;
+    }
+
+    .empty[b-zroob06rwl]
+    {
+        display: none;
     }
 }

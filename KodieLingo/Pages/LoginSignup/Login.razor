@@ -53,7 +53,7 @@ else
     {
         if (db.Users.Select(x => x.Email).Contains(Email) && db.Users.Select(x => x.Password).Contains(Password))
         {
-            ClientState.User = db.Users.Where(x => x.Email == Email).FirstOrDefault();
+            ClientState.User = db.Users.Where(x => x.Email == Email).Include(b => b.Friend).FirstOrDefault();
             navManager.NavigateTo("");
         }
         else

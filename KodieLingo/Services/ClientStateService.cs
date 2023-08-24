@@ -11,6 +11,6 @@ namespace KodieLingo.Services
 	public class ClientStateService
 	{
 		public User? User { get; set; }
-		public int PressCount { get; set; } = 0;
+		public bool OpenNavMenu { get; set; } = true;
 	}
 }
