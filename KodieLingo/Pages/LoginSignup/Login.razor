@@ -7,7 +7,25 @@
 @inject ClientStateService ClientState;
 @inject NavigationManager navManager;
 
+<PageTitle>Login - KodieLingo</PageTitle>
 
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>KodieLingo</title>
+        <link rel="stylesheet" href="loginprompt.cshtml.css"> 
+    </head>
+    <body>
+        <div class = "centered-text">
+            <h1>KodieLingo</h1>
+        </div>
+        <div class="centered-text">
+            <button @onclick="Back">back</button>
+        </div>
+    </body>
+    </html>
 @if (!IsValidUser) // If username already exists
 {
     <h2>Username is already taken</h2>
@@ -61,6 +79,10 @@ else
             IsValidUser = false;
             StateHasChanged();
         }
+    }
+    public void Back()
+    {
+        
     }
 
     // Button that appears when user is invalid; just a state toggle.

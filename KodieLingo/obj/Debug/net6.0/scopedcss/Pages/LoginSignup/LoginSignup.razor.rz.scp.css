@@ -14,7 +14,18 @@ h1[b-yr3p6iy1k1] {
 }
 
 button[b-yr3p6iy1k1] {
-    color: #47DC0F;
-    padding: 0.5rem 1rem;
-    font-size: 1rem;
+    background-color: #47DC0F;
+    border: none;
+    border-radius: 40px;
+    color: white;
+    padding: 20px 30px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 40px;
+    margin: 4px 2px;
+    cursor: pointer;
 }
+    button:hover[b-yr3p6iy1k1] {
+        background-color: #3e8e41
+    }

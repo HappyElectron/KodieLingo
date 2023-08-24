@@ -2,25 +2,6 @@
 @layout EmptyLayout;
 <PageTitle>Login/Signup</PageTitle>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KodieLingo</title>
-    <link rel="stylesheet" href="loginprompt.cshtml.css"> 
-</head>
-<body>
-    <div class = "centered-text">
-        <h1>KodieLingo</h1>
-    </div>
-    <div class="centered-text">
-        <button @onclick="Login">Login</button>
-        <button @onclick="Signup">Signup</button>
-    </div>
-</body>
-</html>
-
 @if(LoginIsActive)
 {
     <Login/>
@@ -29,6 +10,29 @@
 {
     <Signup/>
 }
+
+@if (!LoginIsActive && !SignupIsActive)
+{
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>KodieLingo</title>
+        <link rel="stylesheet" href="loginprompt.cshtml.css"> 
+    </head>
+    <body>
+        <div class = "centered-text">
+            <h1>KodieLingo</h1>
+        </div>
+        <div class="centered-text">
+            <button @onclick="Login">Login</button>
+            <button @onclick="Signup">Signup</button>
+        </div>
+    </body>
+    </html>
+}
+
 
 @code {
     bool LoginIsActive = false, SignupIsActive = false;
