@@ -9,6 +9,9 @@
 
 <PageTitle>Login - KodieLingo</PageTitle>
 
+<!--
+    Site heading, back button
+-->
 <!DOCTYPE html>
     <html lang="en">
     <head>
@@ -26,12 +29,14 @@
         </div>
     </body>
     </html>
-@if (!IsValidUser) // If username already exists
+
+
+@if (!IsValidUser) // Failed login attempt
 {
-    <h2>Username is already taken</h2>
-    <button @onclick="InvalidUserButton">&gt;uwu&lt; i'll be more original</button> <!--Escape characters form string >uwu<-->
+    <h2>Invalid email or password</h2>
+    <button @onclick="InvalidUserButton">sowwy</button>
 }
-else
+else // Login form
 {
     <h1>Enter login details:</h1>
     <div class="row">
@@ -65,13 +70,15 @@ else
         db ??= await ContextFactory.CreateDbContextAsync();
     }
 
-    // INCOMPLETE
     // Check the user details against the DB; if valid, return the user object.
     public async Task LoginUser()
     {
         if (db.Users.Select(x => x.Email).Contains(Email) && db.Users.Select(x => x.Password).Contains(Password))
         {
-            ClientState.User = db.Users.Where(x => x.Email == Email).Include(b => b.Friend).FirstOrDefault();
+            ClientState.User = db.Users.Where(x => x.Email == Email)
+            .Include(b => b.Friend)
+            .Include(b => b.FriendReqIncoming)
+            .FirstOrDefault();
             navManager.NavigateTo("");
         }
         else
@@ -80,9 +87,11 @@ else
             StateHasChanged();
         }
     }
+
+    // Return to login/signup prompt
     public void Back()
     {
-        
+        navManager.NavigateTo("");
     }
 
     // Button that appears when user is invalid; just a state toggle.

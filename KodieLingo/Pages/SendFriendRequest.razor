@@ -1,0 +1,48 @@
+﻿@using Model;
+@using Services
+@using Data;
+@using Microsoft.EntityFrameworkCore;
+
+@inject ClientStateService ClientState
+@inject IDbContextFactory<DatabaseContext> ContextFactory;
+
+<h4 style="color:white; align-content:center;">@User.Username</h4>
+<button style="width: 100%;" @onclick="AddFriend">Send friend request</button>
+
+@code {
+	[Parameter]
+	public User User { get; set; }
+
+	//[Parameter]
+	//public ICollection<User> IncomingRequests { get; set; }
+
+	private DatabaseContext? db { get; set; }
+
+	protected override async Task OnInitializedAsync()
+	{
+		db ??= await ContextFactory.CreateDbContextAsync();
+	}
+
+	private async Task AddFriend()
+	{ 
+		/* Trying to eliminate a db query by passing friendreqincoming as a paramater. Failed.
+		if(!IncomingRequests.Contains(User))
+		{
+			IncomingRequests.Add(User);
+			await db.SaveChangesAsync();
+		}*/
+		
+		// This works. Try and clear it up.
+		if (!db.Users.Include(b => b.FriendReqIncoming)
+		.First(x => x.Username == ClientState.User.Username)
+		.FriendReqIncoming.Contains(User))
+		{
+			db.Users.Include(b => b.FriendReqIncoming)
+			.First(x => x.Username == ClientState.User.Username)
+			.FriendReqIncoming
+			.Add(User);
+
+			await db.SaveChangesAsync();
+		}
+	}
+}

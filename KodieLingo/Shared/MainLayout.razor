@@ -1,10 +1,11 @@
 ﻿@using Services
 @using Model
 @using Data
-
+@using Microsoft.EntityFrameworkCore
 
 @inject ClientStateService ClientState
 @inject NavigationManager navManager
+@inject IDbContextFactory<DatabaseContext> ContextFactory;
 
 @inherits LayoutComponentBase
 
@@ -16,14 +17,45 @@
         -->
         @if (navManager.Uri.Contains("/friends") && !ClientState.OpenNavMenu)
         {
-            <h2 style="color:white;">Friends:</h2>
-            @foreach (User s in ClientState.User.Friend)
+            <button style="width: 100%;" @onclick="AllFriends">View All Friends</button>
+            <button style="width: 100%;" @onclick="AddAFriend">Add a friend</button>
+            <button style="width: 100%;" @onclick="IncomingFriendRequests">Incoming friend requests</button>
+            if (AddFriendsActive)
+            {
+                @foreach (User u in 
+                // Has not already sent/recieved request from user
+                db.Users.Where(b => !b.FriendReqIncoming.Contains(ClientState.User) 
+                && !b.FriendReqOutgoing.Contains(ClientState.User)
+
+                && !ClientState.User.Friend.Contains(b)
+
+                // Is not themself
+                && b.Username != ClientState.User.Username))
+                {
+                    <KodieLingo.Pages.SendFriendRequest User="u"/>
+                }
+            }
+            else if (IncomingRequestsActive)
             {
                 <div class="flex-fill">
-                    <button class="btn btn-light" @onclick="() => RedirectToFriend(s.Username)">
-                        @s.Username
-                    </button>
+                @foreach(User r in ClientState.User.FriendReqOutgoing)
+                {
+                    // Insert a component for the tile, passing the friend via a parameter
+                    <KodieLingo.Pages.IncomingFriendRequest User="@r"/>
+                }
                 </div>
+            }
+            else
+            {
+                <h2 style="color:white;">Friends:</h2>
+                @foreach (User s in ClientState.User.Friend)
+                {
+                    <div class="flex-fill">
+                        <button style="width: 100%;" class="btn btn-light" @onclick="() => RedirectToFriend(s.Username)">
+                            @s.Username
+                        </button>
+                    </div>
+                }
             }
         }
     </div>

@@ -1,0 +1,39 @@
+﻿@using Model;
+@using Services
+@using Data;
+@using Microsoft.EntityFrameworkCore;
+
+@inject ClientStateService ClientState
+@inject IDbContextFactory<DatabaseContext> ContextFactory;
+
+<div class="col-1">
+	<h3>@User.Username</h3>
+	<button style="width:100%;" @onclick="AcceptRequest">
+		Accept
+	</button>
+</div>
+
+@code {
+	[Parameter]
+	public User? User { get; set; }
+
+	private DatabaseContext? db { get; set; }
+
+	protected override async Task OnInitializedAsync()
+	{
+		db ??= await ContextFactory.CreateDbContextAsync();
+	}
+
+	private async Task AcceptRequest()
+	{
+		/* Let's not discuss this rn.
+		db.Remove(db.Users.Select(x => x)
+		.Where(x => x.Username == ClientState.User.Username)
+		.FirstOrDefault()
+		.FriendReqIncoming
+		.Select(x => x)
+		.Where(x => x.Username == User.Username)
+		.FirstOrDefault());
+		*/
+	}
+}
