@@ -1,20 +1,29 @@
 body[b-yr3p6iy1k1] {
 }
-.centered-text[b-yr3p6iy1k1] {
-    text-align: center;
-    display: flex;
-    justify-content: center;
+.kodielingo-text[b-yr3p6iy1k1] {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -100%);
+
+}
+.button-text[b-yr3p6iy1k1] {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, 0%);
 }
 
-
 h1[b-yr3p6iy1k1] {
-    color: #47DC0F;
-    font-size: 6rem;
+    color: #3195a7;
+    font-size: 9rem;
     font-family: "Calibri";
 }
 
 button[b-yr3p6iy1k1] {
-    background-color: #47DC0F;
+    background-color: #236a9f;
     border: none;
     border-radius: 40px;
     color: white;

@@ -21,11 +21,11 @@
         <link rel="stylesheet" href="loginprompt.cshtml.css"> 
     </head>
     <body>
-        <div class = "centered-text">
+        <div class = "kodielingo-text">
             <h1>KodieLingo</h1>
         </div>
         <div class="centered-text">
-            <button @onclick="Back">back</button>
+            <button class="back-button" @onclick="Back">back</button>
         </div>
     </body>
     </html>
@@ -38,22 +38,20 @@
 }
 else // Login form
 {
-    <h1>Enter login details:</h1>
+    <h2>Enter login details:</h2>
     <div class="row">
-        <label for="Email" class="col-4 col-form-label">Email:</label>
         <div class="col-8">
-            <input id="Email" name="Email" type="text" class="form-control" @bind="@Email">
+            <input id="Email" name="Email" type="text" placeholder="Enter Email" class="email-box" @bind="@Email">
         </div>
     </div>
     <div class="row">
-        <label for="Password" class="col-4 col-form-label">Password:</label>
         <div class="col-8">
-            <input id="Password" name="Password" type="text" class="form-control" @bind="@Password">
+            <input id="Password" name="Password" type="text" placeholder="Enter Password" class="password-box" @bind="@Password">
         </div>
     </div>
     <div class="form-group row">
         <div class="offset-4 col-8">
-            <button name="submit" type="submit" class="btn btn-primary" @onclick="LoginUser">Submit</button>
+            <button name="submit" type="submit" class="login-button" @onclick="LoginUser">Login</button>
         </div>
     </div>
 }

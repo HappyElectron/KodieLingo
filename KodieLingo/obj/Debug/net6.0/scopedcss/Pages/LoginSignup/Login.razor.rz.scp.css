@@ -1,2 +1,54 @@
-body[b-3ys1h1tmwn] {
+.kodielingo-text[b-3ys1h1tmwn] {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -200%);
+}
+h1[b-3ys1h1tmwn] {
+    color: #47DC0F;
+    font-size: 9rem;
+    font-family: "Calibri";
+}
+.email-box[b-3ys1h1tmwn] {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.password-box[b-3ys1h1tmwn] {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, 100%);
+}
+.login-button[b-3ys1h1tmwn] {
+    background-color: #00c32e;
+    border: none;
+    border-radius: 40px;
+    color: white;
+    padding: 20px 30px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 40px;
+    margin: 4px 2px;
+    cursor: pointer;
+    transform: translate(50%, 200%);
+}
+.back-button[b-3ys1h1tmwn] {
+    background-color: #00c32e;
+    border: none;
+    border-radius: 40px;
+    color: white;
+    padding: 20px 30px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 40px;
+    margin: 4px 2px;
+    cursor: pointer;
+    transform: translate(0%, 0%);
 }
