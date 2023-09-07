@@ -14,12 +14,7 @@
 -->
 <!DOCTYPE html>
     <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>KodieLingo</title>
-        <link rel="stylesheet" href="loginprompt.cshtml.css"> 
-    </head>
+
     <body>
         <div class = "kodielingo-text">
             <h1>KodieLingo</h1>
@@ -38,10 +33,9 @@
 }
 else // Login form
 {
-    <h2>Enter login details:</h2>
     <div class="row">
         <div class="col-8">
-            <input id="Email" name="Email" type="text" placeholder="Enter Email" class="email-box" @bind="@Email">
+            <input id="Email"  size="50"name="Email" type="text" placeholder="Enter Email" class="email-box" @bind="@Email">
         </div>
     </div>
     <div class="row">
@@ -51,7 +45,7 @@ else // Login form
     </div>
     <div class="form-group row">
         <div class="offset-4 col-8">
-            <button name="submit" type="submit" class="login-button" @onclick="LoginUser">Login</button>
+            <button name="Signup" type="Signup" class="login-button" @onclick="LoginUser">Login</button>
         </div>
     </div>
 }

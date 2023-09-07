@@ -3,3 +3,77 @@
     display: flex;
     justify-content: center;
 }
+.kodielingo-text[b-j39121hdyz] {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -200%);
+}
+
+h1[b-j39121hdyz] {
+    color: #47DC0F;
+    font-size: 9rem;
+    font-family: "Calibri";
+}
+.signup-button[b-j39121hdyz] {
+    background-color: #00c32e;
+    top: 50%;
+    left: 50%;
+    position: absolute;
+    border: none;
+    border-radius: 40px;
+    color: white;
+    padding: 20px 30px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 40px;
+    margin: 4px 2px;
+    cursor: pointer;
+    transform: translate(-50%, 100%);
+}
+.back-button[b-j39121hdyz] {
+    background-color: #00c32e;
+    border: none;
+    border-radius: 40px;
+    color: white;
+    padding: 20px 30px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20px;
+    margin: 4px 2px;
+    cursor: pointer;
+    transform: translate(10%, 20%);
+}
+.email-box[b-j39121hdyz] {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -220%);
+    height: 70px;
+    width: 500px;
+    border-radius: 10px;
+}
+.username-box[b-j39121hdyz] {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -100%);
+    height: 70px;
+    width: 500px;
+    border-radius: 10px;
+}
+.password-box[b-j39121hdyz] {
+    height: 70px;
+    width: 500px;
+    border-radius: 10px;
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, 20%);
+}

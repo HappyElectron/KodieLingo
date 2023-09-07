@@ -9,6 +9,18 @@
 
 <PageTitle>Signup - KodieLingo</PageTitle>
 
+<!DOCTYPE html>
+    <html lang="en">
+
+    <body>
+        <div class = "kodielingo-text">
+            <h1>KodieLingo</h1>
+        </div>
+        <div>
+            <button class="back-button" @onclick="Back">back</button>
+        </div>
+    </body>
+    </html>
 @if (EmailInUse || UsernameInUse) // If user cannot be found
 {
     <div class="centered-text">
@@ -25,28 +37,24 @@
 }
 else
 {
-    <h1>Create a new account:</h1>
     <div class="row">
-        <label for="Email" class="col-4 col-form-label">Email:</label>
         <div class="col-8">
-            <input id="Email" name="Email" type="text" class="form-control" @bind="@email">
+            <input id="Email" name="Email" type="text" placeholder="Enter Email" class="email-box" @bind="@email">
         </div>
     </div>
     <div class="row">
-        <label for="Username" class="col-4 col-form-label">Username:</label>
         <div class="col-8">
-            <input id="Username" name="Username" type="text" class="form-control" @bind="@username">
+            <input id="Username" name="Username" type="text" placeholder="Create Username" class="username-box" @bind="@username">
         </div>
     </div>
     <div class="row">
-        <label for="Password" class="col-4 col-form-label">Password:</label>
         <div class="col-8">
-            <input id="Password" name="Password" type="text" class="form-control" @bind="@password">
+            <input id="Password" name="Password" type="text" placeholder="Create Password" class="password-box" @bind="@password">
         </div>
     </div>
     <div class="form-group row">
         <div class="offset-4 col-8">
-            <button name="submit" type="submit" class="btn btn-primary" @onclick="SignupUser">Submit</button>
+            <button name="submit" type="submit" class="signup-button" @onclick="SignupUser">Submit</button>
         </div>
     </div>
 }
@@ -72,12 +80,12 @@ else
         // If username and email do not already exist in the DB, tell them to do better
         if (db.Users.Select(x => x.Username).Contains(username))
         {
-            UsernameInUse = false;
+            UsernameInUse = true;
             return;
         }
         if (db.Users.Select(x => x.Email).Contains(email))
         {
-            EmailInUse = false;
+            EmailInUse = true;
             return;
         }
 
@@ -101,5 +109,9 @@ else
         EmailInUse = false;
         UsernameInUse = false;
         StateHasChanged();
+    }
+    public void Back()
+    {
+        navManager.NavigateTo("");
     }
 }
