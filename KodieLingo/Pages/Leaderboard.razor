@@ -9,11 +9,16 @@
 
     <h3>This Weeks's Friend Leaderboard</h3>
 
-    <h2>@ClientState.User.Username</h2>
-    @foreach (User u in ClientState.User.Friend)
+    <h2>Not seeing that many friends @ClientState.User.Username? Maybe make some more!</h2>
+    //(User u in ClientState.User.Friend)
+    @for (int i = 0; i < 10 && ClientState.User.Friend.Count() > i; i++)
     {
-        <h1>Farts</h1>
-        <h2>@u.Username</h2>
+        <div style="justify-content:center">
+            <h3 style ="border: 1px solid #000; border-radius: 10px; padding: 5px; display: inline-block; text-align:center">
+                @(i + 1). @ClientState.User.Friend.ToArray()[i].Username
+  
+            </h3>
+        </div>
     }
 
 }
