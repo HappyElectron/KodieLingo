@@ -12,11 +12,12 @@
 
 
 <h3>FriendsPage</h3>
-
-@if (ClientState.User.Friend.Select(x => x.Username).Contains(FriendUsername))
+@if (ClientState.User == null)
+{ }
+else if (ClientState.User.Friend.Select(x => x.Username).Contains(FriendUsername))
 {
     <h1> @Friend.Username; </h1>
-    <h2>KodieBukz: @Friend.LifetimeKB</h2>
+    <h2>KodieBukz: @Friend.LifetimePoints</h2>
     <h2>Grass touched: 0</h2>
 }
 else
@@ -37,11 +38,8 @@ else
 @code {
     [Parameter]
     public string? FriendUsername { get; set; }
-
     private DatabaseContext? db { get; set; }
-
     private User? Friend => ClientState.User.Friend.Where(x => x.Username == FriendUsername).FirstOrDefault();
-
     protected async override Task OnInitializedAsync()
     {
         db ??= await ContextFactory.CreateDbContextAsync();

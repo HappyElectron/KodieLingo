@@ -6,12 +6,8 @@
 @inject ClientStateService ClientState
 @inject IDbContextFactory<DatabaseContext> ContextFactory;
 
-<div class="col-1">
-	<h3>@User.Username</h3>
-	<button style="width:100%;" @onclick="AcceptRequest">
-		Accept
-	</button>
-</div>
+<h4 style="color:white; align-content:center;">@User.Username</h4>
+<button style="width:100%;" @onclick="AcceptRequest">Accept</button>
 
 @code {
 	[Parameter]

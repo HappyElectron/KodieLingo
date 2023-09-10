@@ -147,12 +147,16 @@ namespace KodieLingo.Data
 				.HasMany(e => e.Friend)
 				.WithMany(e => e.FriendParents);
 
-			// Friend request mapping. Again, circular, but this time, we can atleast use both ends.
-			// EF has saved the join table as UserUser1. Although that's shit,
+			// Friend request mapping.
+			// EF has saved the incoming join table as UserUser1, and out as UserUser2. Although that's shit,
 			// I cannot be bothered changing it rn, so maybe, like, l8rs sk8rs.
 			modelBuilder.Entity<User>()
 				.HasMany(e => e.FriendReqIncoming)
-				.WithMany(e => e.FriendReqOutgoing);
+				.WithMany(e => e.FriendReqIncomingParents);
+            modelBuilder.Entity<User>()
+				.HasMany(e => e.FriendReqOutgoing)
+				.WithMany(e => e.FriendReqOutgoingParents);
+
 
             // Course prereuisite mapping, many courses may reference many courses
             // This structure is one big pile of horseshit.

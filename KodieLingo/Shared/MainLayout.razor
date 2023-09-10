@@ -22,11 +22,12 @@
             <button style="width: 100%;" @onclick="IncomingFriendRequests">Incoming friend requests</button>
             if (AddFriendsActive)
             {
-                @foreach (User u in 
-                // Has not already sent/recieved request from user
-                db.Users.Where(b => !b.FriendReqIncoming.Contains(ClientState.User) 
+                @foreach (User u in db.Users.Where(
+               // Has not already sent/recieved request from user
+                b => !b.FriendReqIncoming.Contains(ClientState.User) 
                 && !b.FriendReqOutgoing.Contains(ClientState.User)
 
+                // Is not already friends
                 && !ClientState.User.Friend.Contains(b)
 
                 // Is not themself
@@ -35,10 +36,11 @@
                     <KodieLingo.Pages.SendFriendRequest User="u"/>
                 }
             }
+
             else if (IncomingRequestsActive)
             {
                 <div class="flex-fill">
-                @foreach(User r in ClientState.User.FriendReqOutgoing)
+                @foreach(User r in ClientState.User.FriendReqIncoming)
                 {
                     // Insert a component for the tile, passing the friend via a parameter
                     <KodieLingo.Pages.IncomingFriendRequest User="@r"/>

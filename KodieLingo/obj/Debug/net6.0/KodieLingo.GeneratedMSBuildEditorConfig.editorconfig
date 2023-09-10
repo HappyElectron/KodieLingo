@@ -5,92 +5,93 @@ build_property.UsingMicrosoftNETSdkWeb = true
 build_property.ProjectTypeGuids = 
 build_property.InvariantGlobalization = 
 build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = KodieLingo
 build_property.RootNamespace = KodieLingo
-build_property.ProjectDir = C:\Users\Aiden\Desktop\Projects\GitHub\KodieLingo\KodieLingo\
+build_property.ProjectDir = C:\Users\nedfp\OneDrive\Desktop\Ned\Programming\Applied Computing\KodieLingo\KodieLingo\
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\Aiden\Desktop\Projects\GitHub\KodieLingo\KodieLingo
+build_property.MSBuildProjectDirectory = C:\Users\nedfp\OneDrive\Desktop\Ned\Programming\Applied Computing\KodieLingo\KodieLingo
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Users/Aiden/Desktop/Projects/GitHub/KodieLingo/KodieLingo/App.razor]
+[C:/Users/nedfp/OneDrive/Desktop/Ned/Programming/Applied Computing/KodieLingo/KodieLingo/App.razor]
 build_metadata.AdditionalFiles.TargetPath = QXBwLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Aiden/Desktop/Projects/GitHub/KodieLingo/KodieLingo/Pages/Courses.razor]
+[C:/Users/nedfp/OneDrive/Desktop/Ned/Programming/Applied Computing/KodieLingo/KodieLingo/Pages/Courses.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ291cnNlcy5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Aiden/Desktop/Projects/GitHub/KodieLingo/KodieLingo/Pages/FriendsPage.razor]
+[C:/Users/nedfp/OneDrive/Desktop/Ned/Programming/Applied Computing/KodieLingo/KodieLingo/Pages/FriendsPage.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRnJpZW5kc1BhZ2UucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Aiden/Desktop/Projects/GitHub/KodieLingo/KodieLingo/Pages/IncomingFriendRequest.razor]
+[C:/Users/nedfp/OneDrive/Desktop/Ned/Programming/Applied Computing/KodieLingo/KodieLingo/Pages/IncomingFriendRequest.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5jb21pbmdGcmllbmRSZXF1ZXN0LnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Aiden/Desktop/Projects/GitHub/KodieLingo/KodieLingo/Pages/Index.razor]
+[C:/Users/nedfp/OneDrive/Desktop/Ned/Programming/Applied Computing/KodieLingo/KodieLingo/Pages/Index.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5kZXgucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Aiden/Desktop/Projects/GitHub/KodieLingo/KodieLingo/Pages/Profile.razor]
+[C:/Users/nedfp/OneDrive/Desktop/Ned/Programming/Applied Computing/KodieLingo/KodieLingo/Pages/Profile.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHJvZmlsZS5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Aiden/Desktop/Projects/GitHub/KodieLingo/KodieLingo/Pages/SendFriendRequest.razor]
+[C:/Users/nedfp/OneDrive/Desktop/Ned/Programming/Applied Computing/KodieLingo/KodieLingo/Pages/SendFriendRequest.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2VuZEZyaWVuZFJlcXVlc3QucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Aiden/Desktop/Projects/GitHub/KodieLingo/KodieLingo/Pages/Store.razor]
+[C:/Users/nedfp/OneDrive/Desktop/Ned/Programming/Applied Computing/KodieLingo/KodieLingo/Pages/Store.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU3RvcmUucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Aiden/Desktop/Projects/GitHub/KodieLingo/KodieLingo/Shared/EmptyLayout.razor]
+[C:/Users/nedfp/OneDrive/Desktop/Ned/Programming/Applied Computing/KodieLingo/KodieLingo/Shared/EmptyLayout.razor]
 build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXEVtcHR5TGF5b3V0LnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Aiden/Desktop/Projects/GitHub/KodieLingo/KodieLingo/Shared/SurveyPrompt.razor]
+[C:/Users/nedfp/OneDrive/Desktop/Ned/Programming/Applied Computing/KodieLingo/KodieLingo/Shared/SurveyPrompt.razor]
 build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXFN1cnZleVByb21wdC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Aiden/Desktop/Projects/GitHub/KodieLingo/KodieLingo/_Imports.razor]
+[C:/Users/nedfp/OneDrive/Desktop/Ned/Programming/Applied Computing/KodieLingo/KodieLingo/_Imports.razor]
 build_metadata.AdditionalFiles.TargetPath = X0ltcG9ydHMucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Aiden/Desktop/Projects/GitHub/KodieLingo/KodieLingo/Pages/Leaderboard.razor]
+[C:/Users/nedfp/OneDrive/Desktop/Ned/Programming/Applied Computing/KodieLingo/KodieLingo/Pages/Leaderboard.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTGVhZGVyYm9hcmQucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = b-k6qhx324m7
 
-[C:/Users/Aiden/Desktop/Projects/GitHub/KodieLingo/KodieLingo/Pages/LoginSignup/Login.razor]
+[C:/Users/nedfp/OneDrive/Desktop/Ned/Programming/Applied Computing/KodieLingo/KodieLingo/Pages/LoginSignup/Login.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTG9naW5TaWdudXBcTG9naW4ucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = b-3ys1h1tmwn
 
-[C:/Users/Aiden/Desktop/Projects/GitHub/KodieLingo/KodieLingo/Pages/LoginSignup/LoginSignup.razor]
+[C:/Users/nedfp/OneDrive/Desktop/Ned/Programming/Applied Computing/KodieLingo/KodieLingo/Pages/LoginSignup/LoginSignup.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTG9naW5TaWdudXBcTG9naW5TaWdudXAucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = b-yr3p6iy1k1
 
-[C:/Users/Aiden/Desktop/Projects/GitHub/KodieLingo/KodieLingo/Pages/LoginSignup/Signup.razor]
+[C:/Users/nedfp/OneDrive/Desktop/Ned/Programming/Applied Computing/KodieLingo/KodieLingo/Pages/LoginSignup/Signup.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTG9naW5TaWdudXBcU2lnbnVwLnJhem9y
 build_metadata.AdditionalFiles.CssScope = b-j39121hdyz
 
-[C:/Users/Aiden/Desktop/Projects/GitHub/KodieLingo/KodieLingo/Shared/MainLayout.razor]
+[C:/Users/nedfp/OneDrive/Desktop/Ned/Programming/Applied Computing/KodieLingo/KodieLingo/Shared/MainLayout.razor]
 build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXE1haW5MYXlvdXQucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = b-l2lnk6q7ka
 
-[C:/Users/Aiden/Desktop/Projects/GitHub/KodieLingo/KodieLingo/Shared/NavMenu.razor]
+[C:/Users/nedfp/OneDrive/Desktop/Ned/Programming/Applied Computing/KodieLingo/KodieLingo/Shared/NavMenu.razor]
 build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXE5hdk1lbnUucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = b-zroob06rwl
 
-[C:/Users/Aiden/Desktop/Projects/GitHub/KodieLingo/KodieLingo/Pages/Error.cshtml]
+[C:/Users/nedfp/OneDrive/Desktop/Ned/Programming/Applied Computing/KodieLingo/KodieLingo/Pages/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXJyb3IuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Aiden/Desktop/Projects/GitHub/KodieLingo/KodieLingo/Pages/_Host.cshtml]
+[C:/Users/nedfp/OneDrive/Desktop/Ned/Programming/Applied Computing/KodieLingo/KodieLingo/Pages/_Host.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX0hvc3QuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Aiden/Desktop/Projects/GitHub/KodieLingo/KodieLingo/Pages/_Layout.cshtml]
+[C:/Users/nedfp/OneDrive/Desktop/Ned/Programming/Applied Computing/KodieLingo/KodieLingo/Pages/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX0xheW91dC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 

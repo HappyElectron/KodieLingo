@@ -11,8 +11,16 @@
         public int Id { get; set; }
         public int Streak { get; set; } = 0;
         public int LongestStreak { get; set; } = 0;
-        public int WeeklyKB { get; set; } = 0;
-        public int LifetimeKB { get; set; } = 0;
+
+
+        // Points are the competitive currency shared between friends.
+        // KodieBukz are used to purchase powerups and collectables.
+        // Both are awarded from lessons/challenges
+        public int WeeklyPoints { get; set; } = 0;
+        public int LifetimePoints { get; set; } = 0;
+        public int KodieBukz { get; set; } = 0;
+        
+        
         public string? Username { get; set; }
         public string? Email { get; set; }
         public string? Password { get; set; }
@@ -28,8 +36,10 @@
 		public ICollection<User> FriendParents { get; set; } = new List<User>();
 
 		// Friend requests: many requests to many users. 
-        // I like this. Will keep.
 		public ICollection<User> FriendReqIncoming { get; set; } = new List<User>();
-		public ICollection<User> FriendReqOutgoing { get; set; } = new List<User>();
-	}
+		public ICollection<User> FriendReqIncomingParents { get; set; } = new List<User>();
+
+        public ICollection<User> FriendReqOutgoing { get; set; } = new List<User>();
+        public ICollection<User> FriendReqOutgoingParents { get; set; } = new List<User>();
+    }
 }

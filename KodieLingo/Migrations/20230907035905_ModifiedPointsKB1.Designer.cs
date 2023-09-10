@@ -2,6 +2,7 @@
 using KodieLingo.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -9,9 +10,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace KodieLingo.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    partial class DatabaseContextModelSnapshot : ModelSnapshot
+    [Migration("20230907035905_ModifiedPointsKB1")]
+    partial class ModifiedPointsKB1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "7.0.10");
@@ -348,29 +351,14 @@ namespace KodieLingo.Migrations
                     b.Property<int>("FriendReqIncomingId")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("FriendReqIncomingParentsId")
-                        .HasColumnType("INTEGER");
-
-                    b.HasKey("FriendReqIncomingId", "FriendReqIncomingParentsId");
-
-                    b.HasIndex("FriendReqIncomingParentsId");
-
-                    b.ToTable("UserUser1");
-                });
-
-            modelBuilder.Entity("UserUser2", b =>
-                {
                     b.Property<int>("FriendReqOutgoingId")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("FriendReqOutgoingParentsId")
-                        .HasColumnType("INTEGER");
+                    b.HasKey("FriendReqIncomingId", "FriendReqOutgoingId");
 
-                    b.HasKey("FriendReqOutgoingId", "FriendReqOutgoingParentsId");
+                    b.HasIndex("FriendReqOutgoingId");
 
-                    b.HasIndex("FriendReqOutgoingParentsId");
-
-                    b.ToTable("UserUser2");
+                    b.ToTable("UserUser1");
                 });
 
             modelBuilder.Entity("CourseCourse", b =>
@@ -498,22 +486,7 @@ namespace KodieLingo.Migrations
 
                     b.HasOne("KodieLingo.Model.User", null)
                         .WithMany()
-                        .HasForeignKey("FriendReqIncomingParentsId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("UserUser2", b =>
-                {
-                    b.HasOne("KodieLingo.Model.User", null)
-                        .WithMany()
                         .HasForeignKey("FriendReqOutgoingId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("KodieLingo.Model.User", null)
-                        .WithMany()
-                        .HasForeignKey("FriendReqOutgoingParentsId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
