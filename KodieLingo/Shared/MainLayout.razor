@@ -22,13 +22,19 @@
             <button style="width: 100%;" @onclick="IncomingFriendRequests">Incoming friend requests</button>
             if (AddFriendsActive)
             {
-                @foreach (User u in db.Users.Where(
+                @foreach (User u in db.Users.
+                Include(e => e.FriendReqIncoming).
+                
+                Where(
                // Has not already sent/recieved request from user
                 b => !b.FriendReqIncoming.Contains(ClientState.User) 
                 && !b.FriendReqOutgoing.Contains(ClientState.User)
+                && !ClientState.User.FriendReqIncoming.Contains(b)
+               && !ClientState.User.FriendReqOutgoing.Contains(b)
 
                 // Is not already friends
                 && !ClientState.User.Friend.Contains(b)
+                && !b.Friend.Contains(ClientState.User)
 
                 // Is not themself
                 && b.Username != ClientState.User.Username))

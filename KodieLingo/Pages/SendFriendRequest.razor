@@ -25,24 +25,31 @@
 
 	private async Task AddFriend()
 	{ 
-		/* Trying to eliminate a db query by passing friendreqincoming as a paramater. Failed.
-		if(!IncomingRequests.Contains(User))
-		{
-			IncomingRequests.Add(User);
-			await db.SaveChangesAsync();
-		}*/
-		
-		// This works. Try and clear it up.
-		if (!db.Users.Include(b => b.FriendReqIncoming)
-		.First(x => x.Username == ClientState.User.Username)
-		.FriendReqIncoming.Contains(User))
-		{
-			db.Users.Include(b => b.FriendReqIncoming)
-			.First(x => x.Username == ClientState.User.Username)
-			.FriendReqIncoming
-			.Add(User);
+		// This code correctly updates the User data held in server memory,
+		// but does not save the DB data (will forget everything by the next session)
+		//________________________________________________
+		// UPDATE:
+		// I thought the issue could be that the relationships were not included:
+		// Tried updating this in the user definition. Did not work.
 
-			await db.SaveChangesAsync();
-		}
+		User.FriendReqIncoming
+		.Add(ClientState.User);
+
+		await db.SaveChangesAsync();
+
+
+		ClientState.User
+		.FriendReqOutgoing
+		.Add(User);
+
+		await db.SaveChangesAsync();
+
+		/* This throws an error on adding a friend: ""
+		* db.Users.First(b => b.Username == User.Username)
+		* .FriendReqIncoming
+		* .Add(ClientState.User);
+		*
+		*/
+		StateHasChanged();
 	}
 }

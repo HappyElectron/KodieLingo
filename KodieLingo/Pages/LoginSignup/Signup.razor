@@ -99,7 +99,7 @@ else
             };
         await db.Users.AddAsync(newUser);
         await db.SaveChangesAsync();
-        ClientState.User = newUser;
+        ClientState.User = ClientState.GetUser(newUser.Email);
         navManager.NavigateTo("");
     }
 
