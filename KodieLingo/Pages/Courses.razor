@@ -3,14 +3,38 @@
 @using Services;
 @using Microsoft.EntityFrameworkCore;
 @inject ClientStateService ClientState;
+@inject IDbContextFactory<DatabaseContext> DatabaseFactory;
 @page "/courses"
 
 <h3>Courses</h3>
-<button type="button"><h4>Click me</h4></button>
-@for (int i = 0; i < ClientState.User.Course.Count; i++)
+
+@if (ClientState.User != null)
 {
-    <h2>Course</h2>
+
+    @if (ClientState.User.Course.Count != 0)
+    {
+        @foreach (Course c in ClientState.User.Course)
+        {
+            <h1>@c.Name</h1>
+        }
+
+    }
+    <h2>All Courses:</h2>
+    @foreach (Course c in Db.Courses.Where(b => !ClientState.User.Course.Contains(b)))
+    {
+        <button type="button" class="button" @onclick="AddCourse1"><h1>Add Course: @c.Name</h1></button>
+    }
 }
 @code {
-
+    private DatabaseContext? Db { get; set; }
+    protected async override Task OnInitializedAsync()
+    {
+        Db ??= DatabaseFactory.CreateDbContext();
+        
+    }
+    private async Task AddCourse1()
+    {        
+        ClientState.User.Course.Add(Db.Courses.First());
+        await Db.SaveChangesAsync();
+    }
 }

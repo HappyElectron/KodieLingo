@@ -1313,23 +1313,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\henry\\.nuget\\packages\\": {},
+    "C:\\Users\\finnt\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\henry\\OneDrive\\Documents\\GitHub\\KodieLingo\\KodieLingo\\KodieLingo.csproj",
+      "projectUniqueName": "C:\\Users\\finnt\\OneDrive\\Documents\\GitHub\\KodieLingo\\KodieLingo\\KodieLingo.csproj",
       "projectName": "KodieLingo",
-      "projectPath": "C:\\Users\\henry\\OneDrive\\Documents\\GitHub\\KodieLingo\\KodieLingo\\KodieLingo.csproj",
-      "packagesPath": "C:\\Users\\henry\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\henry\\OneDrive\\Documents\\GitHub\\KodieLingo\\KodieLingo\\obj\\",
+      "projectPath": "C:\\Users\\finnt\\OneDrive\\Documents\\GitHub\\KodieLingo\\KodieLingo\\KodieLingo.csproj",
+      "packagesPath": "C:\\Users\\finnt\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\finnt\\OneDrive\\Documents\\GitHub\\KodieLingo\\KodieLingo\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\henry\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\finnt\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -1338,7 +1338,6 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
