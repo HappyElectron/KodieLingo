@@ -153,6 +153,7 @@ namespace KodieLingo.Data
 			modelBuilder.Entity<User>()
 				.HasMany(e => e.FriendReqIncoming)
 				.WithMany(e => e.FriendReqIncomingParents);
+
             modelBuilder.Entity<User>()
 				.HasMany(e => e.FriendReqOutgoing)
 				.WithMany(e => e.FriendReqOutgoingParents);

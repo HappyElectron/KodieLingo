@@ -13,8 +13,6 @@
 	[Parameter]
 	public User User { get; set; }
 
-	//[Parameter]
-	//public ICollection<User> IncomingRequests { get; set; }
 
 	private DatabaseContext? db { get; set; }
 
@@ -24,32 +22,18 @@
 	}
 
 	private async Task AddFriend()
-	{ 
-		// This code correctly updates the User data held in server memory,
-		// but does not save the DB data (will forget everything by the next session)
-		//________________________________________________
-		// UPDATE:
-		// I thought the issue could be that the relationships were not included:
-		// Tried updating this in the user definition. Did not work.
+	{
+		// This gives an error about unique keys in the friends column. Fix.
+		User = db.Users.Include(b => b.FriendReqIncoming).
+		First(b => b.Username == User.Username);
 
-		User.FriendReqIncoming
-		.Add(ClientState.User);
+		User.FriendReqIncoming.Add(ClientState.User);
 
-		await db.SaveChangesAsync();
-
-
-		ClientState.User
+		ClientState.GetUser(ClientState.User.Email)
 		.FriendReqOutgoing
 		.Add(User);
 
 		await db.SaveChangesAsync();
-
-		/* This throws an error on adding a friend: ""
-		* db.Users.First(b => b.Username == User.Username)
-		* .FriendReqIncoming
-		* .Add(ClientState.User);
-		*
-		*/
 		StateHasChanged();
 	}
 }
