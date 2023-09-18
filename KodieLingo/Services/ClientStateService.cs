@@ -27,6 +27,7 @@ namespace KodieLingo.Services
             .Include(b => b.Friend)
             .Include(b => b.FriendReqIncoming)
             .Include(b => b.FriendReqOutgoing)
+			.Include(b => b.Course)
             .FirstOrDefault();
         }
 	}
