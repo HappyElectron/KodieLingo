@@ -65,7 +65,10 @@ else // Login form
     // Check the user details against the DB; if valid, return the user object.
     public async Task LoginUser()
     {
-        if (db.Users.Select(x => x.Email).Contains(Email) && db.Users.Select(x => x.Password).Contains(Password))
+        // The code below has been fixed up so that users no longer log in with ANY valid (disconnected) username and password.
+        // Later, I'm going to try and implement a SignalR system to handle this data, because it'll be better than directly passing User/DB objects.
+        // Good enough for now.
+        if (db.Users.Select(x => x.Email).Contains(Email) && db.Users.Where(x => x.Email == Email).First().Password == Password)
         {
             ClientState.User = ClientState.GetUser(Email);
             navManager.NavigateTo("");
