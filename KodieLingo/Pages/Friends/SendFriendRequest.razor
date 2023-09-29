@@ -23,17 +23,21 @@
 
 	private async Task AddFriend()
 	{
-		// This gives an error about unique keys in the friends column. Fix.
-		User = db.Users.Include(b => b.FriendReqIncoming).
-		First(b => b.Username == User.Username);
+		// This, somehow, avoids throwing an error. It adds the users to the right lists.
+		// However, it does not update the DB with these values. Same problem Finn was having.
+		// Fortunately, I am 1,000,000 times better than Finn, so I'll fix it EZ.
 
-		User.FriendReqIncoming.Add(ClientState.User);
+		//ClientState.User.FriendReqOutgoing.Add(User);
+		//User.FriendReqIncoming.Add(ClientState.User);
+		//await db.SaveChangesAsync();
 
-		ClientState.GetUser(ClientState.User.Email)
-		.FriendReqOutgoing
-		.Add(User);
+		// Throws a unique UserUser.FriendId error
+		//db.Users.First(x => x.Id == ClientState.User.Id).FriendReqOutgoing.Add(User);
+
+
+		db.Users.First(x => x.Id == User.Id).FriendReqIncoming.Add(ClientState.User);
 
 		await db.SaveChangesAsync();
-		StateHasChanged();
 	}
 }
+ 

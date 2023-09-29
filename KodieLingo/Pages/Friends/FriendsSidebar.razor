@@ -1,0 +1,128 @@
+﻿@using Services
+@using Model
+@using Data
+@using Microsoft.EntityFrameworkCore
+@inject ClientStateService ClientState
+@inject NavigationManager navManager
+@inject IDbContextFactory<DatabaseContext> ContextFactory;
+
+<!--
+    Hey guys, in a few spots below I reference existing razor components from script (ie in the AddFriends bit)
+    Change the CSS/layout of the tile in the file found under pages/friends, do not attempt to change the appearance from here.
+    The user each tile represents is passed as a parameter, from the calling component.
+-->
+
+<button style="width: 100%;" @onclick="AllFriends">View All Friends</button>
+<button style="width: 100%;" @onclick="AddAFriend">Add a friend</button>
+<button style="width: 100%;" @onclick="IncomingFriendRequests">Incoming friend requests</button>
+<button style="width: 100%;" @onclick="OutgoingFriendRequests">Outgoing friend requests</button>
+@if (AddFriendsActive)
+{
+    <h3 style="color:white">Add a friend:</h3>
+    @foreach (User u in db.Users.
+        Include(e => e.FriendReqIncoming).
+        Include(e => e.FriendReqOutgoing).
+        Include(e => e.Friend).
+    // ********************************************************************************************************************************************************************************************************************************************************************************************
+    // *********************************************************************************************************************************************************************************************************************************************************************************************
+        Where(
+        // Has not already sent/recieved request from user
+        b => !b.FriendReqIncoming.Contains(ClientState.User)
+        && !b.FriendReqOutgoing.Contains(ClientState.User)
+        && !ClientState.User.FriendReqIncoming.Contains(b)
+        && !ClientState.User.FriendReqOutgoing.Contains(b)
+
+        // Is not already friends
+        && !ClientState.User.Friend.Contains(b)
+        && !b.Friend.Contains(ClientState.User)
+
+        // Is not themself
+        && b.Username != ClientState.User.Username))
+        {
+            <SendFriendRequest User="u" />
+        }
+}
+else if (IncomingRequestsActive)
+{
+    <h3 style="color:white">Incoming friend requests:</h3>
+    <div class="flex-fill">
+        @foreach (User r in ClientState.User.FriendReqIncoming)
+        {
+            <IncomingFriendRequest User="@r" />
+        }
+    </div>
+}
+else if (OutgoingRequestsActive)
+{
+    <h3 style="color:white">Outgoing friend requests:</h3>
+    <div class="flex-fill">
+        @foreach (User r in ClientState.User.FriendReqOutgoing)
+        {
+            <OutgoingFriendRequest User="@r" />
+        }
+    </div>
+}
+else
+{
+    <h2 style="color:white;">Friends:</h2>
+    @foreach (User s in ClientState.User.Friend)
+    {
+        <div class="flex-fill">
+            <button style="width: 100%;" class="btn btn-light" @onclick="() => RedirectToFriend(s.Username)">
+                @s.Username
+            </button>
+        </div>
+    }
+}
+
+
+@code {
+    public DatabaseContext db { get; set; }
+
+    public bool AddFriendsActive { get; set; } = false;
+    public bool IncomingRequestsActive { get; set; } = false;
+    public bool OutgoingRequestsActive { get; set; } = false;
+
+
+
+    protected async override Task OnInitializedAsync()
+    {
+        db ??= ContextFactory.CreateDbContext();
+
+        // Trying to eliminate some db queries: Shits itself.
+        // IncomingRequests = db.Users.Include(b => b.FriendReqIncoming).First(x => x.Username == ClientState.User.Username).FriendReqIncoming;
+    }
+
+    private void RedirectToFriend(string url)
+    {
+        navManager.NavigateTo("/friends/" + url);
+    }
+
+    private void IncomingFriendRequests()
+    {
+        IncomingRequestsActive = !IncomingRequestsActive;
+        OutgoingRequestsActive = false;
+        AddFriendsActive = false;
+    }
+
+    private void OutgoingFriendRequests()
+    {
+        OutgoingRequestsActive = !OutgoingRequestsActive;
+        AddFriendsActive = false;
+        IncomingRequestsActive = false;
+    }
+
+    private void AddAFriend()
+    {
+        AddFriendsActive = !AddFriendsActive;
+        OutgoingRequestsActive = false;
+        IncomingRequestsActive = false;
+    }
+
+    private void AllFriends()
+    {
+        IncomingRequestsActive = false;
+        OutgoingRequestsActive = false;
+        AddFriendsActive = false;
+    }
+}

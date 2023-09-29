@@ -83,3 +83,4 @@ C:\Users\nedfp\OneDrive\Desktop\Ned\Programming\Applied Computing\KodieLingo\Kod
 C:\Users\nedfp\OneDrive\Desktop\Ned\Programming\Applied Computing\KodieLingo\KodieLingo\obj\Debug\net6.0\KodieLingo.pdb
 C:\Users\nedfp\OneDrive\Desktop\Ned\Programming\Applied Computing\KodieLingo\KodieLingo\obj\Debug\net6.0\KodieLingo.genruntimeconfig.cache
 C:\Users\nedfp\OneDrive\Desktop\Ned\Programming\Applied Computing\KodieLingo\KodieLingo\obj\Debug\net6.0\ref\KodieLingo.dll
+C:\Users\nedfp\OneDrive\Desktop\Ned\Programming\Applied Computing\KodieLingo\KodieLingo\obj\Debug\net6.0\scopedcss\Pages\Friends\FriendsSidebar.razor.rz.scp.css

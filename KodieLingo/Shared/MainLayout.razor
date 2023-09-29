@@ -5,8 +5,6 @@
 
 @inject ClientStateService ClientState
 @inject NavigationManager navManager
-@inject IDbContextFactory<DatabaseContext> ContextFactory;
-
 @inherits LayoutComponentBase
 
 <div class="page">
@@ -15,56 +13,9 @@
         <!--
             Friends page special layout
         -->
-        @if (navManager.Uri.Contains("/friends") && !ClientState.OpenNavMenu)
+        @if (navManager.Uri.Contains("/friends") && ClientState.OpenNavMenu == false)
         {
-            <button style="width: 100%;" @onclick="AllFriends">View All Friends</button>
-            <button style="width: 100%;" @onclick="AddAFriend">Add a friend</button>
-            <button style="width: 100%;" @onclick="IncomingFriendRequests">Incoming friend requests</button>
-            if (AddFriendsActive)
-            {
-                @foreach (User u in db.Users.
-                Include(e => e.FriendReqIncoming).
-                
-                Where(
-               // Has not already sent/recieved request from user
-                b => !b.FriendReqIncoming.Contains(ClientState.User) 
-                && !b.FriendReqOutgoing.Contains(ClientState.User)
-                && !ClientState.User.FriendReqIncoming.Contains(b)
-               && !ClientState.User.FriendReqOutgoing.Contains(b)
-
-                // Is not already friends
-                && !ClientState.User.Friend.Contains(b)
-                && !b.Friend.Contains(ClientState.User)
-
-                // Is not themself
-                && b.Username != ClientState.User.Username))
-                {
-                    <KodieLingo.Pages.SendFriendRequest User="u"/>
-                }
-            }
-
-            else if (IncomingRequestsActive)
-            {
-                <div class="flex-fill">
-                @foreach(User r in ClientState.User.FriendReqIncoming)
-                {
-                    // Insert a component for the tile, passing the friend via a parameter
-                    <KodieLingo.Pages.IncomingFriendRequest User="@r"/>
-                }
-                </div>
-            }
-            else
-            {
-                <h2 style="color:white;">Friends:</h2>
-                @foreach (User s in ClientState.User.Friend)
-                {
-                    <div class="flex-fill">
-                        <button style="width: 100%;" class="btn btn-light" @onclick="() => RedirectToFriend(s.Username)">
-                            @s.Username
-                        </button>
-                    </div>
-                }
-            }
+            <KodieLingo.Pages.Friends.FriendsSidebar/>
         }
     </div>
     <main>

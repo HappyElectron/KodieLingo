@@ -1,0 +1,26 @@
+﻿@using Model;
+@using Services
+@using Data;
+@using Microsoft.EntityFrameworkCore;
+
+@inject ClientStateService ClientState
+@inject IDbContextFactory<DatabaseContext> ContextFactory;
+
+<h4 style="color:white; align-content:center;">@User.Username</h4>
+<button style="width:100%;" @onclick="CancelRequest">Cancel</button>
+
+@code {
+	[Parameter]
+	public User? User { get; set; }
+
+	private DatabaseContext? db { get; set; }
+
+	protected override async Task OnInitializedAsync()
+	{
+		db ??= await ContextFactory.CreateDbContextAsync();
+	}
+
+	private async Task CancelRequest()
+	{
+	}
+}

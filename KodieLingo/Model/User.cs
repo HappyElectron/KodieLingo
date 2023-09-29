@@ -35,10 +35,11 @@
         public ICollection<User> Friend { get; set;} = new List<User>();
 		public ICollection<User> FriendParents { get; set; } = new List<User>();
 
-		// Friend requests: many requests to many users. 
+		// Friend requests incoming is a list of users who have sent requests to the current user.
 		public ICollection<User> FriendReqIncoming { get; set; } = new List<User>();
 		public ICollection<User> FriendReqIncomingParents { get; set; } = new List<User>();
 
+        // Friend requests outgoing is a list of users whom the current user has sent requests to.
         public ICollection<User> FriendReqOutgoing { get; set; } = new List<User>();
         public ICollection<User> FriendReqOutgoingParents { get; set; } = new List<User>();
     }

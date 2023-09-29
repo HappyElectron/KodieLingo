@@ -33,6 +33,7 @@ namespace KodieLingo.Data
         protected override void OnConfiguring(DbContextOptionsBuilder options)
         {
             options.UseSqlite(Configuration.GetConnectionString("DB"));
+			options.EnableSensitiveDataLogging();
         }
 
         // When creating Entity Framework db, seed with a base user.
