@@ -105,13 +105,13 @@ body[b-yr3p6iy1k1] {
 }
 
 h1[b-yr3p6iy1k1] {
-    color: #3195a7;
+    color: #00c32e;
     font-size: 9rem;
     font-family: "Calibri";
 }
 
 button[b-yr3p6iy1k1] {
-    background-color: #236a9f;
+    background-color: #00c32e;
     border: none;
     border-radius: 40px;
     color: white;
@@ -124,7 +124,7 @@ button[b-yr3p6iy1k1] {
     cursor: pointer;
 }
     button:hover[b-yr3p6iy1k1] {
-        background-color: #3e8e41
+        background-color: #00c32e;
     }
 /* _content/KodieLingo/Pages/LoginSignup/Signup.razor.rz.scp.css */
 .centered-text[b-j39121hdyz] {
