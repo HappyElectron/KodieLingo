@@ -13,8 +13,9 @@
 	[Parameter]
 	public User User { get; set; }
 
-
-	private DatabaseContext? db { get; set; }
+	// Passing as a parameter works when the table is empty, then shits itself on tertiary updates.
+	// [Parameter]
+	public DatabaseContext? db { get; set; }
 
 	protected override async Task OnInitializedAsync()
 	{
@@ -23,21 +24,42 @@
 
 	private async Task AddFriend()
 	{
-		// This, somehow, avoids throwing an error. It adds the users to the right lists.
-		// However, it does not update the DB with these values. Same problem Finn was having.
-		// Fortunately, I am 1,000,000 times better than Finn, so I'll fix it EZ.
+		/* Relationship updating issues (Resolved):
+			* I ran into a similar problem across a few different components. 
+			* Worked on the issue primarily here, will not comment in other places.
+			* 
+			* Error log 1:
+			* Having trouble updating user relationships here. 
+			* "Unique Key" errors, across seemingly unrelated tables.
+			* Will get back to this later.
+			* 
+			* Error log 2:
+			* This, somehow, avoids throwing an error. It adds the users to the right lists.
+			* However, it does not update the DB with these values. Same problem Finn was having.
+			* Fortunately, I am 1,000,000 times better than Finn, so I'll fix it EZ.
+			* 
+			* 
+			* Solution:
+			* I figured it out (see final line of log 2). EF is cool, I'm just bad at it.
+			* The problem related to DBContext instances not tracking other instances' changed entities.
+			* The fix will work across all other parts of the solution, too, so I'll get to that next push.
+			* I think i'll be able to whip right through the DB access stuff now.
+			*
+			*
+			* Note:
+			* The user entity needs to be reloaded (in the ClientState service) because it doesn't know 
+			* automatically that the DB has been updated. I may need to improve this behaviour, if I get time.
+		*/
 
-		//ClientState.User.FriendReqOutgoing.Add(User);
-		//User.FriendReqIncoming.Add(ClientState.User);
-		//await db.SaveChangesAsync();
+		User mainUser = db.Users.Include(x => x.FriendReqOutgoing).First(x => x.Id == ClientState.User.Id);
+		User targetUser = db.Users.Include(x => x.FriendReqIncoming).First(x => x.Id == User.Id);
 
-		// Throws a unique UserUser.FriendId error
-		//db.Users.First(x => x.Id == ClientState.User.Id).FriendReqOutgoing.Add(User);
-
-
-		db.Users.First(x => x.Id == User.Id).FriendReqIncoming.Add(ClientState.User);
-
+		mainUser.FriendReqOutgoing.Add(targetUser);
+		targetUser.FriendReqIncoming.Add(mainUser);
 		await db.SaveChangesAsync();
+
+		ClientState.User = ClientState.GetUser(mainUser.Email);
+
+		StateHasChanged();
 	}
 }
- 

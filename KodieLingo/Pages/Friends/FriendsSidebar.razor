@@ -39,7 +39,8 @@
         // Is not themself
         && b.Username != ClientState.User.Username))
         {
-            <SendFriendRequest User="u" />
+            <SendFriendRequest 
+                User="@u"/>
         }
 }
 else if (IncomingRequestsActive)
