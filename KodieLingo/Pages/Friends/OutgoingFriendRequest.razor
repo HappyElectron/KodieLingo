@@ -5,13 +5,14 @@
 
 @inject ClientStateService ClientState
 @inject IDbContextFactory<DatabaseContext> ContextFactory;
+@inject NavigationManager NavManager;
 
 <h4 style="color:white; align-content:center;">@User.Username</h4>
 <button style="width:100%;" @onclick="CancelRequest">Cancel</button>
 
 @code {
 	[Parameter]
-	public User? User { get; set; }
+	public User User { get; set; }
 
 	private DatabaseContext? db { get; set; }
 
@@ -22,6 +23,15 @@
 
 	private async Task CancelRequest()
 	{
+		User mainUser = db.Users.Include(x => x.FriendReqOutgoing).First(x => x.Id == ClientState.User.Id);
+		User targetUser = db.Users.Include(x => x.FriendReqIncoming).First(x => x.Id == User.Id);
 
+		mainUser.FriendReqOutgoing.Remove(targetUser);
+		targetUser.FriendReqIncoming.Remove(mainUser);
+		await db.SaveChangesAsync();
+
+		ClientState.User = ClientState.GetUser(mainUser.Email);
+
+		StateHasChanged();
 	}
 }

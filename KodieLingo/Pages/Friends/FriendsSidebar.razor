@@ -23,8 +23,8 @@
         Include(e => e.FriendReqIncoming).
         Include(e => e.FriendReqOutgoing).
         Include(e => e.Friend).
-    // ********************************************************************************************************************************************************************************************************************************************************************************************
-    // *********************************************************************************************************************************************************************************************************************************************************************************************
+
+
         Where(
         // Has not already sent/recieved request from user
         b => !b.FriendReqIncoming.Contains(ClientState.User)
@@ -47,7 +47,17 @@ else if (IncomingRequestsActive)
 {
     <h3 style="color:white">Incoming friend requests:</h3>
     <div class="flex-fill">
-        @foreach (User r in ClientState.User.FriendReqIncoming)
+        @foreach (User r in db.Users.
+       Include(e => e.FriendReqIncoming).
+       Include(e => e.FriendReqOutgoing).
+       Include(e => e.Friend).
+
+       Where(
+       // Has sent a friend request to the user
+       b => b.FriendReqOutgoing.Contains(ClientState.User)
+
+       // Is not themself
+       && b.Username != ClientState.User.Username))
         {
             <IncomingFriendRequest User="@r" />
         }
@@ -57,9 +67,19 @@ else if (OutgoingRequestsActive)
 {
     <h3 style="color:white">Outgoing friend requests:</h3>
     <div class="flex-fill">
-        @foreach (User r in ClientState.User.FriendReqOutgoing)
+        @foreach (User r in db.Users.
+       Include(e => e.FriendReqIncoming).
+       Include(e => e.FriendReqOutgoing).
+       Include(e => e.Friend).
+
+       Where(
+       // Has sent a friend request to the user
+       b => b.FriendReqIncoming.Contains(ClientState.User)
+
+       // Is not themself
+       && b.Username != ClientState.User.Username))
         {
-            <OutgoingFriendRequest User="@r" />
+            <OutgoingFriendRequest User="@r"/>
         }
     </div>
 }
@@ -84,14 +104,9 @@ else
     public bool IncomingRequestsActive { get; set; } = false;
     public bool OutgoingRequestsActive { get; set; } = false;
 
-
-
     protected async override Task OnInitializedAsync()
     {
         db ??= ContextFactory.CreateDbContext();
-
-        // Trying to eliminate some db queries: Shits itself.
-        // IncomingRequests = db.Users.Include(b => b.FriendReqIncoming).First(x => x.Username == ClientState.User.Username).FriendReqIncoming;
     }
 
     private void RedirectToFriend(string url)

@@ -23,12 +23,12 @@ namespace KodieLingo.Services
 		}
 		public User GetUser(string email)
 		{
-			return db.Users.Where(x => x.Email == email)
-            .Include(b => b.Friend)
-            .Include(b => b.FriendReqIncoming)
-            .Include(b => b.FriendReqOutgoing)
+			return db.Users
+			.Include(b => b.Friend)
+			.Include(b => b.FriendReqIncoming)
+			.Include(b => b.FriendReqOutgoing)
 			.Include(b => b.Course)
-            .FirstOrDefault();
+			.First(x => x.Email == email);
         }
 	}
 }
