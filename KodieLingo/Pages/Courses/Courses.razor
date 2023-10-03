@@ -10,6 +10,7 @@
 
 @if (ClientState.User != null)
 {
+    <SearchBar/>
 
     @if (ClientState.User.Course.Count != 0)
     {
@@ -29,12 +30,10 @@
                 </div>
             </div>
         }
-
     }
-    @foreach (Course c in Db.Courses.Where(b => !ClientState.User.Course.Contains(b)))
-    {
-        <button type="button" class="button" @onclick="AddCourse1"><h1>Add Course: @c.Name</h1></button>
-    }
+    <h2>
+        Add a Course!
+    </h2>
 }
 @code {
     private DatabaseContext? Db { get; set; }

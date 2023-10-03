@@ -18,6 +18,7 @@
     <button class="custom-button" @onclick="OutgoingFriendRequests">Outgoing friend requests</button>
 </div>
 <style>
+    /* Button for sidebar display selector */
     .custom-button {
         width: 100%;
         background-color: #8900ff;
@@ -40,19 +41,38 @@
         margin-top: 10px; /* Add margin to the top to create space between the first button and the navigation bar */
     }
 
-    .custom-button {
+    /* A button within any of the overlay menus: */
+    .friend-request-options-button {
         width: 100%;
-        background-color: #8900ff;
-        color: white;
-        border: none;
-        border-radius: 25px;
-        padding: 10px 20px;
+        border: 2px solid white;
+        border-radius: 10px; /* Make the button round */
+        padding: 5px 10px; /* Add padding inside the button */
         cursor: pointer;
+        background-color: white; /* Default background color */
+        color: black; /* Text color */
         transition: background-color 0.3s ease; /* Smooth transition for background color */
     }
 
-        .custom-button:hover {
-            background-color: #6d00ff; /* Darker color on hover */
+        /* Change button background color on hover */
+        .friend-request-options-button:hover {
+            background-color: #d1d1d1; /* Darker color on hover */
+        }
+
+    /* When choosing which friend to display on the friends page */
+    .friend-select-button {
+        width: 100%;
+        border: none;
+        border-radius: 10px; /* Make the button round */
+        padding: 5px 10px; /* Add padding inside the button */
+        cursor: pointer;
+        background-color: white; /* Default background color */
+        color: black; /* Text color */
+        transition: background-color 0.3s ease; /* Smooth transition for background color */
+    }
+
+        /* Change button background color on hover */
+        .friend-select-button:hover {
+            background-color: #d1d1d1; /* Darker color on hover */
         }
 </style>
 
@@ -121,7 +141,8 @@ else
                                             || ClientState.User.Friend.Contains(x)))
     {
         <div class="flex-fill">
-            <button style="width: 100%;" class="btn btn-light" @onclick="() => RedirectToFriend(s.Username)">
+            <!--Edit the margin here.-->
+            <button class="friend-select-button" @onclick="() => RedirectToFriend(s.Username)">
                 @s.Username
             </button>
         </div>

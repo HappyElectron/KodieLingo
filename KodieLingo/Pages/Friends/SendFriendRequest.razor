@@ -13,8 +13,6 @@
 	[Parameter]
 	public User User { get; set; }
 
-	// Passing as a parameter works when the table is empty, then shits itself on tertiary updates.
-	// [Parameter]
 	public DatabaseContext? db { get; set; }
 
 	protected override async Task OnInitializedAsync()
@@ -41,7 +39,8 @@
 			* 
 			* Solution:
 			* I figured it out (see final line of log 2). EF is cool, I'm just bad at it.
-			* The problem related to DBContext instances not tracking other instances' changed entities.
+			* The problem related to DBContext instances not tracking other instances' changed entities,
+			* because I was passing the context instance instead of creating anew.
 			* The fix will work across all other parts of the solution, too, so I'll get to that next push.
 			* I think i'll be able to whip right through the DB access stuff now.
 			*
