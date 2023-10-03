@@ -14,7 +14,8 @@
 <h3>FriendsPage</h3>
 @if (ClientState.User == null)
 { }
-else if (ClientState.User.Friend.Select(x => x.Username).Contains(FriendUsername))
+else if (db.Users.Where(x => x.Friend.Contains(ClientState.User) 
+    || ClientState.User.Friend.Contains(x)).Contains(Friend))
 {
     <h1> @Friend.Username; </h1>
     <h2>KodieBukz: @Friend.LifetimePoints</h2>

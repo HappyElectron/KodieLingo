@@ -67,17 +67,7 @@ else if (OutgoingRequestsActive)
 {
     <h3 style="color:white">Outgoing friend requests:</h3>
     <div class="flex-fill">
-        @foreach (User r in db.Users.
-       Include(e => e.FriendReqIncoming).
-       Include(e => e.FriendReqOutgoing).
-       Include(e => e.Friend).
-
-       Where(
-       // Has sent a friend request to the user
-       b => b.FriendReqIncoming.Contains(ClientState.User)
-
-       // Is not themself
-       && b.Username != ClientState.User.Username))
+        @foreach (User r in FriendReqOutgoing)
         {
             <OutgoingFriendRequest User="@r"/>
         }
@@ -86,7 +76,8 @@ else if (OutgoingRequestsActive)
 else
 {
     <h2 style="color:white;">Friends:</h2>
-    @foreach (User s in ClientState.User.Friend)
+    @foreach (User s in db.Users.Where(x => x.Friend.Contains(ClientState.User) 
+                                            || ClientState.User.Friend.Contains(x)))
     {
         <div class="flex-fill">
             <button style="width: 100%;" class="btn btn-light" @onclick="() => RedirectToFriend(s.Username)">
@@ -103,6 +94,25 @@ else
     public bool AddFriendsActive { get; set; } = false;
     public bool IncomingRequestsActive { get; set; } = false;
     public bool OutgoingRequestsActive { get; set; } = false;
+
+
+    public ICollection<User> FriendReqOutgoing {
+        get
+        {
+            return
+            db.Users.
+       Include(e => e.FriendReqIncoming).
+       Include(e => e.FriendReqOutgoing).
+       Include(e => e.Friend).
+
+       Where(
+       // Has sent a friend request to the user
+       b => b.FriendReqIncoming.Contains(ClientState.User)
+
+       // Is not themself
+       && b.Username != ClientState.User.Username).ToList();
+        }
+    }
 
     protected async override Task OnInitializedAsync()
     {
