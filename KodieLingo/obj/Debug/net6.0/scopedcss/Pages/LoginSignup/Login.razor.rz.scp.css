@@ -47,6 +47,9 @@ h1[b-3ys1h1tmwn] {
     cursor: pointer;
     transform: translate(-50%, 100%);
 }
+    .login-button:hover[b-3ys1h1tmwn] {
+    background-color: #3e8e41;
+    }
 .back-button[b-3ys1h1tmwn] {
     background-color: #00c32e;
     border: none;
@@ -61,3 +64,6 @@ h1[b-3ys1h1tmwn] {
     cursor: pointer;
     transform: translate(10%, 20%);
 }
+    .back-button:hover[b-3ys1h1tmwn] {
+    background-color: #3e8e41;
+    }
