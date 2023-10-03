@@ -71,6 +71,9 @@ h1[b-3ys1h1tmwn] {
     cursor: pointer;
     transform: translate(-50%, 100%);
 }
+    .login-button:hover[b-3ys1h1tmwn] {
+    background-color: #3e8e41;
+    }
 .back-button[b-3ys1h1tmwn] {
     background-color: #00c32e;
     border: none;
@@ -85,6 +88,9 @@ h1[b-3ys1h1tmwn] {
     cursor: pointer;
     transform: translate(10%, 20%);
 }
+    .back-button:hover[b-3ys1h1tmwn] {
+    background-color: #3e8e41;
+    }
 /* _content/KodieLingo/Pages/LoginSignup/LoginSignup.razor.rz.scp.css */
 body[b-yr3p6iy1k1] {
 }
@@ -162,6 +168,9 @@ h1[b-j39121hdyz] {
     cursor: pointer;
     transform: translate(-50%, 100%);
 }
+    .signup-button:hover[b-j39121hdyz] {
+    background-color: #3e8e41;
+    }
 .back-button[b-j39121hdyz] {
     background-color: #00c32e;
     border: none;
@@ -176,6 +185,9 @@ h1[b-j39121hdyz] {
     cursor: pointer;
     transform: translate(10%, 20%);
 }
+    .back-button:hover[b-j39121hdyz] {
+        background-color: #3e8e41;
+    }
 .email-box[b-j39121hdyz] {
     margin: 0;
     position: absolute;

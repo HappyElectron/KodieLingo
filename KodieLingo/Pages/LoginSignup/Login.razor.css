@@ -47,6 +47,9 @@ h1 {
     cursor: pointer;
     transform: translate(-50%, 100%);
 }
+    .login-button:hover {
+    background-color: #3e8e41;
+    }
 .back-button {
     background-color: #00c32e;
     border: none;
@@ -61,3 +64,6 @@ h1 {
     cursor: pointer;
     transform: translate(10%, 20%);
 }
+    .back-button:hover {
+    background-color: #3e8e41;
+    }
