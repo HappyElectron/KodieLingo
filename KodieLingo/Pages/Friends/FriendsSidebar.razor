@@ -13,9 +13,9 @@
 -->
 <div class="button-container">
     <button class="custom-button" @onclick="AllFriends">View All Friends</button>
-    <button class="custom-button" @onclick="AddAFriend">Add a friend</button>
-    <button class="custom-button" @onclick="IncomingFriendRequests">Incoming friend requests</button>
-    <button class="custom-button" @onclick="OutgoingFriendRequests">Outgoing friend requests</button>
+    <button class="custom-button" @onclick="AddAFriend">Add a Friend</button>
+    <button class="custom-button" @onclick="IncomingFriendRequests">Incoming Friend Requests</button>
+    <button class="custom-button" @onclick="OutgoingFriendRequests">Outgoing Friend Requests</button>
 </div>
 <style>
     /* Button for sidebar display selector */
@@ -31,55 +31,35 @@
     }
 
         .custom-button:hover {
-            background-color: #6d00ff; /* Darker color on hover */
+            background-color: #6300ff; /* Darker color on hover */
         }
 
     .button-container {
         display: flex;
         flex-direction: column;
-        gap: 10px; /* Adjust the gap value to set the desired space between buttons */
-        margin-top: 10px; /* Add margin to the top to create space between the first button and the navigation bar */
+        gap: 10px; /* Adjust the gap value to set the space between buttons */
+        margin-top: 10px; /* Add margin to the top to create space between the first button and the nav bar */
+        justify-content: center;
     }
 
-    /* A button within any of the overlay menus: */
-    .friend-request-options-button {
-        width: 100%;
-        border: 2px solid white;
-        border-radius: 10px; /* Make the button round */
-        padding: 5px 10px; /* Add padding inside the button */
-        cursor: pointer;
-        background-color: white; /* Default background color */
-        color: black; /* Text color */
-        transition: background-color 0.3s ease; /* Smooth transition for background color */
+    .small-button {
+        background-color: white;
+        color: black;
+        border: 1px solid #00ff9c;
+        border-radius: 15px;
+        transition: background-color 0.3s ease, color 0.3s ease;
     }
 
-        /* Change button background color on hover */
-        .friend-request-options-button:hover {
-            background-color: #d1d1d1; /* Darker color on hover */
-        }
-
-    /* When choosing which friend to display on the friends page */
-    .friend-select-button {
-        width: 100%;
-        border: none;
-        border-radius: 10px; /* Make the button round */
-        padding: 5px 10px; /* Add padding inside the button */
-        cursor: pointer;
-        background-color: white; /* Default background color */
-        color: black; /* Text color */
-        transition: background-color 0.3s ease; /* Smooth transition for background color */
-    }
-
-        /* Change button background color on hover */
-        .friend-select-button:hover {
-            background-color: #d1d1d1; /* Darker color on hover */
+        .small-button:hover {
+            background-color: #00ff9c;
+            color: black; /* Change text color to black on hover */
         }
 </style>
 
 
 @if (AddFriendsActive)
 {
-    <h3 style="color:white">Add a friend:</h3>
+    <h3 style="color:white">Add a Friend:</h3>
     @foreach (User u in db.Users.
         Include(e => e.FriendReqIncoming).
         Include(e => e.FriendReqOutgoing).
@@ -106,7 +86,7 @@
 }
 else if (IncomingRequestsActive)
 {
-    <h3 style="color:white">Incoming friend requests:</h3>
+    <h3 style="color:white">Incoming Friend Requests:</h3>
     <div class="flex-fill">
         @foreach (User r in db.Users.
        Include(e => e.FriendReqIncoming).
@@ -126,7 +106,7 @@ else if (IncomingRequestsActive)
 }
 else if (OutgoingRequestsActive)
 {
-    <h3 style="color:white">Outgoing friend requests:</h3>
+    <h3 style="color:white">Outgoing Friend Requests:</h3>
     <div class="flex-fill">
         @foreach (User r in FriendReqOutgoing)
         {
@@ -139,13 +119,11 @@ else
     <h2 style="color:white;">Friends:</h2>
     @foreach (User s in db.Users.Where(x => x.Friend.Contains(ClientState.User) 
                                             || ClientState.User.Friend.Contains(x)))
-    {
-        <div class="flex-fill">
-            <!--Edit the margin here.-->
-            <button class="friend-select-button" @onclick="() => RedirectToFriend(s.Username)">
+    {<div class="button-container">
+            <button class="small-button" @onclick="() => RedirectToFriend(s.Username)">
                 @s.Username
             </button>
-        </div>
+     </div>
     }
 }
 

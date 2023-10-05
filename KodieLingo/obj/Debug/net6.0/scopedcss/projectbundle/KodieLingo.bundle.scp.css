@@ -1,3 +1,16 @@
+/* _content/KodieLingo/Pages/Courses/CourseSelectElement.razor.rz.scp.css */
+.course-continue[b-54p96czcrl] {
+    border: solid;
+    border-radius: 20px;
+    padding: 20px;
+    color: palegreen
+}
+
+.course-new[b-54p96czcrl] {
+    border: solid;
+    border-radius: 20px;
+    padding: 20px;
+}
 /* _content/KodieLingo/Pages/Friends/FriendsSidebar.razor.rz.scp.css */
 /* _content/KodieLingo/Pages/Leaderboard.razor.rz.scp.css */
 body[b-k6qhx324m7] {

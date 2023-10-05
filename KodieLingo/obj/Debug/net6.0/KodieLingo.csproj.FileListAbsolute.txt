@@ -170,3 +170,4 @@ C:\Users\henry\OneDrive\Documents\GitHub\KodieLingo\KodieLingo\obj\Debug\net6.0\
 C:\Users\henry\OneDrive\Documents\GitHub\KodieLingo\KodieLingo\obj\Debug\net6.0\KodieLingo.pdb
 C:\Users\henry\OneDrive\Documents\GitHub\KodieLingo\KodieLingo\obj\Debug\net6.0\KodieLingo.genruntimeconfig.cache
 C:\Users\henry\OneDrive\Documents\GitHub\KodieLingo\KodieLingo\obj\Debug\net6.0\ref\KodieLingo.dll
+C:\Users\henry\OneDrive\Documents\GitHub\KodieLingo\KodieLingo\obj\Debug\net6.0\scopedcss\Pages\Courses\CourseSelectElement.razor.rz.scp.css
