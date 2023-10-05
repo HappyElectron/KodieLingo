@@ -1,0 +1,29 @@
+﻿@using Model;
+@using Data;
+@using Services;
+@using Microsoft.EntityFrameworkCore;
+@inject ClientStateService ClientState;
+@inject IDbContextFactory<DatabaseContext> DatabaseFactory;
+
+<div class="@BoxStyle">
+		<div name="Name" style="border: solid; border-radius:20px;">
+			<h2 style="padding:10px;">Course: @Course.Name</h2>
+		</div>
+		<div name="left" style="float: left; padding:10px;">
+			<button><h3>Guidebook</h3></button>
+			@if (StartedCourse)
+			{
+				<button><h3>Continue</h3></button>
+			}
+			<button><h3>Continue</h3></button>
+		</div>
+</div>
+
+
+@code {
+	[Parameter]
+	public Course Course { get; set; }
+	public bool StartedCourse => ClientState.User.Course.Contains(Course);
+	public string BoxStyle => StartedCourse ? "course-continue" : "course-new";
+
+}
