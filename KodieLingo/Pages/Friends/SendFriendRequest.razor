@@ -6,8 +6,36 @@
 @inject ClientStateService ClientState
 @inject IDbContextFactory<DatabaseContext> ContextFactory;
 
-<h4 style="color:white; align-content:center;">@User.Username</h4>
-<button style="width: 100%;" @onclick="AddFriend">Send friend request</button>
+<h4 style="color:white;">@User.Username</h4>
+<div class="button-container">
+<button class="small-button" @onclick="AddFriend">Send Friend Request</button>
+</div>
+<style>
+    /* Button for sidebar display selector */
+    .button-container {
+        display: flex;
+        flex-direction: column;
+        gap: 10px; /* Adjust the gap value to set the space between buttons */
+        margin-top: 10px; /* Add margin to the top to create space between the first button and the nav bar */
+        justify-content: center;
+    }
+
+    .small-button {
+        width: auto; /* Allow the button to adjust its width based on content */
+        background-color: white; /*Possible to change color later based on user preference (Dark Mode)*/
+        color: black;
+        border: 1px solid #00ff9c;
+        border-radius: 15px;
+        padding: 5px 15px;
+        cursor: pointer;
+        transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+        .small-button:hover {
+            background-color: #00ff9c;
+            color: black;
+        }
+</style>
 
 @code {
 	[Parameter]
