@@ -35,6 +35,13 @@
         <button @onclick="InvalidUserButton">sowwy</button> <!--Escape characters form string >uwu<-->
     </div>
 }
+else if(validUsernamePassword == false)
+{
+    <div class="centered-text">
+        <p>Username or Password are invalid or null</p>
+        <button @onclick="InvalidUserButton">sowwy</button> <!--Escape characters form string >uwu<-->
+    </div>
+}
 else
 {
     <div class="row">
@@ -63,6 +70,7 @@ else
     string email;
     string username;
     string password;
+    bool validUsernamePassword = true;
     private bool EmailInUse { get; set; } = false;
     private bool UsernameInUse { get; set; } = false;
 
@@ -77,18 +85,25 @@ else
     // Check the user details against the DB; if valid, return the user object.
     public async Task SignupUser()
     {
-        // If username and email do not already exist in the DB, tell them to do better
-        if (db.Users.Select(x => x.Username).Contains(username))
+        if (username != null && username.Contains(' ') ||username != null && username.Contains(' ') || password != null && password.Contains(' '))
         {
-            UsernameInUse = true;
+            validUsernamePassword = false;
             return;
         }
-        if (db.Users.Select(x => x.Email).Contains(email))
+        else
         {
-            EmailInUse = true;
-            return;
+            // If username and email do not already exist in the DB, tell them to do better
+            if (db.Users.Select(x => x.Username).Contains(username))
+            {
+                UsernameInUse = true;
+                return;
+            }
+            if (db.Users.Select(x => x.Email).Contains(email))
+            {
+                EmailInUse = true;
+                return;
+            }
         }
-
         // Add the new user to the db, and set the client state
         // ID will auto increment, everything else is either dynamic or allocated a default.
         User newUser = new User()
