@@ -1,10 +1,7 @@
 # KodieLingo
 
-## Here is the readme
-### This file is in markup
+## A programming language learning web application.
 
-Please don't fuck with the file system
+Built on Microsoft's blazor server, with SignalR communications, the backend uses a vanilla SQLite database and entity framework communications.
 
-I will set things up this weekend.
-
-- Ned
+* Any resemblance to existing platforms is entirely coincidental.
