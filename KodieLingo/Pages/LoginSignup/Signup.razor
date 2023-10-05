@@ -44,6 +44,12 @@
                 <button @onclick="InvalidUserButton"><p class="centered-button">Invalid Password</p></button>
             </div>
         }
+        @if (validEmail == false)
+        {
+            <div class="centered-text">
+                <button @onclick="InvalidUserButton"><p class="centered-button">Invalid Email</p></button>
+            </div>
+        }
         <div class="row">
             <div class="col-8">
                 <input id="Email" name="Email" type="text" placeholder="Enter Email" class="email-box" @bind="@email">
@@ -92,6 +98,7 @@ else
     string password;
     bool validUsername = true;
     bool validPassword = true;
+    bool validEmail = true;
     private bool EmailInUse { get; set; } = false;
     private bool UsernameInUse { get; set; } = false;
 
@@ -106,15 +113,28 @@ else
     // Check the user details against the DB; if valid, return the user object.
     public async Task SignupUser()
     {
-        if (username != null && username.Contains(' ') ||username != null && username.Contains('\\'))
+        if (username == null || username != null && username.Contains(' ') ||username != null && username.Contains('\\'))
         {
             validUsername = false;
             return;
         }
-        else if (password != null && password.Contains(' ') || password != null && password.Contains('\\'))
+        else if (password == null || password != null && password.Contains(' ') || password != null && password.Contains('\\'))
         {
             validPassword = false;
             return;
+        }
+        else if (email == null || email != null && email.Contains(' ') || email != null && !email.Contains("@"))
+        {
+            validEmail = false;
+            return;
+        }
+        if(email != null)
+        {
+            if (!email.Contains(".com") && !email.Contains(".co") && !email.Contains(".gov") && !email.Contains(".edu"))
+            {
+                validEmail = false;
+                return;
+            }
         }
         else
         {
@@ -147,6 +167,7 @@ else
     // Button that appears when user is invalid; just a state toggle.
     public void InvalidUserButton()
     {
+        validEmail = true;
         validUsername = true;
         validPassword = true;
         EmailInUse = false;
