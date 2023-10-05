@@ -1,7 +1,77 @@
-﻿@page "/profile"
+﻿@using Model;
+@using Data;
+@using Services;
+@using Microsoft.EntityFrameworkCore;
+@inject ClientStateService ClientState;
+@inject IDbContextFactory<DatabaseContext> DatabaseFactory;
 
-<h3>Profile</h3>
+@page "/profile"
+
+<h3>@ClientState.User.Username's Profile</h3>
+@if (ClientState.User.AllowFriendRequests == true)
+{
+    <button @onclick="dissallowFriendRequests"><p>Allow Friend Requests: True</p></button>
+}
+@if(ClientState.User.AllowFriendRequests == false)
+{
+    <button @onclick="allowFriendRequests"><p>Allow Friend Requests: False</p></button>
+}
+<h2>User Details:</h2>
+<p>Email: @email</p>
+<p>Username: @username</p>
+@if (protectPassword)
+{
+    protectedPassword = "";
+    for (int i = 0; i < password.Length; i++)
+    {
+        protectedPassword += '*';
+    }
+        <p>Password: @protectedPassword</p>
+}
+else
+{
+        <p>Password: @password</p>
+}
+<button @onclick="protectPasswordChange">Show Password?</button>
+<h2>Statistics:</h2>
+<p>Lifetime Points: @ClientState.User.LifetimePoints</p>
+<p>Weekly Points: @ClientState.User.WeeklyPoints</p>
+<p>Current Streak: @ClientState.User.Streak</p>
+<p>Longetst Streak: @ClientState.User.LongestStreak</p>
+<p>Kodie Bukz: @ClientState.User.KodieBukz</p>
 
 @code {
+    User currentUser => ClientState.User;
+    private string password => currentUser.Password;
+    private string username => currentUser.Username;
+    private string email => currentUser.Email;
+    string protectedPassword = "";
+    bool protectPassword = true;
+    async Task dissallowFriendRequests()
+    {
+        currentUser.AllowFriendRequests = false;
+        db.SaveChangesAsync();
+    }
+    async Task allowFriendRequests()
+    {
+        currentUser.AllowFriendRequests = true;
+        db.SaveChangesAsync();
+    }
+    void protectPasswordChange()
+    {
+        if(protectPassword == true)
+        {
+            protectPassword = false;
+        }
+        else
+        {
+            protectPassword = true;
+        }
+    }
 
+    private DatabaseContext? db { get; set; }
+    protected async override Task OnInitializedAsync()
+    {
+        db ??= DatabaseFactory.CreateDbContext();
+    }
 }
