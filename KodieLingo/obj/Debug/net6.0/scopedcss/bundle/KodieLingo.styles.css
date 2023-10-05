@@ -1,3 +1,16 @@
+/* _content/KodieLingo/Pages/Courses/CourseSelectElement.razor.rz.scp.css */
+.course-continue[b-54p96czcrl] {
+    border: solid;
+    border-radius: 20px;
+    padding: 20px;
+    color: palegreen
+}
+
+.course-new[b-54p96czcrl] {
+    border: solid;
+    border-radius: 20px;
+    padding: 20px;
+}
 /* _content/KodieLingo/Pages/Friends/FriendsSidebar.razor.rz.scp.css */
 /* _content/KodieLingo/Pages/Leaderboard.razor.rz.scp.css */
 body[b-k6qhx324m7] {
@@ -131,9 +144,31 @@ button[b-yr3p6iy1k1] {
 /* _content/KodieLingo/Pages/LoginSignup/Signup.razor.rz.scp.css */
 .centered-text[b-j39121hdyz] {
     text-align: center;
-    display: flex;
+    display: inline-block;
     justify-content: center;
+    padding:20px,30px;
+    border:none;
 }
+.centered-button[b-j39121hdyz] {
+    background-color: #00c32e;
+    top: 50%;
+    left: 50%;
+    position: absolute;
+    border: none;
+    border-radius: 40px;
+    color: white;
+    padding: 20px 30px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 40px;
+    margin: 4px 2px;
+    cursor: pointer;
+    transform: translate(-50%, 100%);
+}
+    .centered-button:hover[b-j39121hdyz] {
+        background-color: #3e8e41;
+    }
 .kodielingo-text[b-j39121hdyz] {
     margin: 0;
     position: absolute;
@@ -176,7 +211,7 @@ h1[b-j39121hdyz] {
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 20px;
+    font-size: 25px;
     margin: 4px 2px;
     cursor: pointer;
     transform: translate(10%, 20%);

@@ -17,29 +17,49 @@
             <h1>KodieLingo</h1>
         </div>
         <div>
-            <button class="back-button" @onclick="Back">back</button>
+            <button class="back-button" @onclick="Back">Back</button>
         </div>
     </body>
     </html>
-@if (EmailInUse || UsernameInUse) // If user cannot be found
+@if (EmailInUse || UsernameInUse || validUsername == false || validPassword == false) // If user cannot be found
 {
     <div class="centered-text">
         @if(EmailInUse)
         {
-            <p>Email in use</p>
+            <button @onclick="InvalidUserButton"><p class="centered-button">Email in use</p></button>
         }
         @if(UsernameInUse)
         {
-            <p>Username in use</p>
+            <button @onclick="InvalidUserButton"><p class="centered-button">Username in use</p></button>
         }
-        <button @onclick="InvalidUserButton">sowwy</button> <!--Escape characters form string >uwu<-->
-    </div>
-}
-else if(validUsernamePassword == false)
-{
-    <div class="centered-text">
-        <p>Username or Password are invalid or null</p>
-        <button @onclick="InvalidUserButton">sowwy</button> <!--Escape characters form string >uwu<-->
+        @if(validUsername == false)
+        {
+            <div class="centered-text">
+                <button @onclick="InvalidUserButton"><p class="centered-button">Invalid Username</p></button> 
+            </div>
+        }
+        @if(validPassword == false)
+        {
+            <div class="centered-text">
+                <button @onclick="InvalidUserButton"><p class="centered-button">Invalid Password</p></button>
+            </div>
+        }
+        <div class="row">
+            <div class="col-8">
+                <input id="Email" name="Email" type="text" placeholder="Enter Email" class="email-box" @bind="@email">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-8">
+                <input id="Username" name="Username" type="text" placeholder="Create Username" class="username-box" @bind="@username">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-8">
+                <input id="Password" name="Password" type="text" placeholder="Create Password" class="password-box" @bind="@password">
+            </div>
+        </div>
+        <!--Escape characters form string >uwu<-->
     </div>
 }
 else
@@ -70,7 +90,8 @@ else
     string email;
     string username;
     string password;
-    bool validUsernamePassword = true;
+    bool validUsername = true;
+    bool validPassword = true;
     private bool EmailInUse { get; set; } = false;
     private bool UsernameInUse { get; set; } = false;
 
@@ -85,9 +106,14 @@ else
     // Check the user details against the DB; if valid, return the user object.
     public async Task SignupUser()
     {
-        if (username != null && username.Contains(' ') ||username != null && username.Contains(' ') || password != null && password.Contains(' '))
+        if (username != null && username.Contains(' ') ||username != null && username.Contains('\\'))
         {
-            validUsernamePassword = false;
+            validUsername = false;
+            return;
+        }
+        else if (password != null && password.Contains(' ') || password != null && password.Contains('\\'))
+        {
+            validPassword = false;
             return;
         }
         else
@@ -121,6 +147,8 @@ else
     // Button that appears when user is invalid; just a state toggle.
     public void InvalidUserButton()
     {
+        validUsername = true;
+        validPassword = true;
         EmailInUse = false;
         UsernameInUse = false;
         StateHasChanged();
