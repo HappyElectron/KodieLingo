@@ -27,6 +27,8 @@
 
         public bool AllowFriendRequests = true;
         
+        public bool IsAdminUser = false;
+
         // Many users reference many courses
         public ICollection<Course> Course { get; set; } = new List<Course>();
 

@@ -11,11 +11,72 @@
     Change the CSS/layout of the tile in the file found under pages/friends, do not attempt to change the appearance from here.
     The user each tile represents is passed as a parameter, from the calling component.
 -->
+<div class="button-container">
+    <button class="custom-button" @onclick="AllFriends">View All Friends</button>
+    <button class="custom-button" @onclick="AddAFriend">Add a friend</button>
+    <button class="custom-button" @onclick="IncomingFriendRequests">Incoming friend requests</button>
+    <button class="custom-button" @onclick="OutgoingFriendRequests">Outgoing friend requests</button>
+</div>
+<style>
+    /* Button for sidebar display selector */
+    .custom-button {
+        width: 100%;
+        background-color: #8900ff;
+        color: white;
+        border: none;
+        border-radius: 25px;
+        padding: 10px 20px;
+        cursor: pointer;
+        transition: background-color 0.3s ease; /* Smooth transition for background color */
+    }
 
-<button style="width: 100%;" @onclick="AllFriends">View All Friends</button>
-<button style="width: 100%;" @onclick="AddAFriend">Add a friend</button>
-<button style="width: 100%;" @onclick="IncomingFriendRequests">Incoming friend requests</button>
-<button style="width: 100%;" @onclick="OutgoingFriendRequests">Outgoing friend requests</button>
+        .custom-button:hover {
+            background-color: #6d00ff; /* Darker color on hover */
+        }
+
+    .button-container {
+        display: flex;
+        flex-direction: column;
+        gap: 10px; /* Adjust the gap value to set the desired space between buttons */
+        margin-top: 10px; /* Add margin to the top to create space between the first button and the navigation bar */
+    }
+
+    /* A button within any of the overlay menus: */
+    .friend-request-options-button {
+        width: 100%;
+        border: 2px solid white;
+        border-radius: 10px; /* Make the button round */
+        padding: 5px 10px; /* Add padding inside the button */
+        cursor: pointer;
+        background-color: white; /* Default background color */
+        color: black; /* Text color */
+        transition: background-color 0.3s ease; /* Smooth transition for background color */
+    }
+
+        /* Change button background color on hover */
+        .friend-request-options-button:hover {
+            background-color: #d1d1d1; /* Darker color on hover */
+        }
+
+    /* When choosing which friend to display on the friends page */
+    .friend-select-button {
+        width: 100%;
+        border: none;
+        border-radius: 10px; /* Make the button round */
+        padding: 5px 10px; /* Add padding inside the button */
+        cursor: pointer;
+        background-color: white; /* Default background color */
+        color: black; /* Text color */
+        transition: background-color 0.3s ease; /* Smooth transition for background color */
+    }
+
+        /* Change button background color on hover */
+        .friend-select-button:hover {
+            background-color: #d1d1d1; /* Darker color on hover */
+        }
+</style>
+
+
 @if (AddFriendsActive)
 {
     <h3 style="color:white">Add a friend:</h3>
@@ -80,7 +141,8 @@ else
                                             || ClientState.User.Friend.Contains(x)))
     {
         <div class="flex-fill">
-            <button style="width: 100%;" class="btn btn-light" @onclick="() => RedirectToFriend(s.Username)">
+            <!--Edit the margin here.-->
+            <button class="friend-select-button" @onclick="() => RedirectToFriend(s.Username)">
                 @s.Username
             </button>
         </div>

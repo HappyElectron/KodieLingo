@@ -1,0 +1,21 @@
+﻿@using Model;
+@using Data;
+@using Services;
+@using Microsoft.EntityFrameworkCore;
+@inject ClientStateService ClientState;
+@inject IDbContextFactory<DatabaseContext> DatabaseFactory;
+
+
+
+@foreach (Course c in Db.Courses.Where(b => !ClientState.User.Course.Contains(b)))
+{
+	
+}
+
+@code {
+    private DatabaseContext? Db { get; set; }
+    protected async override Task OnInitializedAsync()
+    {
+        Db ??= DatabaseFactory.CreateDbContext();
+    }
+}

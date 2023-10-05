@@ -1,0 +1,67 @@
+﻿@using Model;
+@using Data;
+@using Services;
+@using Microsoft.EntityFrameworkCore;
+@inject ClientStateService ClientState;
+@inject IDbContextFactory<DatabaseContext> DatabaseFactory;
+
+<input type="radio" checked="@(isSearchingByName == true)"
+       name="RadioOne" @onchange="@(() => isSearchingByName = !isSearchingByName)" />
+<label>Search by course name</label>
+
+<input type="radio" checked="@(isSearchingByName == false)"
+       name="Radiotwo" @onchange="@(() => isSearchingByName = !isSearchingByName)" />
+<label>Search by course tags</label>
+
+
+<div class="text-center bg-blue-100">
+    <input class="border-4 w-1/3 rounded m-6 p-6 h-8
+               border-blue-300" @bind-value="SearchText"
+    @bind-value:event="oninput" placeholder="Search by title" />
+</div>
+
+    <div class="p-2 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3">
+        @foreach (Course course in FilteredCourses)
+        {
+            <h4>@course.Name</h4>
+            <h5>Tags:</h5>
+            @foreach(Tag t in course.Tag)
+            {
+                <p>@t.Name</p>
+            }
+        }
+    </div>
+
+@code {
+    public string SearchText = "";
+    public bool isSearchingByName = true;
+    List<Course>? FilteredCourses => 
+    
+    // Remove this line for all courses to display by default.
+    SearchText == "" ? new List<Course>() :
+
+    FilterCourses(isSearchingByName);
+
+    private DatabaseContext? db { get; set; }
+
+    private List<Course> FilterCourses(bool isSearchingByName)
+    {
+        if (isSearchingByName)
+            return db.Courses.Include(e => e.Tag).Where(c => c.Name.ToLower().Contains(SearchText.ToLower())).ToList();
+
+
+        List<Course> Courses = new List<Course>();
+        foreach(Tag t in db.Tags.Include(c=>c.Course))
+        {
+            if (t.Name.ToLower().Contains(SearchText.ToLower()))
+                foreach(Course c in t.Course)
+                    Courses.Add(c);
+        }
+        return Courses;
+    }
+
+    protected async override Task OnInitializedAsync()
+    {
+        db ??= DatabaseFactory.CreateDbContext();
+    }
+}

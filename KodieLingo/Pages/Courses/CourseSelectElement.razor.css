@@ -1,0 +1,12 @@
+﻿.course-continue {
+    border: solid;
+    border-radius: 20px;
+    padding: 20px;
+    color: palegreen
+}
+
+.course-new {
+    border: solid;
+    border-radius: 20px;
+    padding: 20px;
+}

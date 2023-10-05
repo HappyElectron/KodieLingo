@@ -21,6 +21,7 @@ namespace KodieLingo.Data
         public DbSet<Lesson> Lessons { get; set; }
         public DbSet<Question> Questions { get; set; }
         public DbSet<Answer> Answers { get; set; }
+		public DbSet<Tag> Tags { get; set; }
 
         // An interface required to connect to the database
         public DatabaseContext(IConfiguration configuration)

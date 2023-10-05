@@ -6,8 +6,35 @@
 @inject ClientStateService ClientState
 @inject IDbContextFactory<DatabaseContext> ContextFactory;
 
-<h4 style="color:white; align-content:center;">@User.Username</h4>
-<button style="width:100%;" @onclick="AcceptRequest">Accept</button>
+<div class="user-info">
+  <h4>@User.Username</h4>
+  <button class="custom-button" @onclick="AcceptRequest">Accept</button>
+</div>
+
+<style>
+  /* CSS for centering the text in h4 */
+  .user-info {
+    color: white;
+    text-align: center;
+  }
+
+  /* CSS for styling the button */
+  .custom-button {
+    width: 100%;
+    border: none;
+    border-radius: 25px; /* Make the button round */
+    padding: 10px 20px; /* Add padding inside the button */
+    cursor: pointer;
+	background-color: #00c32e; /* Default background color */
+    color: white; /* Text color */
+    transition: background-color 0.3s ease; /* Smooth transition for background color */
+  }
+
+  /* Change button background color on hover */
+  .custom-button:hover {
+	background-color: #00c32e; /* Darker color on hover */
+  }
+</style>
 
 @code {
 	[Parameter]
