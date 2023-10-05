@@ -12,18 +12,17 @@
 
 
 <h3>FriendsPage</h3>
-@if (ClientState.User == null)
-{ }
-else if (db.Users.Where(x => x.Friend.Contains(ClientState.User) 
-    || ClientState.User.Friend.Contains(x)).Contains(Friend))
+
+@if(Friend == null)
 {
-    <h1> @Friend.Username; </h1>
-    <h2>KodieBukz: @Friend.LifetimePoints</h2>
-    <h2>Grass touched: 0</h2>
+    <h1>
+        You're not friends with this guy, bucko. 
+        Don't fuck with the URL.
+    </h1>    
 }
-else
-{
-    @if(ClientState.User.Friend.Count() == 0)
+else if(ClientState.User == null || FriendUsername == null)
+{     
+    @if (ClientState.User.Friend.Count() == 0)
     {
         <h1>Haha no friends</h1>
         <h3>Maybe change that by adding some?</h3>
@@ -34,13 +33,26 @@ else
         <h3> (We cannot gurantee they will be checking your stats) </h3>
     }
 }
+else
+{
+    <h1> @Friend.Username; </h1>
+    <h2>KodieBukz: @Friend.LifetimePoints</h2>
+    <h2>Grass touched: 0</h2>
+}
+
 
 
 @code {
     [Parameter]
     public string? FriendUsername { get; set; }
     private DatabaseContext? db { get; set; }
-    private User? Friend => ClientState.User.Friend.Where(x => x.Username == FriendUsername).FirstOrDefault();
+
+    private User newFriend = new User();
+
+    private User? Friend => FriendUsername == null ? newFriend :
+        db.Users.FirstOrDefault(x => x.Username == FriendUsername && x.Friend.Contains(ClientState.User));
+
+
     protected async override Task OnInitializedAsync()
     {
         db ??= await ContextFactory.CreateDbContextAsync();

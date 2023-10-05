@@ -2,8 +2,13 @@
 @using Model;
 @using Data;
 @using Microsoft.EntityFrameworkCore;
+@using Courses;
 
 @inject ClientStateService ClientState;
+
+@inject IDbContextFactory<DatabaseContext> ContextFactory;
+@inject NavigationManager navManager;
+
 
 @page "/"
 
@@ -14,31 +19,23 @@
     <h1>Hello, @ClientState.User.Username!</h1>
     if (ClientState.User.Course.Count == 0)
     {
-        <h3>Let's get started with a course! Here are some to get you started.</h3>
+        <div class="centered-text">Let's get started with a course!</div>
+        <button @onclick="Redirect" class="centered-button">Go to courses</button>
     }
-else
-{
-<h2>Let's hop straight back into one of your courses!</h2>
-@foreach (Course c in ClientState.User.Course)
+    else
     {
-        <div name="Course" style="border: solid; border-radius:20px ;padding:20px;">
-            <div name="Name" style="border: solid; border-radius:20px;">
-                <h2 style="padding:10px;">Course: @c.Name</h2>
-            </div>
-            <div name="left" style="float: left; padding:10px;">
-                <button><h3>Guidebook</h3></button>
-                <button><h3>Continue</h3></button>
-            </div>
-            <div name="right" style="float: right; padding: 10px;">
-                <button><h3>View full course</h3></button>
-                <button><h3>View all courses</h3></button>
-            </div>
-        </div>
+        <h2>Let's hop straight back into one of your courses!</h2>
+        @foreach (Course c in ClientState.User.Course)
+        {
+            <KodieLingo.Pages.Courses.CourseSelectElement Course="c"/>
+        }
     }
-}
 }
 
 @code
 {
-
+    private void Redirect()
+    {
+        navManager.NavigateTo("/courses");
+    }
 }

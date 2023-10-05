@@ -5,11 +5,13 @@
 @inject ClientStateService ClientState;
 @inject IDbContextFactory<DatabaseContext> DatabaseFactory;
 
+<!--
+    A horizontally scrolling component containing all current user courses.
+-->
 
-
-@foreach (Course c in Db.Courses.Where(b => !ClientState.User.Course.Contains(b)))
+@foreach (Course c in ClientState.User.Course)
 {
-	
+    <CourseSelectElement Course="c" />
 }
 
 @code {
