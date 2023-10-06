@@ -21,11 +21,7 @@
 <p>Username: @username</p>
 @if (protectPassword)
 {
-    protectedPassword = "";
-    for (int i = 0; i < password.Length; i++)
-    {
-        protectedPassword += '*';
-    }
+    protectedPassword = "***********";
         <p>Password: @protectedPassword</p>
 }
 else
@@ -50,12 +46,12 @@ else
     async Task dissallowFriendRequests()
     {
         currentUser.AllowFriendRequests = false;
-        db.SaveChangesAsync();
+        await db.SaveChangesAsync();
     }
     async Task allowFriendRequests()
     {
         currentUser.AllowFriendRequests = true;
-        db.SaveChangesAsync();
+        await db.SaveChangesAsync();
     }
     void protectPasswordChange()
     {

@@ -1,0 +1,44 @@
+﻿@using Model;
+@using Data;
+@using Services;
+@using Microsoft.EntityFrameworkCore;
+@inject ClientStateService ClientState;
+@inject IDbContextFactory<DatabaseContext> DatabaseFactory;
+
+@page "/course/{CourseName?}"
+
+
+@if (ClientState.User != null && Course != null)
+{
+    <h1>This is the @CourseName page</h1>
+}
+else if(Course == null)
+{
+    <h1>
+        @CourseName
+        This ain't a course in thees parts, padn'er. Maybe try deawn in tallehase', they maight take yer sort.
+    </h1>
+}
+
+
+@code {
+    [Parameter]
+    public string? CourseName { get; set; }
+
+    private DatabaseContext? db { get; set; }
+
+    private Course? Course => db.Courses.FirstOrDefault(x => x.Name.ToLower() == CourseName.ToLower());
+
+    protected async override Task OnInitializedAsync()
+    {
+        db ??= DatabaseFactory.CreateDbContext();
+
+        // Don't even worry about it
+        // URL encoding is being fickle, 
+        // I suppose we're doing this for evey non-alphanumeric course name.
+        if(CourseName != null && CourseName.ToLower() == "c")
+        { 
+            CourseName = "c#";
+        }
+    }
+}

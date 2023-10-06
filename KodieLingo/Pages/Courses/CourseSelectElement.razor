@@ -1,22 +1,27 @@
-﻿@using Model;
+﻿﻿@using Model;
 @using Data;
 @using Services;
 @using Microsoft.EntityFrameworkCore;
 @inject ClientStateService ClientState;
 @inject IDbContextFactory<DatabaseContext> DatabaseFactory;
+@inject NavigationManager navManager;
+
 
 <div class="@BoxStyle">
-		<div name="Name" style="border: solid; border-radius:20px;">
-			<h2 style="padding:10px;">Course: @Course.Name</h2>
-		</div>
-		<div name="left" style="float: left; padding:10px;">
-			<button><h3>Guidebook</h3></button>
-			@if (StartedCourse)
-			{
-				<button><h3>Continue</h3></button>
-			}
+	<div name="Name" style="border: solid; border-radius:20px;">
+		<h2 style="padding:10px;">Course: @Course.Name</h2>
+	</div>
+	<div name="left" style="float: left; padding:10px;">
+		<button><h3>Guidebook</h3></button>
+		@if (StartedCourse)
+		{
+			<!--
+				Use "ContinueCourse method here."
+			-->
 			<button><h3>Continue</h3></button>
-		</div>
+		}
+		<button @onclick="GoToFullCourse"><h3>Go to full course</h3></button>
+	</div>
 </div>
 
 
@@ -26,4 +31,15 @@
 	public bool StartedCourse => ClientState.User.Course.Contains(Course);
 	public string BoxStyle => StartedCourse ? "course-continue" : "course-new";
 
+	private void ContinueCourse()
+	{
+		// Incomplete: do not implement.
+		// Need to add a progress tracking metric. Fun stuff.
+		navManager.NavigateTo($"/Course/{Course.Name}/{Course}");
+	}
+
+	private void GoToFullCourse()
+	{
+		navManager.NavigateTo($"/Course/{Course.Name}");
+	}
 }
