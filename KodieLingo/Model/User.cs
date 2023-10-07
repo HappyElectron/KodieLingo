@@ -25,9 +25,9 @@
         public string? Email { get; set; }
         public string? Password { get; set; }
 
-        public bool AllowFriendRequests = true;
+        public bool AllowFriendRequests { get; set; } = true;
         
-        public bool IsAdminUser = false;
+        public bool IsAdminUser { get; set; } = false;
 
         // Many users reference many courses
         public ICollection<Course> Course { get; set; } = new List<Course>();
