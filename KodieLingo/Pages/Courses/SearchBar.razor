@@ -5,14 +5,39 @@
 @inject ClientStateService ClientState;
 @inject IDbContextFactory<DatabaseContext> DatabaseFactory;
 
-<input type="radio" checked="@(isSearchingByName == true)"
-       name="RadioOne" @onchange="@(() => isSearchingByName = !isSearchingByName)" />
-<label>Search by course name</label>
+<div class="radio-container">
+    <input id="searchByName" type="radio" checked="@(isSearchingByName == true)"
+           name="searchOption" @onchange="@(() => isSearchingByName = true)" />
+    <label for="searchByName">Search by course name</label>
 
-<input type="radio" checked="@(isSearchingByName == false)"
-       name="Radiotwo" @onchange="@(() => isSearchingByName = !isSearchingByName)" />
-<label>Search by course tags</label>
+    <input id="searchByTags" type="radio" checked="@(isSearchingByName == false)"
+           name="searchOption" @onchange="@(() => isSearchingByName = false)" />
+    <label for="searchByTags">Search by course tags</label>
+</div>
 
+<style>
+    .radio-container {
+        display: flex;
+        align-items: center;
+        margin-bottom: 10px;
+    }
+
+    input[type="radio"] {
+        margin-right: 10px;
+        cursor: pointer;
+    }
+
+    label {
+        cursor: pointer;
+    }
+
+    input[type="radio"]:checked + label::before {
+        content: '\2022';
+        font-size: 24px;
+        color: #3498db; /* Color of the selected radio button */
+        margin-right: 5px;
+    }
+</style>
 
 <div class="text-center bg-blue-100">
     <input class="border-4 w-1/3 rounded m-6 p-6 h-8

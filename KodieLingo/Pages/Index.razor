@@ -11,24 +11,52 @@
 
 
 @page "/"
+<style>
+    .button-container {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        margin-top: 20px;
+        justify-content: center;
+        align-items: center;
+    }
 
+    .goCourse-button {
+        width: 20%;
+        padding: 15px 30px;
+        font-size: 18px;
+        cursor: pointer;
+        transition: background-color 0.3s ease, color 0.3s ease;
+        background-color: #0187fe;
+        color: white;
+        border: none;
+        border-radius: 25px;
+        font-family: sans-serif;
+    }
+
+        .goCourse-button:hover {
+            background-color: #0187fe;
+            color: white; /* Change text color to black on hover */
+        }
+</style>
 @if (ClientState.User != null)
 {
     <PageTitle>Index</PageTitle>
 
-    <h1>Hello, @ClientState.User.Username!</h1>
+    <h1 style="font-family: Sans-Serif;">Hello, @ClientState.User.Username!</h1>
     if (ClientState.User.Course.Count == 0)
     {
         <div class="centered-text">Let's get started with a course!</div>
-        <button @onclick="Redirect" class="centered-button">Go to courses</button>
+        <button @onclick="Redirect" class="goCourse-button">Go to courses</button>
     }
     else
     {
-        <h2>Let's hop straight back into one of your courses!</h2>
+        <h2 style="font-family: Sans-Serif;">Let's hop straight back into one of your courses!</h2>
         @foreach (Course c in ClientState.User.Course)
         {
             <KodieLingo.Pages.Courses.CourseSelectElement Course="c" />
         }
+
     }
 }
 
