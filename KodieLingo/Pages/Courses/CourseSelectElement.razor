@@ -30,17 +30,40 @@
 			}
 		</div>
 	</div>
-	<div name="left" style="float: left; padding:10px;">
-		<button @onclick="ShowDescription"><h3>@DescriptionDialogText</h3></button>
+	<div name="left" class="button-container">
+		<button class="courses-button" @onclick="ShowDescription">@DescriptionDialogText</button>
 		@if (StartedCourse)
 		{
 			<!--
 				Use "ContinueCourse method here."
 			-->
-			<button><h3>Continue</h3></button>
 		}
-		<button @onclick="GoToFullCourse"><h3>Go to full course</h3></button>
+		<button class="courses-button" @onclick="GoToFullCourse">Go to Full Course</button>
 	</div>
+	<style>
+		.button-container {
+			float: left;
+			padding: 10px;
+		}
+
+		.courses-button {
+			background-color: white; /* Button background color */
+			color: black; /* Button text color */
+			border: none;
+			border-radius: 5px;
+			padding: 10px 20px;
+			margin-bottom: 10px;
+			margin-right: 10px;
+			cursor: pointer;
+			transition: background-color 0.3s ease;
+			border: 1px solid #009dff;
+		}
+
+			.courses-button:hover {
+				background-color: #009dff; /* Darker background color on hover */
+				color: black;
+			}
+	</style>
 </div>
 
 
