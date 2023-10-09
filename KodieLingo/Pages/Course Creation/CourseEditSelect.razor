@@ -1,0 +1,27 @@
+﻿@using Services
+@using Model
+@using Data
+@using Microsoft.EntityFrameworkCore
+@inject ClientStateService ClientState
+@inject NavigationManager navManager
+@inject IDbContextFactory<DatabaseContext> ContextFactory;
+
+
+	<!--
+		CSS-Slave Henry, make this look pretty.
+		Doesn't need to be complicated, maybe just a border and some better spacing.
+	-->
+
+
+<h3>@Course.Name</h3>
+<button @onclick="RedirectToCourse">Edit Course</button>
+
+@code {
+	[Parameter]
+	public Course Course { get; set; }
+
+	private void RedirectToCourse()
+	{
+		navManager.NavigateTo($"/CourseCreation/{Course.Name}");
+	}
+}

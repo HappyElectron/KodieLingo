@@ -1,0 +1,44 @@
+﻿@using Services
+@using Model
+@using Data
+@using Microsoft.EntityFrameworkCore
+@inject ClientStateService ClientState
+@inject NavigationManager navManager
+@inject IDbContextFactory<DatabaseContext> ContextFactory;
+
+@page "/CourseCreation/{CourseName?}"
+
+@if(ClientState.User != null && !ClientState.User.IsAdminUser)
+{
+	<h1>
+		You can't be here, bald ding dong.
+		Feck oof.
+	</h1>
+}
+else if(CourseName == null || Course == null)
+{
+	<h1>Edit a course:</h1>
+	foreach(Course c in db.Courses)
+	{
+		<CourseEditSelect Course="c"/>
+	}
+}
+else
+{
+	<h1>@Course.Name</h1>
+}
+
+@code {
+	public DatabaseContext? db { get; set; }
+
+	[Parameter]
+	public string? CourseName { get; set; }
+
+	public Course? Course { get; set; }
+
+	protected async override Task OnInitializedAsync()
+	{
+		db ??= await ContextFactory.CreateDbContextAsync();
+		Course = db.Courses.FirstOrDefault(x => x.Name == CourseName);
+	}
+}
