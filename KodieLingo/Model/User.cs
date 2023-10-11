@@ -44,5 +44,9 @@
         // Friend requests outgoing is a list of users whom the current user has sent requests to.
         public ICollection<User> FriendReqOutgoing { get; set; } = new List<User>();
         public ICollection<User> FriendReqOutgoingParents { get; set; } = new List<User>();
+
+        public ICollection<CourseProgressTracker> CourseProgressTracker { get; set; } 
+                = new List<CourseProgressTracker>();
+
     }
 }

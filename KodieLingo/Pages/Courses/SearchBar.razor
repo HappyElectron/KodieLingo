@@ -5,15 +5,20 @@
 @inject ClientStateService ClientState;
 @inject IDbContextFactory<DatabaseContext> DatabaseFactory;
 
-<div class="radio-container">
-    <input id="searchByName" type="radio" checked="@(isSearchingByName == true)"
-           name="searchOption" @onchange="@(() => isSearchingByName = true)" />
-    <label for="searchByName">Search by course name</label>
-
-    <input id="searchByTags" type="radio" checked="@(isSearchingByName == false)"
-           name="searchOption" @onchange="@(() => isSearchingByName = false)" />
-    <label for="searchByTags">Search by course tags</label>
-</div>
+<button @onclick="() => isSearchingByName = true">
+    @if(isSearchingByName)
+    {
+        <h3>This is checked, yo</h3>
+    }
+    Search by Name
+</button>
+<button @onclick="() => isSearchingByName = false">
+    @if(!isSearchingByName)
+    {
+        <h3>This is checked, yo</h3>
+    }
+    Search by Tag
+</button>
 
 <style>
     .radio-container {

@@ -27,18 +27,32 @@ else if(Course == null)
 
     private DatabaseContext? db { get; set; }
 
-    private Course? Course => db.Courses.FirstOrDefault(x => x.Name.ToLower() == CourseName.ToLower());
+    // IDK, man
+    private Course? Course;
+
+    private ICollection<Section> Sections { get; set; }
 
     protected async override Task OnInitializedAsync()
     {
         db ??= DatabaseFactory.CreateDbContext();
+    }
 
-        // Don't even worry about it
-        // URL encoding is being fickle, 
-        // I suppose we're doing this for evey non-alphanumeric course name.
-        if(CourseName != null && CourseName.ToLower() == "c")
-        { 
+    protected async override Task OnParametersSetAsync()
+    {
+        // URL encoding is being fickle, because of the "#".
+        // I suppose we're doing a manual override for evey non-alphanumeric course name, 
+        // across both course-related pages.
+        //
+        //
+        // Not that this should ever concern you, Aiden, so I suppose I'll can it.
+        if (CourseName != null && CourseName.ToLower() == "c")
+        {
             CourseName = "c#";
         }
+
+        Course = db.Courses.Include(x => x.Section)
+                                        .Include(x => x.Tag)
+                                        .Include(x => x.Prerequisite)
+            .FirstOrDefault(x => x.Name.ToLower() == CourseName.ToLower());
     }
 }

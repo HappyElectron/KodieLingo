@@ -38,7 +38,32 @@ else
 
 	protected async override Task OnInitializedAsync()
 	{
+		// Testing component lifecycle events.
+		// Only prints when page is initialised, or "built" - 
+		// ie, when redirected here from another page.
+		// Console.WriteLine("Edit initialised");
+
+
 		db ??= await ContextFactory.CreateDbContextAsync();
-		Course = db.Courses.FirstOrDefault(x => x.Name == CourseName);
+	}
+
+	protected async override Task OnParametersSetAsync()
+	{
+		// Should call even when this page directs to itself, without a rebuild
+		// (unlike the OnInitialised override)
+		// Console.WriteLine("Parameters set");
+
+
+
+		// See CoursesPage comment.
+		if (CourseName != null && CourseName.ToLower() == "c")
+		{
+			CourseName = "c#";
+		}
+		if(CourseName != null)
+			Course = db.Courses.FirstOrDefault(x => x.Name.ToLower() == CourseName.ToLower());
+
+		// Testing parameter set further
+		//StateHasChanged();
 	}
 }

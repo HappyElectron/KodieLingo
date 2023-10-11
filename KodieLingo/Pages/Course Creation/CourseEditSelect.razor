@@ -7,21 +7,75 @@
 @inject IDbContextFactory<DatabaseContext> ContextFactory;
 
 
-	<!--
-		CSS-Slave Henry, make this look pretty.
-		Doesn't need to be complicated, maybe just a border and some better spacing.
-	-->
+<style>
+	.custom-row {
+		display: flex;
+	}
+
+	.custom-two-column {
+		flex: 50%;
+	}
+</style>
+
+<div class="@BoxStyle">
+	<div name="Name" style="border: solid; border-radius:20px;">
+		<div class="custom-row">
+			<div class="custom-two-column">
+				<h2 style="padding:10px;">Course: @Course.Name</h2>
+			</div>
+			<div class="custom-two-column">
+				Enrolled user count: @UserCount
+			</div>
+		</div>
+	</div>
+	<div name="left" class="button-container">
+		<button class="courses-button" @onclick="RedirectToCourse">Go to Full Course</button>
+	</div>
+	<style>
+		.button-container {
+			float: left;
+			padding: 10px;
+		}
+
+		.courses-button {
+			background-color: white; /* Button background color */
+			color: black; /* Button text color */
+			border: none;
+			border-radius: 5px;
+			padding: 10px 20px;
+			margin-bottom: 10px;
+			margin-right: 10px;
+			cursor: pointer;
+			transition: background-color 0.3s ease;
+			border: 1px solid #009dff;
+		}
+
+			.courses-button:hover {
+				background-color: #009dff; /* Darker background color on hover */
+				color: black;
+			}
+	</style>
+</div>
 
 
-<h3>@Course.Name</h3>
-<button @onclick="RedirectToCourse">Edit Course</button>
 
 @code {
 	[Parameter]
 	public Course Course { get; set; }
+	public bool StartedCourse => ClientState.User.Course.Contains(Course);
+	public string BoxStyle => StartedCourse ? "course-continue" : "course-new";
+
+	private int UserCount => db.Users.Where(u => u.Course.Contains(Course)).Count();
+
+	private DatabaseContext db { get; set; }
 
 	private void RedirectToCourse()
 	{
 		navManager.NavigateTo($"/CourseCreation/{Course.Name}");
+	}
+
+	protected async override Task OnInitializedAsync()
+	{
+		db ??= await ContextFactory.CreateDbContextAsync();
 	}
 }

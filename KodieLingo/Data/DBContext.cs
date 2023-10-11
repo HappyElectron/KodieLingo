@@ -22,6 +22,7 @@ namespace KodieLingo.Data
         public DbSet<Question> Questions { get; set; }
         public DbSet<Answer> Answers { get; set; }
 		public DbSet<Tag> Tags { get; set; }
+		public DbSet<CourseProgressTracker> CourseProgressTrackers { get; set; }
 
         // An interface required to connect to the database
         public DatabaseContext(IConfiguration configuration)
@@ -51,6 +52,7 @@ namespace KodieLingo.Data
             modelBuilder.Entity<Section>().ToTable("Section");
             modelBuilder.Entity<Course>().ToTable("Course");
             modelBuilder.Entity<Tag>().ToTable("Tag");
+			modelBuilder.Entity<CourseProgressTracker>().ToTable("CourseProgress");
 
             modelBuilder.Seed();
         }
@@ -166,6 +168,24 @@ namespace KodieLingo.Data
             modelBuilder.Entity<Course>()
                 .HasMany(e => e.Prerequisite)
                 .WithMany(e => e.PrerequisiteParent);
+
+
+
+			// To track the course, we need a custrom "join" class,
+			// to track the user, the course, and the progress in that course.
+			modelBuilder.Entity<User>()
+				.HasMany(e => e.CourseProgressTracker)
+				.WithOne(e => e.User);
+			modelBuilder.Entity<CourseProgressTracker>()
+				.HasOne(e => e.User)
+				.WithMany(e => e.CourseProgressTracker);
+
+			modelBuilder.Entity<Course>()
+				.HasMany(e => e.CourseProgressTrackers)
+				.WithOne(e => e.Course);
+			modelBuilder.Entity<CourseProgressTracker>()
+				.HasOne(e => e.Course)
+				.WithMany(e => e.CourseProgressTrackers);
         }
     }
 }

@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\henry\\OneDrive\\Documents\\GitHub\\KodieLingo\\KodieLingo\\KodieLingo.csproj": {}
+    "C:\\Users\\nedfp\\OneDrive\\Desktop\\Ned\\Programming\\Applied Computing\\KodieLingo\\KodieLingo\\KodieLingo.csproj": {}
   },
   "projects": {
-    "C:\\Users\\henry\\OneDrive\\Documents\\GitHub\\KodieLingo\\KodieLingo\\KodieLingo.csproj": {
+    "C:\\Users\\nedfp\\OneDrive\\Desktop\\Ned\\Programming\\Applied Computing\\KodieLingo\\KodieLingo\\KodieLingo.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\henry\\OneDrive\\Documents\\GitHub\\KodieLingo\\KodieLingo\\KodieLingo.csproj",
+        "projectUniqueName": "C:\\Users\\nedfp\\OneDrive\\Desktop\\Ned\\Programming\\Applied Computing\\KodieLingo\\KodieLingo\\KodieLingo.csproj",
         "projectName": "KodieLingo",
-        "projectPath": "C:\\Users\\henry\\OneDrive\\Documents\\GitHub\\KodieLingo\\KodieLingo\\KodieLingo.csproj",
-        "packagesPath": "C:\\Users\\henry\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\henry\\OneDrive\\Documents\\GitHub\\KodieLingo\\KodieLingo\\obj\\",
+        "projectPath": "C:\\Users\\nedfp\\OneDrive\\Desktop\\Ned\\Programming\\Applied Computing\\KodieLingo\\KodieLingo\\KodieLingo.csproj",
+        "packagesPath": "C:\\Users\\nedfp\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\nedfp\\OneDrive\\Desktop\\Ned\\Programming\\Applied Computing\\KodieLingo\\KodieLingo\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\henry\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\nedfp\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -27,6 +27,7 @@
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "C:\\Program Files\\dotnet\\library-packs": {},
+          "C:\\Program Files\\dotnet\\sdk\\7.0.302\\Sdks\\Microsoft.NET.Sdk.Web\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -75,7 +76,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.101\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.302\\RuntimeIdentifierGraph.json"
         }
       }
     }

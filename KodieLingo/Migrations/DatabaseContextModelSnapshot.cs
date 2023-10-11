@@ -127,6 +127,30 @@ namespace KodieLingo.Migrations
                         });
                 });
 
+            modelBuilder.Entity("KodieLingo.Model.CourseProgressTracker", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("CourseId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("Progress")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CourseId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("CourseProgress", (string)null);
+                });
+
             modelBuilder.Entity("KodieLingo.Model.Lesson", b =>
                 {
                     b.Property<int>("Id")
@@ -437,6 +461,25 @@ namespace KodieLingo.Migrations
                     b.Navigation("Question");
                 });
 
+            modelBuilder.Entity("KodieLingo.Model.CourseProgressTracker", b =>
+                {
+                    b.HasOne("KodieLingo.Model.Course", "Course")
+                        .WithMany("CourseProgressTrackers")
+                        .HasForeignKey("CourseId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("KodieLingo.Model.User", "User")
+                        .WithMany("CourseProgressTracker")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Course");
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("KodieLingo.Model.Lesson", b =>
                 {
                     b.HasOne("KodieLingo.Model.Topic", "Topic")
@@ -528,6 +571,8 @@ namespace KodieLingo.Migrations
 
             modelBuilder.Entity("KodieLingo.Model.Course", b =>
                 {
+                    b.Navigation("CourseProgressTrackers");
+
                     b.Navigation("Section");
                 });
 
@@ -546,6 +591,11 @@ namespace KodieLingo.Migrations
                     b.Navigation("Lesson");
 
                     b.Navigation("Question");
+                });
+
+            modelBuilder.Entity("KodieLingo.Model.User", b =>
+                {
+                    b.Navigation("CourseProgressTracker");
                 });
 #pragma warning restore 612, 618
         }
