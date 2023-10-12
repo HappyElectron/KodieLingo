@@ -4,43 +4,44 @@
 @using Microsoft.EntityFrameworkCore;
 @inject ClientStateService ClientState;
 @inject IDbContextFactory<DatabaseContext> DatabaseFactory;
-
-<button @onclick="() => isSearchingByName = true">
+<div class="button-container"
+<button class="search-button" @onclick="() => isSearchingByName = true">
     @if(isSearchingByName)
     {
         <h3>This is checked, yo</h3>
     }
     Search by Name
 </button>
-<button @onclick="() => isSearchingByName = false">
+<button class="search-button" @onclick="() => isSearchingByName = false">
     @if(!isSearchingByName)
     {
         <h3>This is checked, yo</h3>
     }
     Search by Tag
 </button>
-
+</div>
 <style>
-    .radio-container {
+    .search-button {
+        width: 100%;
+        background-color: white;
+        color: black;
+        border: 1px solid #00ff9c;
+        border-radius: 15px;
+        padding: 10px 20px;
+        cursor: pointer;
+        transition: background-color 0.3s ease; /* Smooth transition for background color */
+    }
+
+        .search-button:hover {
+            background-color: #00ff9c; /* Darker color on hover */
+        }
+
+    .button-container {
         display: flex;
-        align-items: center;
-        margin-bottom: 10px;
-    }
-
-    input[type="radio"] {
-        margin-right: 10px;
-        cursor: pointer;
-    }
-
-    label {
-        cursor: pointer;
-    }
-
-    input[type="radio"]:checked + label::before {
-        content: '\2022';
-        font-size: 24px;
-        color: #3498db; /* Color of the selected radio button */
-        margin-right: 5px;
+        flex-direction: column;
+        gap: 10px; /* Adjust the gap value to set the space between buttons */
+        margin-top: 10px; /* Add margin to the top to create space between the first button and the nav bar */
+        justify-content: center;
     }
 </style>
 
