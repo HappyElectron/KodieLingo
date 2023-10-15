@@ -22,16 +22,16 @@
 }
 else if (ClientState.User == null || FriendUsername == null)
 {
-    @if (ClientState.User.Friend.Count() == 0)
-    {
+    //@if (FriendCount == 0)
+    //{
         <h1>Haha no friends</h1>
         <h3>Maybe change that by adding some?</h3>
-    }
-    else
-    {
-        <h1> Select one of your friends to view their stats! </h1>
-        <h3> (We cannot gurantee they will be checking your stats) </h3>
-    }
+    //}
+    //else
+    //{
+    //    <h1> Select one of your friends to view their stats! </h1>
+    //    <h3> (We cannot gurantee they will be checking your stats) </h3>
+    //}
 }
 else
 {
@@ -48,6 +48,10 @@ else
     private DatabaseContext? db { get; set; }
 
     private User newFriend = new User();
+
+    //Ignore
+    //int FriendCount => db.Users.Include(u => u.Friend).
+    //    First(x => x.Id == ClientState.User.Id).Friend.Count();
 
     private User? Friend => FriendUsername == null ? newFriend :
         db.Users.FirstOrDefault(x => x.Username == FriendUsername && x.Friend.Contains(ClientState.User));

@@ -27,6 +27,5 @@
         public ICollection<Course> Prerequisite { get; set; } = new List<Course>();
         public ICollection<Course> PrerequisiteParent { get; set; } = new List<Course>();
 
-        public ICollection<CourseProgressTracker> CourseProgressTrackers { get; set; } = new List<CourseProgressTracker>();
     }
 }

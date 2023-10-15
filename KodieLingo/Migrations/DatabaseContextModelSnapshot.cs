@@ -133,10 +133,10 @@ namespace KodieLingo.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("CourseId")
+                    b.Property<int>("Progress")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("Progress")
+                    b.Property<int>("SectionId")
                         .HasColumnType("INTEGER");
 
                     b.Property<int>("UserId")
@@ -144,7 +144,7 @@ namespace KodieLingo.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CourseId");
+                    b.HasIndex("SectionId");
 
                     b.HasIndex("UserId");
 
@@ -463,9 +463,9 @@ namespace KodieLingo.Migrations
 
             modelBuilder.Entity("KodieLingo.Model.CourseProgressTracker", b =>
                 {
-                    b.HasOne("KodieLingo.Model.Course", "Course")
+                    b.HasOne("KodieLingo.Model.Section", "Section")
                         .WithMany("CourseProgressTrackers")
-                        .HasForeignKey("CourseId")
+                        .HasForeignKey("SectionId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -475,7 +475,7 @@ namespace KodieLingo.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Course");
+                    b.Navigation("Section");
 
                     b.Navigation("User");
                 });
@@ -571,8 +571,6 @@ namespace KodieLingo.Migrations
 
             modelBuilder.Entity("KodieLingo.Model.Course", b =>
                 {
-                    b.Navigation("CourseProgressTrackers");
-
                     b.Navigation("Section");
                 });
 
@@ -583,6 +581,8 @@ namespace KodieLingo.Migrations
 
             modelBuilder.Entity("KodieLingo.Model.Section", b =>
                 {
+                    b.Navigation("CourseProgressTrackers");
+
                     b.Navigation("Topic");
                 });
 

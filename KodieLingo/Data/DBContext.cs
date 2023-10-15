@@ -180,11 +180,11 @@ namespace KodieLingo.Data
 				.HasOne(e => e.User)
 				.WithMany(e => e.CourseProgressTracker);
 
-			modelBuilder.Entity<Course>()
+			modelBuilder.Entity<Section>()
 				.HasMany(e => e.CourseProgressTrackers)
-				.WithOne(e => e.Course);
+				.WithOne(e => e.Section);
 			modelBuilder.Entity<CourseProgressTracker>()
-				.HasOne(e => e.Course)
+				.HasOne(e => e.Section)
 				.WithMany(e => e.CourseProgressTrackers);
         }
     }

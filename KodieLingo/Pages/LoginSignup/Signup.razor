@@ -64,6 +64,7 @@
             <div class="col-8">
                 <input id="Password" name="Password" type="text" placeholder="Create Password" class="password-box" @bind="@password">
             </div>
+
         </div>
         <!--Escape characters form string >uwu<-->
     </div>
@@ -90,12 +91,19 @@ else
             <button name="submit" type="submit" class="signup-button" @onclick="SignupUser">Submit</button>
         </div>
     </div>
+    <div class="row">
+        <div class="col-8">
+            <h3 class="is-admin-box">isAdmin</h3> <input type="checkbox" @bind="@isAdmin" placeholder="Is admin user" class="is-admin-box">
+        </div>
+    </div>
+
 }
 
 @code {
     string email;
     string username;
     string password;
+    bool isAdmin;
     bool validUsername = true;
     bool validPassword = true;
     bool validEmail = true;
@@ -156,7 +164,8 @@ else
             {
                 Username = username,
                 Email = email,
-                Password = password
+                Password = password,
+                IsAdminUser = isAdmin
             };
         await db.Users.AddAsync(newUser);
         await db.SaveChangesAsync();

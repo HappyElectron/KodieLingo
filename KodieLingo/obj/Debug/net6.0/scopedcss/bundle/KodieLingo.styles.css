@@ -249,6 +249,16 @@ h1[b-j39121hdyz] {
     left: 50%;
     transform: translate(-50%, 20%);
 }
+.is-admin-box[b-j39121hdyz] {
+    height: 70px;
+    width: 500px;
+    border-radius: 10px;
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, 350%);
+}
 /* _content/KodieLingo/Shared/MainLayout.razor.rz.scp.css */
 .page[b-l2lnk6q7ka] {
     position: relative;

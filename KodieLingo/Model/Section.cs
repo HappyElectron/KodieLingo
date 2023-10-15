@@ -10,5 +10,6 @@
         // Foreign Keys
         public Course Course { get; set; } = null!;
         public int CourseId { get; set; }
+        public ICollection<CourseProgressTracker> CourseProgressTrackers { get; set; } = new List<CourseProgressTracker>();
     }
 }
