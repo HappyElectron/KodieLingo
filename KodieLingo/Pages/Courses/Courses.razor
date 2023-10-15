@@ -6,7 +6,7 @@
 @inject IDbContextFactory<DatabaseContext> DatabaseFactory;
 @page "/courses"
 
-<h3>Courses</h3>
+<h1>Courses</h1>
 
 @if (ClientState.User != null)
 {
@@ -15,13 +15,14 @@
     <h2>
         Current Courses:
     </h2>
-
+    @foreach(Course course in ClientState.User.Course)
+    {
+        <CourseSelectElement Course="course"/>
+    }
     @if (ClientState.User.Course.Count == 0)
     {
         <h3>No Courses! Add some, muppet.</h3>
     }
-
-    <CoursesScroll />
 
     <h2><br />All Courses:</h2>
     @foreach (Course c in Db.Courses)

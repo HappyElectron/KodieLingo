@@ -26,6 +26,10 @@ else if(CourseName == null || Course == null)
 else
 {
 	<h1>@Course.Name</h1>
+	@foreach(Section S in Sections)
+	{
+		<SectionComponent Section="S"/>
+	}
 }
 
 @code {
@@ -35,6 +39,8 @@ else
 	public string? CourseName { get; set; }
 
 	public Course? Course { get; set; }
+
+	public ICollection<Section>? Sections { get; set; } = new List<Section>();
 
 	protected async override Task OnInitializedAsync()
 	{
@@ -63,7 +69,10 @@ else
 		if(CourseName != null)
 			Course = db.Courses.FirstOrDefault(x => x.Name.ToLower() == CourseName.ToLower());
 
-		// Testing parameter set further
-		//StateHasChanged();
+		if(Course != null)
+		{
+			foreach (Section s in db.Sections.Include(s => s.Topic).Where(s => s.Course == Course))
+				Sections.Add(s);
+		}
 	}
 }

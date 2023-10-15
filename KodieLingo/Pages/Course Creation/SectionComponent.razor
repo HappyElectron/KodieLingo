@@ -1,0 +1,14 @@
+﻿@using Services
+@using Model
+@using Data
+@using Microsoft.EntityFrameworkCore
+@inject ClientStateService ClientState
+@inject NavigationManager navManager
+@inject IDbContextFactory<DatabaseContext> ContextFactory;
+
+<h4>@Section</h4>
+
+@code {
+	[Parameter]
+	public Section Section { get; set; }
+}

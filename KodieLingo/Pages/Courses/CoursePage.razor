@@ -11,6 +11,11 @@
 @if (ClientState.User != null && Course != null)
 {
     <h1>This is the @CourseName page</h1>
+
+    @foreach(Section section in Sections)
+    {
+        <SectionElement Section="section"/>
+    }
 }
 else if(Course == null)
 {
@@ -30,7 +35,7 @@ else if(Course == null)
     // IDK, man
     private Course? Course;
 
-    private ICollection<Section> Sections { get; set; }
+    private ICollection<Section>? Sections => Course == null ? null : Course.Section;
 
     protected async override Task OnInitializedAsync()
     {
@@ -40,11 +45,9 @@ else if(Course == null)
     protected async override Task OnParametersSetAsync()
     {
         // URL encoding is being fickle, because of the "#".
-        // I suppose we're doing a manual override for evey non-alphanumeric course name, 
+        // A better solution would take a while, so we're doing a 
+        // manual override for evey non-alphanumeric course name, 
         // across both course-related pages.
-        //
-        //
-        // Not that this should ever concern you, Aiden, so I suppose I'll can it.
         if (CourseName != null && CourseName.ToLower() == "c")
         {
             CourseName = "c#";

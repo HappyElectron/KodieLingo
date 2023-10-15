@@ -4,22 +4,12 @@
 @using Microsoft.EntityFrameworkCore;
 @inject ClientStateService ClientState;
 @inject IDbContextFactory<DatabaseContext> DatabaseFactory;
-<div class="button-container"
-<button class="search-button" @onclick="() => isSearchingByName = true">
-    @if(isSearchingByName)
-    {
-        <h3>This is checked, yo</h3>
-    }
-    Search by Name
-</button>
-<button class="search-button" @onclick="() => isSearchingByName = false">
-    @if(!isSearchingByName)
-    {
-        <h3>This is checked, yo</h3>
-    }
-    Search by Tag
-</button>
-</div>
+    <button class="search-button" style="background-color: @nameColour" @onclick="() => isSearchingByName = true">
+        Search by Name
+    </button>
+    <button class="search-button" style="background-color: @tagColour" @onclick="() => isSearchingByName = false">
+        Search by Tag
+    </button>
 <style>
     .search-button {
         width: 100%;
@@ -38,7 +28,6 @@
 
     .button-container {
         display: flex;
-        flex-direction: column;
         gap: 10px; /* Adjust the gap value to set the space between buttons */
         margin-top: 10px; /* Add margin to the top to create space between the first button and the nav bar */
         justify-content: center;
@@ -54,20 +43,18 @@
     <div class="p-2 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3">
         @foreach (Course course in FilteredCourses)
         {
-            <h4>@course.Name</h4>
-            <h5>Tags:</h5>
-            @foreach(Tag t in course.Tag)
-            {
-                <p>@t.Name</p>
-            }
+            <CourseSelectElement Course="course"/>
         }
     </div>
 
 @code {
     public string SearchText = "";
     public bool isSearchingByName = true;
-    List<Course>? FilteredCourses => 
-    
+
+    public string nameColour => isSearchingByName ? "#00ff9c" : "white";
+    public string tagColour => !isSearchingByName ? "#00ff9c" : "white";
+    List<Course>? FilteredCourses =>
+
     // Remove this line for all courses to display by default.
     SearchText == "" ? new List<Course>() :
 

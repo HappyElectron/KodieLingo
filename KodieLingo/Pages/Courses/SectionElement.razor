@@ -1,0 +1,98 @@
+﻿@using Model;
+@using Data;
+@using Services;
+@using Microsoft.EntityFrameworkCore;
+@inject ClientStateService ClientState;
+@inject IDbContextFactory<DatabaseContext> DatabaseFactory;
+
+<style>
+	.custom-row {
+		display: flex;
+	}
+
+	.custom-two-column {
+		flex: 50%;
+	}
+</style>
+
+<div class="@BoxStyle">
+	<div name="Name" style="border: solid; border-radius:20px;">
+		<div class="custom-row">
+			<div class="custom-two-column">
+				<h2 style="padding:10px;">Section: @Section.Name</h2>
+			</div>
+			@if (IsShowingDescription)
+			{
+				<div class="custom-two-column">
+					@Section.Description
+				</div>
+			}
+		</div>
+		@foreach(Topic t in Topics)
+		{
+			<TopicElement/>
+		}
+	</div>
+	<div name="left" class="button-container">
+		<button class="courses-button" @onclick="ShowDescription">@DescriptionDialogText</button>
+	</div>
+	<style>
+		.button-container {
+			float: left;
+			padding: 10px;
+		}
+
+		.courses-button {
+			background-color: white; /* Button background color */
+			color: black; /* Button text color */
+			border: none;
+			border-radius: 5px;
+			padding: 10px 20px;
+			margin-bottom: 10px;
+			margin-right: 10px;
+			cursor: pointer;
+			transition: background-color 0.3s ease;
+			border: 1px solid #009dff;
+		}
+
+			.courses-button:hover {
+				background-color: #009dff; /* Darker background color on hover */
+				color: black;
+			}
+
+		.section-container{
+			border: solid;
+			border-radius: 20px;
+			padding: 20px;
+		}
+	</style>
+</div>
+
+
+
+@code {
+	[Parameter]
+	public Section Section { get; set; }
+	private DatabaseContext? db { get; set; }
+
+	public string BoxStyle = "section-container"; /*StartedCourse ? "course-continue" : "course-new";*/
+	string DescriptionDialogText => IsShowingDescription ?
+		"Hide Description" : "Show Description";
+	bool IsShowingDescription { get; set; } = true;
+	public ICollection<Topic> Topics => Section.Topic;
+
+	private void ShowDescription()
+	{
+		IsShowingDescription = !IsShowingDescription;
+	}
+
+	protected override async Task OnInitializedAsync()
+	{
+		db ??= await DatabaseFactory.CreateDbContextAsync();
+	}
+
+	protected override void OnParametersSet()
+	{
+		Section = db.Sections.Include(s => s.Topic).First(s => s.Id == Section.Id);
+	}
+}

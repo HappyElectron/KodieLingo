@@ -1,0 +1,35 @@
+﻿@page "/test"
+
+<h1>
+	Here is an HTML heading!
+</h1>
+
+<style>
+	.example-CSS-Class{
+		color: blue
+	}
+</style>
+
+<div class="example-CSS-Class">
+	Here is a stylized div.
+</div>
+
+<button @onclick="Increment">
+	Clicks: @number
+</button>
+
+@foreach(int i in Enumerable.Range(0,number))
+{
+	<h3>
+		This line represents a button click.
+	</h3>
+}
+
+@code {
+	public int number { get; set; } = 0;
+
+	private void Increment()
+	{
+		number++;
+	}
+}

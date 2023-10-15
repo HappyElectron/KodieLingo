@@ -1,0 +1,21 @@
+﻿@using Model;
+@using Data;
+@using Services;
+@using Microsoft.EntityFrameworkCore;
+@inject ClientStateService ClientState;
+@inject IDbContextFactory<DatabaseContext> DatabaseFactory;
+@inject NavigationManager navManager;
+
+@code {
+	[Parameter]
+	public int LessonId { get; set; }
+	[Parameter]
+	public Topic Topic { get; set; }
+
+	private DatabaseContext? db { get; set; }
+
+	protected override async Task OnInitializedAsync()
+	{
+		db ??= await DatabaseFactory.CreateDbContextAsync();
+	}
+}
