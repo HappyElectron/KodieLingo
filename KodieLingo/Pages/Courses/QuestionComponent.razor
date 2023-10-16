@@ -1,0 +1,23 @@
+﻿@using Model;
+@using Data;
+@using Services;
+@using Microsoft.EntityFrameworkCore;
+@inject ClientStateService ClientState;
+@inject IDbContextFactory<DatabaseContext> DatabaseFactory;
+@inject NavigationManager navManager;
+
+<h2>@Question.QuestionString</h2>
+
+<button @onclick="() => "></button>
+
+@code{
+	[Parameter]
+	public Question Question { get; set; }
+
+	private void CheckAnswer(Answer answer)
+	{
+		// Probably track active lesson in clientstate
+		if(answer.IsValid)
+			
+	}
+}

@@ -28,18 +28,24 @@
 				</div>
 			}
 		</div>
-		@foreach(Topic t in Topics)
+
+
+
+		@foreach (Topic t in Topics)
 		{
-			<TopicElement/>
+			<TopicElement Topic="t" LessonNumber="(n-5 <= 0 ? n : 5)" />
 		}
+
+
+
 	</div>
 	<div name="left" class="button-container">
 		<button class="courses-button" @onclick="ShowDescription">@DescriptionDialogText</button>
 	</div>
 	<style>
 		.button-container {
-			float: left;
 			padding: 10px;
+			padding-bottom: 0px;
 		}
 
 		.courses-button {
@@ -48,7 +54,7 @@
 			border: none;
 			border-radius: 5px;
 			padding: 10px 20px;
-			margin-bottom: 10px;
+			margin-bottom: 0px;
 			margin-right: 10px;
 			cursor: pointer;
 			transition: background-color 0.3s ease;
@@ -74,6 +80,9 @@
 	[Parameter]
 	public Section Section { get; set; }
 
+	private CourseProgressTracker? CourseProgressTracker;
+	private int n;
+
 	private DatabaseContext? db { get; set; }
 
 	public string BoxStyle = "section-container"; /*StartedCourse ? "course-continue" : "course-new";*/
@@ -94,6 +103,8 @@
 
 	protected override void OnParametersSet()
 	{
-		Section = db.Sections.Include(s => s.Topic).First(s => s.Id == Section.Id);
+		Section = db.Sections.Include(s => s.Topic).Include(s=>s.CourseProgressTrackers).First(s => s.Id == Section.Id);
+		CourseProgressTracker = db.CourseProgressTrackers.FirstOrDefault(x => x.Section == Section && x.User == ClientState.User);
+		n = CourseProgressTracker == null ? 0 : CourseProgressTracker.Progress;
 	}
 }

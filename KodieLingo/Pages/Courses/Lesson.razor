@@ -1,0 +1,33 @@
+﻿@using Model;
+@using Data;
+@using Services;
+@using Microsoft.EntityFrameworkCore;
+@inject ClientStateService ClientState;
+@inject IDbContextFactory<DatabaseContext> DatabaseFactory;
+@inject NavigationManager navManager;
+
+@page "/lesson/{TopicId}?"
+
+
+
+@code {
+	[Parameter]
+	public string? TopicId { get; set; }
+
+	private Topic? Topic => db.Topics.Include(t => t.Question).FirstOrDefault(t => t.Id == Convert.ToInt32(TopicId));
+
+	private DatabaseContext? db { get; set; }
+
+	private List<Question> QuestionSetForLesson;
+
+
+	// For choosing questions randomly
+	Random rnd = new Random();
+	List<int> randomNumbers;
+
+	protected override async Task OnInitializedAsync()
+	{
+		db ??= await DatabaseFactory.CreateDbContextAsync();
+		QuestionSetForLesson = Topic.Question.OrderBy(x => rnd.Next()).Take(10).ToList();
+	}
+}

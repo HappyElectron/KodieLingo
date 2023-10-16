@@ -6,6 +6,29 @@
 @inject IDbContextFactory<DatabaseContext> DatabaseFactory;
 @inject NavigationManager navManager;
 
+<div class="@BoxStyle">
+	<div class="custom-row">
+		<div class="custom-two-column">
+			<h2 style="padding:10px;">Topic: @Topic.Name</h2>
+		</div>
+		@if (IsShowingGuidebook)
+		{
+			<div class="custom-two-column">
+				@Topic.Guidebook
+			</div>
+		}
+	</div>
+	<div name="left" class="button-container">
+		<button class="courses-button" @onclick="ShowGuidebook">@DescriptionDialogText</button>
+	</div>
+	@if(LessonNumber != 0 && !isComplete)
+	{
+		<button @onclick="ContinueLesson">Start lesson</button>
+	}
+	<style>
+	</style>
+</div>
+
 
 
 @code {
@@ -13,11 +36,35 @@
 	public int LessonNumber { get; set; }
 	[Parameter]
 	public Topic Topic { get; set; }
-
+	private bool isComplete;
 	private DatabaseContext? db { get; set; }
+
+	public string BoxStyle = "section-container"; /*StartedCourse ? "course-continue" : "course-new";*/
+	string DescriptionDialogText => IsShowingGuidebook ?
+		"Hide Guidebook" : "Show Guidebook";
+	bool IsShowingGuidebook { get; set; } = true;
+
+
+	private ICollection<Question> Questions => Topic.Question;
+	private void ShowGuidebook()
+	{
+		IsShowingGuidebook = !IsShowingGuidebook;
+	}
+
+	private void ContinueLesson()
+	{
+		navManager.NavigateTo($"/lesson/{Topic.Id}");
+	}
 
 	protected override async Task OnInitializedAsync()
 	{
 		db ??= await DatabaseFactory.CreateDbContextAsync();
+		isComplete = LessonNumber == 5;
+
+	}
+
+	protected override void OnParametersSet()
+	{
+		Topic = db.Topics.Include(s => s.Question).First(s => s.Id == Topic.Id);
 	}
 }
