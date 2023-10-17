@@ -9,6 +9,7 @@
 @page "/lesson/{TopicId}?"
 
 
+<QuestionComponent Question="QuestionSetForLesson.ToArray()[ClientState.QuestionNumber]"/>
 
 @code {
 	[Parameter]
@@ -18,8 +19,7 @@
 
 	private DatabaseContext? db { get; set; }
 
-	private List<Question> QuestionSetForLesson;
-
+	private List<Question>? QuestionSetForLesson;
 
 	// For choosing questions randomly
 	Random rnd = new Random();

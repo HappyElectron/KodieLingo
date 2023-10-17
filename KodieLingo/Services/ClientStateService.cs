@@ -15,12 +15,14 @@ namespace KodieLingo.Services
 		public User? User { get; set; }
 		public bool OpenNavMenu { get; set; } = true;
         private DatabaseContext? db { get; set; }
-
+		public int QuestionNumber { get; set; } = 0;
+		public bool IsCorrect { get; set; }
 
         public ClientStateService(DatabaseContext context)
 		{
 			db = context;
 		}
+
 		public User GetUser(string email)
 		{
 			return db.Users

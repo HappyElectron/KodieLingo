@@ -6,18 +6,32 @@
 @inject IDbContextFactory<DatabaseContext> DatabaseFactory;
 @inject NavigationManager navManager;
 
-<h2>@Question.QuestionString</h2>
+@if (!ShowDialog)
+{
+	<h2>@Question.QuestionString</h2>
 
-<button @onclick="() => "></button>
+	<button @onclick="() => CheckAnswer(Question.Answers.ToArray()[0])">@Question.Answers.ToArray()[0].AnswerString</button>
+	<button @onclick="() => CheckAnswer(Question.Answers.ToArray()[1])">@Question.Answers.ToArray()[1].AnswerString</button>
+	<button @onclick="() => CheckAnswer(Question.Answers.ToArray()[2])">@Question.Answers.ToArray()[2].AnswerString</button>
+	<button @onclick="() => CheckAnswer(Question.Answers.ToArray()[3])">@Question.Answers.ToArray()[3].AnswerString</button>
+}
+
+else
+{
+	
+}
+
 
 @code{
 	[Parameter]
 	public Question Question { get; set; }
+	private bool ShowDialog = false;
 
 	private void CheckAnswer(Answer answer)
 	{
 		// Probably track active lesson in clientstate
-		if(answer.IsValid)
-			
+		if (answer.IsValid)
+			ClientState.IsCorrect = true;
+		ShowDialog = true;
 	}
 }
